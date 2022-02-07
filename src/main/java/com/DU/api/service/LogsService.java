@@ -42,17 +42,4 @@ public class LogsService {
         logsRepository.save(logs);
     }
 
-    // public void logout(User user) {
-    // Logs logs = new Logs();
-    // // User users=new User();
-    // String token = "expired";
-    // logs.setFirstName(user.getFirstName());
-    // logs.setLastName(user.getLastName());
-    // logs.setRole(user.getRole());
-    // logs.setEmail(user.getEmail());
-    // logs.setlogout(new Date().toString());
-    // logs.settoken(token);
-    // logs.settokenstatus(0);
-    // logsRepository.save(logs);
-    // }
 }

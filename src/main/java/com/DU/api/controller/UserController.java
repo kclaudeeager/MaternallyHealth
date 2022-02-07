@@ -32,6 +32,7 @@ import com.DU.api.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -55,6 +56,7 @@ public class UserController {
 			@ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 	@SecurityRequirement(name = "bearerAuth")
+	@Hidden
 	@GetMapping("/")
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
@@ -218,7 +220,7 @@ public class UserController {
 			@ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 	@SecurityRequirement(name = "bearerAuth")
-
+	@Hidden
 	@PutMapping("update/{email}")
 	public ResponseEntity<User> updateuserdata(HttpServletRequest request,
 			@PathVariable(value = "email") String email,

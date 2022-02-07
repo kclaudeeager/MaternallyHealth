@@ -1,55 +1,39 @@
-// package com.DU.api.service;
+package com.DU.api.service;
 
 // import static org.junit.Assert.assertEquals;
 
 // import com.DU.api.service.EmailSenderService;
 
-// import org.aspectj.weaver.loadtime.Agent;
-// import org.junit.jupiter.api.Test;
-// import org.junit.runner.RunWith;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-// import org.springframework.boot.test.context.SpringBootTest;
-// import org.springframework.mail.SimpleMailMessage;
-// import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.assertEquals;
 
-// //@RunWith(SpringRunner.class)
-// //@SpringBootTest
-// @DataJpaTest
-// public class EmailSenderServiceTest {
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.test.context.junit4.SpringRunner;
+import static org.mockito.Mockito.verify;
 
-// EmailSenderService emailSenderService;
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+@ExtendWith(MockitoExtension.class)
+public class EmailSenderServiceTest {
+    @Mock
+    private EmailSenderService emailSenderService;
 
-// @Test
-// void testSendSimpleEmail() {
-// // String address, String openingHour, String closingHour, String branchname,
-// // String staffNumber, String branchManager, String phoneNumber)
-// // branch testbranch = new branch("remera", "8am", "9pm", "Kisimenti", "32",
-// // "mugabo", "0789378");
+    @Test
+    void testSendSimpleEmail() {
 
-// // branchRepo.save(testbranch);
-// String expected = "ok";
-// String res;
-// String email = "ngabojck@gmail.com";
-// String body = "hello this the email body for testing";
-// String subj = "Test subject";
-// z assertEquals(expected, res);
+        String email = "ngabojck@gmail.com";
+        String body = "hello this the email body for testing";
+        String subj = "Test subject";
+        emailSenderService.SendSimpleEmail(email, body, subj);
 
-// }
+    }
 
-// }
-
-// // public class EmailSenderServiceTest {
-// // @Autowired
-// // private EmailSenderService emailSenderService;
-
-// // void testSendSimpleEmail() {
-// // String email = "ngabojck@gmail.com";
-// // String body = "hello this the email body for testing";
-// // String subj = "Test subject";
-// // // EmailSenderService emailSenderService = new EmailSenderService();
-// // String expected = "ok";
-// // String res = emailSenderService.SendSimpleEmail(email, body, subj);
-// // assertEquals(expected, res);
-// // }
-// // }
+}

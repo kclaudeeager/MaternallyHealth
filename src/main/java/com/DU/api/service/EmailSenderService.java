@@ -17,6 +17,10 @@ public class EmailSenderService {
     @Autowired
     private JavaMailSender mailSender;
 
+    public EmailSenderService() {
+        super();
+    }
+
     public void SendSimpleEmail(String toEmail, String body, String subject) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);
@@ -24,7 +28,6 @@ public class EmailSenderService {
         message.setText(body);
         message.setFrom("dufinancialchatbot@gmail.com");
         mailSender.send(message);
-        // System.out.println("Sending email..");
-
+        System.out.println("Sending email..");
     }
 }

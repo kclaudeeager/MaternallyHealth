@@ -1,5 +1,7 @@
 package com.DU.api.repository;
 
+import java.util.List;
+
 import com.DU.api.model.branch;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,4 +14,7 @@ public interface BranchRepository extends JpaRepository<branch, Long> {
 
     @Query("SELECT b FROM branch b WHERE b.branchname=?1")
     branch findBranchByName(String branchname);
+
+    @Query("SELECT branchname FROM branch")
+    List<String> findAllBranch();
 }

@@ -29,6 +29,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -53,6 +57,7 @@ public class AgentsController {
 
     })
     @SecurityRequirement(name = "bearerAuth")
+    @Hidden
     @PostMapping("/agents")
     public agents createclient(HttpServletRequest request, @Valid @RequestBody agents agent) {
         String role = request.getAttribute("role").toString();
@@ -135,8 +140,8 @@ public class AgentsController {
             @ApiResponse(responseCode = "200", description = "delete an agent  from the  Db", content = {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content) })
-
     @SecurityRequirement(name = "bearerAuth")
+    @Hidden
     @DeleteMapping("/agents/{idnumber}")
     public Map<String, Boolean> deletAgent(HttpServletRequest request,
             @PathVariable(value = "idnumber") String idnumber) {
@@ -172,6 +177,7 @@ public class AgentsController {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content) })
     @SecurityRequirement(name = "bearerAuth")
+    @Hidden
     @PutMapping("/agents/{idnumber}")
     public ResponseEntity<agents> updateAgent(HttpServletRequest request,
             @PathVariable(value = "idnumber") String idnumber,
@@ -208,4 +214,26 @@ public class AgentsController {
 
         }
     }
+
+    @Operation(summary = "This is to fetch  agent by Id number  from the  Db")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "This is to fetch agent by number from the  Db", content = {
+                    @Content(mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content) })
+    // @SecurityRequirement(name = "bearerAuth")
+    @GetMapping("/agents/{location}")
+    public List<agents> getAgentByLocation(
+            @PathVariable(value = "location") String location) {
+        // String role = request.getAttribute("role").toString();
+        // System.out.println("role: -------- " + role);
+        String email = "test@gmail.com";
+        // request.getAttribute("email").toString();
+
+        String activity = "viewed " + " " + "'s data";
+        log.debug("{} viewed agents  by location {} succefully", email, location);
+        logsService.savelog(email, activity);
+        return agentsRepository.findAgentBylocation(location);
+
+    }
+
 }

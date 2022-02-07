@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -50,6 +51,7 @@ public class branchController {
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
+        @Hidden
         @PostMapping("/branches")
         public branch createbBranch(HttpServletRequest request, @Valid @RequestBody branch branch) {
                 String role = request.getAttribute("role").toString();
@@ -77,7 +79,7 @@ public class branchController {
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
-        @GetMapping("/branches")
+        @GetMapping("/branches/details")
         public List<branch> getAllbranches(HttpServletRequest request) {
 
                 String activity = "viewed all data of branches";
@@ -121,6 +123,7 @@ public class branchController {
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
+        @Hidden
         @DeleteMapping("/branches/{branchname}")
         public Map<String, Boolean> deletbranch(HttpServletRequest request,
                         @PathVariable(value = "branchname") String branchname) {
@@ -158,6 +161,7 @@ public class branchController {
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
+        @Hidden
         @PutMapping("/branches/{branchname}")
         public ResponseEntity<branch> updatebranch(HttpServletRequest request,
                         @PathVariable(value = "branchname") String branchname,
@@ -195,6 +199,26 @@ public class branchController {
                                         branchname);
                         throw new AuthException("Only admin can update  branch data  :: ");
                 }
+        }
+
+        @Operation(summary = "This is to delete an agent  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "200", description = "fetch all  branches from database", content = {
+                                        @Content(mediaType = "application/json") }),
+                        @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
+                        @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
+        @SecurityRequirement(name = "bearerAuth")
+
+        @GetMapping("/branches/all")
+        public List<String> getallbranclist(HttpServletRequest request) {
+
+                String activity = "viewed all data of branches";
+                String useremail = request.getAttribute("email").toString();
+                logsService.savelog(useremail, activity);
+                log.debug("{} requested all branches's data", useremail);
+                // System.out.println("user email is :" + useremail);
+
+                return branchRepository.findAllBranch();
         }
 
 }

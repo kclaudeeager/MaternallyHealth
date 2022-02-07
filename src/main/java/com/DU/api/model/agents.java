@@ -37,8 +37,9 @@ public class agents extends AuditModel {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
-
+    @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
+
     @Column(name = "services", nullable = true)
     private String services;
 

@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -60,6 +61,7 @@ public class ClientController {
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
   @SecurityRequirement(name = "bearerAuth")
+  @Hidden
   @PostMapping("/clients")
   public client createclient(HttpServletRequest request, @Valid @RequestBody client client) {
     String role = request.getAttribute("role").toString();
@@ -85,7 +87,7 @@ public class ClientController {
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
   @SecurityRequirement(name = "bearerAuth")
-
+  @Hidden
   @GetMapping("/clients")
   public List<client> getAllclients(HttpServletRequest request) {
 
@@ -109,6 +111,7 @@ public class ClientController {
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
   @SecurityRequirement(name = "bearerAuth")
+  @Hidden
   @GetMapping("/clients/{email}")
   public ResponseEntity<client> getclientEmail(HttpServletRequest request,
       @PathVariable(value = "email") String email) {
@@ -132,6 +135,7 @@ public class ClientController {
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
   @SecurityRequirement(name = "bearerAuth")
+  @Hidden
   @DeleteMapping("/clients/{email}")
   public Map<String, Boolean> deletclient(HttpServletRequest request, @PathVariable(value = "email") String email) {
     String role = request.getAttribute("role").toString();
@@ -161,6 +165,7 @@ public class ClientController {
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
   @SecurityRequirement(name = "bearerAuth")
+  @Hidden
   @PutMapping("/clients/{email}")
   public ResponseEntity<client> updateclient(HttpServletRequest request, @PathVariable(value = "email") String email,
       @Valid @RequestBody client clientDetails) {
