@@ -44,7 +44,7 @@ public class branchController {
         @Autowired
         LogsService logsService;
 
-        @Operation(summary = "This is to delete an agent  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
+        @Operation(summary = "This is to add an a branch  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "Adding new branch to database", content = {
                                         @Content(mediaType = "application/json") }),
@@ -72,7 +72,7 @@ public class branchController {
                 }
         }
 
-        @Operation(summary = "This is to delete an agent  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
+        @Operation(summary = "This is to view all branche's data  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "fetch all  branches from database", content = {
                                         @Content(mediaType = "application/json") }),
@@ -91,7 +91,7 @@ public class branchController {
                 return branchRepository.findAll();
         }
 
-        @Operation(summary = "This is to delete an agent  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
+        @Operation(summary = "This is to get branch by branchname  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "fetch  branch by branchname from database", content = {
                                         @Content(mediaType = "application/json") }),
@@ -154,7 +154,7 @@ public class branchController {
                 }
         }
 
-        @Operation(summary = "This is to delete an agent  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
+        @Operation(summary = "This is to update branch  in the  Db", security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "update  branch by branchname from database", content = {
                                         @Content(mediaType = "application/json") }),
@@ -203,7 +203,7 @@ public class branchController {
 
         @Operation(summary = "This is to delete an agent  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
         @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "fetch all  branches from database", content = {
+                        @ApiResponse(responseCode = "200", description = "fetch a list of   branches from database", content = {
                                         @Content(mediaType = "application/json") }),
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
