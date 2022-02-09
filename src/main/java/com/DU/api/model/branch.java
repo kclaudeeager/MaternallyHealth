@@ -57,6 +57,17 @@ public class branch extends AuditModel {
 
     }
 
+    public branch(String openingHour, String closingHour, String branchname,
+            String phoneNumber) {
+        super();
+
+        this.openingHour = openingHour;
+        this.closingHour = closingHour;
+        this.branchname = branchname;
+        this.phoneNumber = phoneNumber;
+
+    }
+
     public Long getId() {
         return id;
     }

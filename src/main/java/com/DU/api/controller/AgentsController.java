@@ -86,6 +86,7 @@ public class AgentsController {
 
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
     @SecurityRequirement(name = "bearerAuth")
+    @Hidden
     @GetMapping("/agents")
     public List<agents> getAllAgents(HttpServletRequest request) {
         String role = request.getAttribute("role").toString();
@@ -112,14 +113,14 @@ public class AgentsController {
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content) })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/agents/{idnumber}")
-    public ResponseEntity<agents> getAgentById(HttpServletRequest request,
+    public List<Object> getAgentById(HttpServletRequest request,
             @PathVariable(value = "idnumber") String idnumber) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         String email = request.getAttribute("email").toString();
         int i = Integer.parseInt(role);
         if (i == 3 || i == 4) {
-            agents agent = agentsRepository.findAgentByIdNumber(idnumber);
+            List<Object> agent = agentsRepository.findAgentByIdNumber(idnumber);
             if (agent == null) {
                 log.debug("{} requested agent's data by idnumber: {} agent not found", email, idnumber);
                 throw new ResourceNotFoundException("agent  not found :: " + idnumber);
@@ -127,7 +128,7 @@ public class AgentsController {
             String activity = "viewed " + idnumber + "'s data";
             log.debug("{} viewed agents data by id {} succefully", email, idnumber);
             logsService.savelog(email, activity);
-            return ResponseEntity.ok().body(agent);
+            return agentsRepository.findAgentByIdNumber(idnumber);
         } else {
             log.debug("{} viewed agents data by id {} but was not authorised", email, idnumber);
             throw new AuthException("user not allowed to view this endpoint :: ");
@@ -151,7 +152,7 @@ public class AgentsController {
         String email = request.getAttribute("email").toString();
         if (i == 4) {
 
-            agents agent = agentsRepository.findAgentByIdNumber(idnumber);
+            agents agent = agentsRepository.findAgentByIdNumbr(idnumber);
             if (agent == null) {
                 log.debug("{} delete agent's data by id {} but agent was not found", email, idnumber);
                 throw new ResourceNotFoundException("agent not found :: " + idnumber);
@@ -188,7 +189,7 @@ public class AgentsController {
         int i = Integer.parseInt(role);
         String email = request.getAttribute("email").toString();
         if (i == 3 || i == 4) {
-            agents agent = agentsRepository.findAgentByIdNumber(idnumber);
+            agents agent = agentsRepository.findAgentByIdNumbr(idnumber);
             if (agent == null) {
                 log.warn("{} updated agent's data by id {} but agent was not found", email, idnumber);
                 throw new ResourceNotFoundException("agent not found :: " + idnumber);
@@ -215,14 +216,14 @@ public class AgentsController {
         }
     }
 
-    @Operation(summary = "This is to fetch  agent by Id number  from the  Db")
+    @Operation(summary = "This is to fetch  agent by location  from the  Db")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "This is to fetch agent by number from the  Db", content = {
+            @ApiResponse(responseCode = "200", description = "This is to fetch agent by location from the  Db", content = {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content) })
     // @SecurityRequirement(name = "bearerAuth")
-    @GetMapping("/agents/{location}")
-    public List<agents> getAgentByLocation(
+    @GetMapping("/agents/location/{location}")
+    public List<Object> getAgentByLocation(HttpServletRequest request,
             @PathVariable(value = "location") String location) {
         // String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);

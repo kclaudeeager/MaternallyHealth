@@ -59,7 +59,8 @@ public class financialchatbot {
         registrationBean.setFilter(authFilter);
         registrationBean.addUrlPatterns(
                 "/api/v1/staffs/*",
-                // "/api/v1/agents/*",
+                "/api/v1/agents/*",
+                "/api/v1/agents/location/*",
                 "/api/v1/clients/*",
                 "/api/v1/branches/*",
                 "/api/v1/logs/*",

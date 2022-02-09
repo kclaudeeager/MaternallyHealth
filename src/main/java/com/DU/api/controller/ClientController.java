@@ -196,9 +196,9 @@ public class ClientController {
     }
   }
 
-  @Operation(summary = "This is to update client by email  from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+  @Operation(summary = "This is to transfer money to another client ", security = @SecurityRequirement(name = "bearerAuth"))
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "Update  client by email from database", content = {
+      @ApiResponse(responseCode = "200", description = "Transfer money to another client ", content = {
           @Content(mediaType = "application/json") }),
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
@@ -230,9 +230,9 @@ public class ClientController {
     return updatedAmount;
   }
 
-  @Operation(summary = "This is to update client by email  from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+  @Operation(summary = "This is to check the balance of the logged in client", security = @SecurityRequirement(name = "bearerAuth"))
   @ApiResponses(value = {
-      @ApiResponse(responseCode = "200", description = "Update  client by email from database", content = {
+      @ApiResponse(responseCode = "200", description = "This is to check the balance of the logged in client", content = {
           @Content(mediaType = "application/json") }),
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })

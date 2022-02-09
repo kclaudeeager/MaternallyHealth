@@ -26,7 +26,7 @@ public class AgentsRepositoryTest {
         agentRepo.save(agent1);
         String expected = agent1.getPhoneNumber();
         String idn = "1997827382";
-        agents result = agentRepo.findAgentByIdNumber(idn);
+        agents result = agentRepo.findAgentByIdNumbr(idn);
         String res = result.getPhoneNumber();
 
         assertEquals(expected, res);

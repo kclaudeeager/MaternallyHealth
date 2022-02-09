@@ -10,9 +10,12 @@ import org.springframework.stereotype.Repository;
 public interface AgentsRepository extends JpaRepository<agents, Long> {
     agents findById(String agentId);
 
+    @Query("SELECT a.firstName,a.lastName,a.phoneNumber FROM agents a WHERE a.idnumber=?1")
+    List<Object> findAgentByIdNumber(String idnumber);
+
     @Query("SELECT a FROM agents a WHERE a.idnumber=?1")
-    agents findAgentByIdNumber(String idnumber);
+    agents findAgentByIdNumbr(String idnumber);
 
     @Query("SELECT a.firstName,a.lastName,a.phoneNumber FROM agents a WHERE a.residance=?1")
-    List<agents> findAgentBylocation(String location);
+    List<Object> findAgentBylocation(String location);
 }
