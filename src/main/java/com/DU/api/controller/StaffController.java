@@ -124,7 +124,7 @@ public class StaffController {
     }
   }
 
-  @Operation(summary = "This is to delelte  staff from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+  @Operation(summary = "This is to delete  staff from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "delete  staff from the  Database", content = {
           @Content(mediaType = "application/json") }),

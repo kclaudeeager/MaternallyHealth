@@ -1,7 +1,9 @@
 package com.DU.api;
 
 import com.DU.api.service.AuthFilter;
+import com.DU.api.service.EmailSenderService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -37,6 +39,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 public class financialchatbot {
     public static void main(String[] args) {
         SpringApplication.run(financialchatbot.class, args);
+
     }
 
     @Configuration

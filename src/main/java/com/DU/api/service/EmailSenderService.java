@@ -13,13 +13,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+@Service
 public class EmailSenderService {
     @Autowired
     private JavaMailSender mailSender;
-
-    public EmailSenderService() {
-        super();
-    }
 
     public void SendSimpleEmail(String toEmail, String body, String subject) {
         SimpleMailMessage message = new SimpleMailMessage();

@@ -45,8 +45,10 @@ public class ClientController {
   private ClientRepository clientRepository;
   @Autowired
   LogsService logsService;
+  @Autowired
+  private EmailSenderService mailSender;
 
-  private EmailSenderService emailService;
+  // private EmailSenderService emailService;
   // private UserRepository userRepository;
   // User user;
 
@@ -204,19 +206,19 @@ public class ClientController {
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
   @SecurityRequirement(name = "bearerAuth")
   @PutMapping("/clients/transfer/{idnumber}/{amount}")
-  public int tranfermoney(HttpServletRequest request, @PathVariable(value = "idnumber") String idnumber,
+  public String tranfermoney(HttpServletRequest request, @PathVariable(value = "idnumber") String idnumber,
       @PathVariable(value = "amount") Integer amount) {
     client clientReciever = clientRepository.findclientByIdnumber(idnumber);
     int currentAmount = clientReciever.getBalance();
     String nameR = clientReciever.getFirstName() + " " + clientReciever.getLastName();
-    // System.out.println("RECIEVER BALANCE:" + currentAmount);
+    // System.out.println("RECIEVER BALANCE:" + nameR);
     int updatedAmount = currentAmount + amount;
     clientRepository.setbalanceForClient(updatedAmount, idnumber);
     String useremail = request.getAttribute("email").toString();
     client clientSender = clientRepository.findclientByEmail(useremail);
     String reciverEmail = clientReciever.getEmail();
     String nameS = clientSender.getFirstName() + " " + clientSender.getLastName();
-    emailService.SendSimpleEmail(reciverEmail,
+    mailSender.SendSimpleEmail(reciverEmail,
         "Dear " + nameR + " You have been credited with : RWF" + amount + " from " + nameS, "Money Transfer");
 
     currentAmount = clientSender.getBalance();
@@ -224,10 +226,13 @@ public class ClientController {
     // System.out.println(updatedAmount);
     String idnumber1 = clientSender.getidnumber();
     clientRepository.setbalanceForClient(updatedAmount, idnumber1);
-    emailService.SendSimpleEmail(useremail,
-        "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " + nameR, "Money Transfer");
+    // System.out.println(" ##################" + useremail + nameS + nameR);
+    mailSender.SendSimpleEmail(useremail,
+        "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
+            nameR,
+        "Money Transfer");
 
-    return updatedAmount;
+    return "You current balance is :" + updatedAmount;
   }
 
   @Operation(summary = "This is to check the balance of the logged in client", security = @SecurityRequirement(name = "bearerAuth"))
