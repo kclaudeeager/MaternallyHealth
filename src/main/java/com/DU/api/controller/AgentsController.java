@@ -222,8 +222,8 @@ public class AgentsController {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content) })
     // @SecurityRequirement(name = "bearerAuth")
-    @GetMapping("/agents/location/{location}")
-    public List<Object> getAgentByLocation(HttpServletRequest request,
+    @GetMapping("/agent/location/{location}")
+    public List<Object> getAgentByLocation(
             @PathVariable(value = "location") String location) {
         // String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);

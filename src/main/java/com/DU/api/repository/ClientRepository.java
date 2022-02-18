@@ -19,9 +19,25 @@ public interface ClientRepository extends JpaRepository<client, Long> {
     @Query("SELECT c FROM client c WHERE c.idnumber=?1")
     client findclientByIdnumber(String idnumber);
 
+    @Query("SELECT c FROM client c WHERE c.accountnumber=?1")
+    client findclientByAccount(String accountnumber);
+
+    @Query("SELECT c FROM client c WHERE c.phoneNumber =?1")
+    client findclientByPhoneNumber(String phoneNumber);
+
     @Transactional
     @Modifying
-    @Query("update client c set c.balance = ?1 where c.idnumber = ?2")
+    @Query("update client c set c.balance=?1 where c.idnumber=?2")
     void setbalanceForClient(Integer amount, String idnumber);
+
+    // @Transactional
+    // @Modifying
+    // @Query("update client c set c.balance = ?1 where c.accountnumber = ?2")
+    // void setbalanceForClientByAccount(Integer amount, String accountnumber);
+
+    @Transactional
+    @Modifying
+    @Query("update client c set c.balance =?1 where c.phoneNumber =?2")
+    void setbalanceForClientByPhonenumber(Integer amount, String phonenumber);
 
 }

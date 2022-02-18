@@ -198,6 +198,8 @@ public class ClientController {
     }
   }
 
+  // transfer by idnumber
+
   @Operation(summary = "This is to transfer money to another client ", security = @SecurityRequirement(name = "bearerAuth"))
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Transfer money to another client ", content = {
@@ -205,35 +207,152 @@ public class ClientController {
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
   @SecurityRequirement(name = "bearerAuth")
-  @PutMapping("/clients/transfer/{idnumber}/{amount}")
+
+  @PutMapping("/clients/transfer/id/{idnumber}/{amount}")
   public String tranfermoney(HttpServletRequest request, @PathVariable(value = "idnumber") String idnumber,
       @PathVariable(value = "amount") Integer amount) {
     client clientReciever = clientRepository.findclientByIdnumber(idnumber);
-    int currentAmount = clientReciever.getBalance();
-    String nameR = clientReciever.getFirstName() + " " + clientReciever.getLastName();
-    // System.out.println("RECIEVER BALANCE:" + nameR);
-    int updatedAmount = currentAmount + amount;
-    clientRepository.setbalanceForClient(updatedAmount, idnumber);
-    String useremail = request.getAttribute("email").toString();
-    client clientSender = clientRepository.findclientByEmail(useremail);
-    String reciverEmail = clientReciever.getEmail();
-    String nameS = clientSender.getFirstName() + " " + clientSender.getLastName();
-    mailSender.SendSimpleEmail(reciverEmail,
-        "Dear " + nameR + " You have been credited with : RWF" + amount + " from " + nameS, "Money Transfer");
+    if (clientReciever == null) {
+      return "Reciver account not found";
+    } else {
+      int currentAmount = clientReciever.getBalance();
+      String nameR = clientReciever.getFirstName() + " " + clientReciever.getLastName();
+      // System.out.println("RECIEVER BALANCE:" + nameR);
+      int updatedAmount = currentAmount + amount;
+      clientRepository.setbalanceForClient(updatedAmount, idnumber);
+      String useremail = request.getAttribute("email").toString();
+      client clientSender = clientRepository.findclientByEmail(useremail);
+      String reciverEmail = clientReciever.getEmail();
+      String nameS = clientSender.getFirstName() + " " + clientSender.getLastName();
+      mailSender.SendSimpleEmail(reciverEmail,
+          "Dear " + nameR + " You have been credited with : RWF" + amount + " from " + nameS, "Money Transfer");
 
-    currentAmount = clientSender.getBalance();
-    updatedAmount = currentAmount - amount;
-    // System.out.println(updatedAmount);
-    String idnumber1 = clientSender.getidnumber();
-    clientRepository.setbalanceForClient(updatedAmount, idnumber1);
-    // System.out.println(" ##################" + useremail + nameS + nameR);
-    mailSender.SendSimpleEmail(useremail,
-        "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
-            nameR,
-        "Money Transfer");
+      currentAmount = clientSender.getBalance();
+      if (currentAmount > amount) {
+        updatedAmount = currentAmount - amount;
+        // System.out.println(updatedAmount);
+        String idnumber1 = clientSender.getidnumber();
+        clientRepository.setbalanceForClient(updatedAmount, idnumber1);
+        // System.out.println(" ##################" + useremail + nameS + nameR);
+        mailSender.SendSimpleEmail(useremail,
+            "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
+                nameR,
+            "Money Transfer");
 
-    return "You current balance is :" + updatedAmount;
+        return "You current balance is :" + updatedAmount;
+      } else {
+        return "you have a insufficient amount of funds in your account";
+      }
+    }
+
   }
+
+  // transfer by account number
+
+  @Operation(summary = "This is to transfer money to another client ", security = @SecurityRequirement(name = "bearerAuth"))
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Transfer money to another client ", content = {
+          @Content(mediaType = "application/json") }),
+      @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
+      @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
+  @SecurityRequirement(name = "bearerAuth")
+  @PutMapping("/clients/transfer/account/{accountnumber}/{amount}")
+  public String tranfermoneyByAccount(HttpServletRequest request,
+      @PathVariable(value = "accountnumber") String accountnumber,
+      @PathVariable(value = "amount") Integer amount) {
+
+    client clientReciever = clientRepository.findclientByAccount(accountnumber);
+
+    String idnReciever = clientReciever.getidnumber();
+    if (clientReciever == null) {
+      return "Reciver account not found";
+    } else {
+      int currentAmount = clientReciever.getBalance();
+      // System.out.println("********client found*********");
+      String nameR = clientReciever.getFirstName() + " " + clientReciever.getLastName();
+      // System.out.println("###########RECIEVER BALANCE:" + nameR);
+      int updatedAmount = currentAmount + amount;
+
+      clientRepository.setbalanceForClient(updatedAmount, idnReciever);
+      String useremail = request.getAttribute("email").toString();
+      client clientSender = clientRepository.findclientByEmail(useremail);
+      String reciverEmail = clientReciever.getEmail();
+      String nameS = clientSender.getFirstName() + " " + clientSender.getLastName();
+      mailSender.SendSimpleEmail(reciverEmail,
+          "Dear " + nameR + " You have been credited with : RWF" + amount + " from " +
+              nameS,
+          "Money Transfer");
+
+      currentAmount = clientSender.getBalance();
+      if (currentAmount > amount) {
+        updatedAmount = currentAmount - amount;
+        // System.out.println(updatedAmount);
+        String idnumber1 = clientSender.getidnumber();
+        clientRepository.setbalanceForClient(updatedAmount, idnumber1);
+        // System.out.println(" ##################" + useremail + nameS + nameR);
+        mailSender.SendSimpleEmail(useremail,
+            "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
+                nameR,
+            "Money Transfer");
+
+        return "You current balance is :" + updatedAmount;
+      } else {
+        return "you have a insufficient amount of funds in your account";
+      }
+    }
+
+  }
+
+  // transfer by phonenumber
+  @Operation(summary = "This is to transfer money to another client ", security = @SecurityRequirement(name = "bearerAuth"))
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Transfer money to another client ", content = {
+          @Content(mediaType = "application/json") }),
+      @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
+      @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
+  @SecurityRequirement(name = "bearerAuth")
+  @PutMapping("/clients/transfer/phonenumber/{phonenumber}/{amount}")
+  public String tranfermoneyByPhoneNumber(HttpServletRequest request,
+      @PathVariable(value = "phonenumber") String phonenumber,
+      @PathVariable(value = "amount") Integer amount) {
+    client clientReciever = clientRepository.findclientByPhoneNumber(phonenumber);
+    if (clientReciever == null) {
+      return "Reciver account not found";
+    } else {
+      int currentAmount = clientReciever.getBalance();
+      String nameR = clientReciever.getFirstName() + " " + clientReciever.getLastName();
+      // System.out.println("RECIEVER BALANCE:" + nameR);
+      int updatedAmount = currentAmount + amount;
+      clientRepository.setbalanceForClientByPhonenumber(updatedAmount, phonenumber);
+      String useremail = request.getAttribute("email").toString();
+      client clientSender = clientRepository.findclientByEmail(useremail);
+      String reciverEmail = clientReciever.getEmail();
+      String nameS = clientSender.getFirstName() + " " + clientSender.getLastName();
+      // mailSender.SendSimpleEmail(reciverEmail,
+      // "Dear " + nameR + " You have been credited with : RWF" + amount + " from " +
+      // nameS, "Money Transfer");
+
+      currentAmount = clientSender.getBalance();
+      if (currentAmount > amount) {
+        updatedAmount = currentAmount - amount;
+        // System.out.println(updatedAmount);
+        String idnumber1 = clientSender.getidnumber();
+        clientRepository.setbalanceForClientByPhonenumber(updatedAmount, idnumber1);
+        // System.out.println(" ##################" + useremail + nameS + nameR);
+        // mailSender.SendSimpleEmail(useremail,
+        // "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
+        // nameR,
+        // "Money Transfer");
+
+        return "You current balance is :" + updatedAmount;
+      } else {
+        return "you have a insufficient amount of funds in your account";
+      }
+    }
+
+  }
+
+  // Get Balance
 
   @Operation(summary = "This is to check the balance of the logged in client", security = @SecurityRequirement(name = "bearerAuth"))
   @ApiResponses(value = {

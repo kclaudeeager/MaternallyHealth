@@ -79,7 +79,7 @@ public class UserController {
 		user = userService.validateUser(email, password);
 		Map<String, Object> data = new HashMap<String, Object>();
 
-		data.put("User", user);
+		// data.put("User", user);
 		// System.out.print(user);
 		data.putAll(generateJWTToken(user));
 		// String tok = token;
@@ -177,6 +177,7 @@ public class UserController {
 			@ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 	@SecurityRequirement(name = "bearerAuth")
+	@Hidden
 	@PutMapping("/setrole/{email}")
 	public ResponseEntity<User> updateuser(HttpServletRequest request,
 			@PathVariable(value = "email") String email,
