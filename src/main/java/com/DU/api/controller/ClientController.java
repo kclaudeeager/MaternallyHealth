@@ -262,11 +262,9 @@ public class ClientController {
       @PathVariable(value = "amount") Integer amount) {
 
     client clientReciever = clientRepository.findclientByAccount(accountnumber);
+    if (clientReciever != null) {
+      String idnReciever = clientReciever.getidnumber();
 
-    String idnReciever = clientReciever.getidnumber();
-    if (clientReciever == null) {
-      return "Reciver account not found";
-    } else {
       int currentAmount = clientReciever.getBalance();
       // System.out.println("********client found*********");
       String nameR = clientReciever.getFirstName() + " " + clientReciever.getLastName();
@@ -298,7 +296,10 @@ public class ClientController {
         return "You current balance is :" + updatedAmount;
       } else {
         return "you have a insufficient amount of funds in your account";
+
       }
+    } else {
+      return "account notfound";
     }
 
   }
