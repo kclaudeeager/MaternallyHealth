@@ -29,7 +29,7 @@ public class BranchRepositoryTest {
         boolean expected = true;
         boolean res;
         String branchname = "Kisimenti";
-        branch result = branchRepo.findBranchByName(branchname);
+        branch result = branchRepo.findBranch(branchname);
         if (result != null) {
             res = true;
         } else {
