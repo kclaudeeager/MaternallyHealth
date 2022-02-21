@@ -131,21 +131,25 @@ public class UserController {
 	}
 
 	@Operation(summary = "This is to  signup  to  the system for new users")
+	@io.swagger.v3.oas.annotations.parameters.RequestBody(required = true)
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "signup to the system", content = {
+			@ApiResponse(responseCode = "200", description = "This is to  signup  to  the system for new users", content = {
 					@Content(mediaType = "application/json") }),
 			@ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
+	// @SecurityRequirement(name = "bearerAuth")
 
 	@PostMapping("/signup")
-	public ResponseEntity<Object> signup(@RequestBody User User) throws javax.security.auth.message.AuthException {
+	public ResponseEntity<Object> signup(@RequestBody User User)
+			throws javax.security.auth.message.AuthException {
 		User UserCreated = userService.registerUser(User);
 
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("User", UserCreated);
+		String email = "test@gmail.com";
 		String activity = "regestered user";
-		logsService.savelogs(user, activity);
-		return new ResponseEntity<>(data, HttpStatus.OK);
+		logsService.savelog(email, activity);
+		return new ResponseEntity<>("user registered", HttpStatus.OK);
 	}
 
 	public String token;

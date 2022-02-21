@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 public interface BranchRepository extends JpaRepository<branch, Long> {
     branch findById(String branchId);
 
-    @Query("SELECT b FROM branch b WHERE b.branchname=?1")
-    branch findBranchByName(String branchname);
+    @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b WHERE b.branchname=?1")
+    List<String> findBranchByName(String branchname);
 
     @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b ")
     List<Object> findAllBranch();
