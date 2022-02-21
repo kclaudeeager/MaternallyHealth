@@ -18,6 +18,9 @@ public interface BranchRepository extends JpaRepository<branch, Long> {
     @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b ")
     List<Object> findAllBranch();
 
+    @Query("SELECT b FROM branch b WHERE b.branchname=?1")
+    branch findBranch(String branchname);
+
     @Query("SELECT b.branchname,b.phoneNumber FROM branch b WHERE b.address=?1")
     List<Object> findbranchBydistrict(String district);
 

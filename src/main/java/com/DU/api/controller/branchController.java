@@ -2,6 +2,8 @@ package com.DU.api.controller;
 
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,21 +103,26 @@ public class branchController {
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
         @GetMapping("/branches/{branchname}")
-        public ResponseEntity<branch> getBranchyByName(HttpServletRequest request,
+        public List<String> getBranchyByName(HttpServletRequest request,
                         @PathVariable(value = "branchname") String branchname) {
-                branch branch = branchRepository.findBranchByName(branchname);
+                List<String> branche = branchRepository.findBranchByName(branchname);
                 String useremail = request.getAttribute("email").toString();
-                if (branch == null) {
+                if (branche == null) {
                         log.debug("{} requested branch's data by branchname: {} branch not found", useremail,
                                         branchname);
-                        throw new ResourceNotFoundException("branch  not found :: " + branchname);
+                        List<String> someList = new ArrayList<String>();
+
+                        // List<String> er;
+                        someList.add("branch  not found :: ");
+
+                        return someList;
                 }
                 String activity = "viewed :" + branchname + "'s data";
 
                 logsService.savelog(useremail, activity);
                 log.debug("{} requested branche's data by branchname: {}  branch found succefully", useremail,
                                 branchname);
-                return ResponseEntity.ok().body(branch);
+                return branche;
         }
 
         @Operation(summary = "This is to delete an agent  from the  Db", security = @SecurityRequirement(name = "bearerAuth"))
@@ -134,7 +141,7 @@ public class branchController {
                 int i = Integer.parseInt(role);
                 String useremail = request.getAttribute("email").toString();
                 if (i == 4) {
-                        branch branch = branchRepository.findBranchByName(branchname);
+                        branch branch = branchRepository.findBranch(branchname);
                         if (branch == null) {
                                 log.debug("{} tried to delete branch's data by branchname: {} branch not found",
                                                 useremail, branchname);
@@ -173,7 +180,7 @@ public class branchController {
                 int i = Integer.parseInt(role);
                 String useremail = request.getAttribute("email").toString();
                 if (i == 4) {
-                        branch branch = branchRepository.findBranchByName(branchname);
+                        branch branch = branchRepository.findBranch(branchname);
                         if (branch == null) {
                                 log.debug("{} tried to alter branch's data by branchname: {} branch was not foun",
                                                 useremail,
