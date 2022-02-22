@@ -264,14 +264,15 @@ public class ClientController {
     client clientReciever = clientRepository.findclientByAccount(accountnumber);
     if (clientReciever != null) {
       String idnReciever = clientReciever.getidnumber();
-
       int currentAmount = clientReciever.getBalance();
       // System.out.println("********client found*********");
       String nameR = clientReciever.getFirstName() + " " + clientReciever.getLastName();
       // System.out.println("###########RECIEVER BALANCE:" + nameR);
       int updatedAmount = currentAmount + amount;
+      System.out.println("###########update amount :" + updatedAmount);
 
       clientRepository.setbalanceForClient(updatedAmount, idnReciever);
+
       String useremail = request.getAttribute("email").toString();
       client clientSender = clientRepository.findclientByEmail(useremail);
       String reciverEmail = clientReciever.getEmail();
