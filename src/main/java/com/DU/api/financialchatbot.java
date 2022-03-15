@@ -65,7 +65,7 @@ public class financialchatbot {
                 "/api/v1/agents/*",
                 // "/api/v1/agents/location/*",
                 "/api/v1/clients/*",
-                "/api/v1/branches/*",
+               // "/api/v1/branches/",
                 "/api/v1/logs/*",
                 "/api/v1/User/setrole/*",
                 "/api/v1/User/logout");

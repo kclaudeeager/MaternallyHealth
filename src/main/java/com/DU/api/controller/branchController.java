@@ -230,22 +230,22 @@ public class branchController {
                 return branchRepository.findAllBranch();
         }
 
-        @Operation(summary = "This is to view a list of all branches in a district ", security = @SecurityRequirement(name = "bearerAuth"))
+        @Operation(summary = "This is to view a list of all branches in a district ")
         @ApiResponses(value = {
                         @ApiResponse(responseCode = "200", description = "fetch a list of branches in a given district from database", content = {
                                         @Content(mediaType = "application/json") }),
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
-        @SecurityRequirement(name = "bearerAuth")
+        // @SecurityRequirement(name = "bearerAuth")
 
         @GetMapping("/branches/district/{district}")
         public List<Object> getbranchbydistrict(HttpServletRequest request,
                         @PathVariable(value = "district") String district) {
 
                 String activity = "viewed all data of branches";
-                String useremail = request.getAttribute("email").toString();
-                logsService.savelog(useremail, activity);
-                log.debug("{} requested all branches's data", useremail);
+                //String useremail = request.getAttribute("email").toString();
+                logsService.savelog("user@du.com", activity);
+                log.debug("{} requested all branches's data", "user@du.com");
 
                 // System.out.print("@@@@@@@@@@@@@@ + t.iterator());
                 return branchRepository.findbranchBydistrict(district);
