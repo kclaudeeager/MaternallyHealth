@@ -57,7 +57,7 @@ public class AgentsController {
 
     })
     @SecurityRequirement(name = "bearerAuth")
-    @Hidden
+    // @Hidden
     @PostMapping("/agents")
     public agents createclient(HttpServletRequest request, @Valid @RequestBody agents agent) {
         String role = request.getAttribute("role").toString();
@@ -86,7 +86,7 @@ public class AgentsController {
 
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
     @SecurityRequirement(name = "bearerAuth")
-    @Hidden
+    // @Hidden
     @GetMapping("/agents")
     public List<agents> getAllAgents(HttpServletRequest request) {
         String role = request.getAttribute("role").toString();
@@ -142,7 +142,7 @@ public class AgentsController {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content) })
     @SecurityRequirement(name = "bearerAuth")
-    @Hidden
+    // @Hidden
     @DeleteMapping("/agents/{idnumber}")
     public Map<String, Boolean> deletAgent(HttpServletRequest request,
             @PathVariable(value = "idnumber") String idnumber) {
@@ -178,7 +178,7 @@ public class AgentsController {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content) })
     @SecurityRequirement(name = "bearerAuth")
-    @Hidden
+    // @Hidden
     @PutMapping("/agents/{idnumber}")
     public ResponseEntity<agents> updateAgent(HttpServletRequest request,
             @PathVariable(value = "idnumber") String idnumber,

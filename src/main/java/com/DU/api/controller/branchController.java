@@ -54,7 +54,7 @@ public class branchController {
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
-        @Hidden
+        // @Hidden
         @PostMapping("/branches")
         public branch createbBranch(HttpServletRequest request, @Valid @RequestBody branch branch) {
                 String role = request.getAttribute("role").toString();
@@ -82,7 +82,7 @@ public class branchController {
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
-        @Hidden
+        // @Hidden
         @GetMapping("/branches/details")
         public List<branch> getAllbranches(HttpServletRequest request) {
 
@@ -132,7 +132,7 @@ public class branchController {
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
-        @Hidden
+        // @Hidden
         @DeleteMapping("/branches/{branchname}")
         public Map<String, Boolean> deletbranch(HttpServletRequest request,
                         @PathVariable(value = "branchname") String branchname) {
@@ -170,7 +170,7 @@ public class branchController {
                         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
                         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
         @SecurityRequirement(name = "bearerAuth")
-        @Hidden
+        // @Hidden 
         @PutMapping("/branches/{branchname}")
         public ResponseEntity<branch> updatebranch(HttpServletRequest request,
                         @PathVariable(value = "branchname") String branchname,

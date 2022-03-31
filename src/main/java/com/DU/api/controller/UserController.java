@@ -56,7 +56,7 @@ public class UserController {
 			@ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 	@SecurityRequirement(name = "bearerAuth")
-	@Hidden
+	// @Hidden
 	@GetMapping("/")
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
@@ -181,7 +181,7 @@ public class UserController {
 			@ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 	@SecurityRequirement(name = "bearerAuth")
-	@Hidden
+	// @Hidden
 	@PutMapping("/setrole/{email}")
 	public ResponseEntity<User> updateuser(HttpServletRequest request,
 			@PathVariable(value = "email") String email,
@@ -225,7 +225,7 @@ public class UserController {
 			@ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 	@SecurityRequirement(name = "bearerAuth")
-	@Hidden
+	// @Hidden
 	@PutMapping("update/{email}")
 	public ResponseEntity<User> updateuserdata(HttpServletRequest request,
 			@PathVariable(value = "email") String email,

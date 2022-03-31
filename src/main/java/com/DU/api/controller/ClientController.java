@@ -63,7 +63,7 @@ public class ClientController {
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
   @SecurityRequirement(name = "bearerAuth")
-  @Hidden
+  // @Hidden
   @PostMapping("/clients")
   public client createclient(HttpServletRequest request, @Valid @RequestBody client client) {
     String role = request.getAttribute("role").toString();
@@ -89,7 +89,7 @@ public class ClientController {
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
   @SecurityRequirement(name = "bearerAuth")
-  @Hidden
+  // @Hidden
   @GetMapping("/clients")
   public List<client> getAllclients(HttpServletRequest request) {
 
@@ -113,7 +113,7 @@ public class ClientController {
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
   @SecurityRequirement(name = "bearerAuth")
-  @Hidden
+  // @Hidden
   @GetMapping("/clients/{email}")
   public ResponseEntity<client> getclientEmail(HttpServletRequest request,
       @PathVariable(value = "email") String email) {
@@ -137,7 +137,7 @@ public class ClientController {
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
   @SecurityRequirement(name = "bearerAuth")
-  @Hidden
+  // @Hidden
   @DeleteMapping("/clients/{email}")
   public Map<String, Boolean> deletclient(HttpServletRequest request, @PathVariable(value = "email") String email) {
     String role = request.getAttribute("role").toString();
@@ -167,7 +167,7 @@ public class ClientController {
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
   @SecurityRequirement(name = "bearerAuth")
-  @Hidden
+  // @Hidden
   @PutMapping("/clients/{email}")
   public ResponseEntity<client> updateclient(HttpServletRequest request, @PathVariable(value = "email") String email,
       @Valid @RequestBody client clientDetails) {
