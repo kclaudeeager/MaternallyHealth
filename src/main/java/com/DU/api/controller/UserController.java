@@ -131,7 +131,7 @@ public class UserController {
 	}
 
 	@Operation(summary = "This is to  signup  to  the system for new users")
-	@io.swagger.v3.oas.annotations.parameters.RequestBody(required = true)
+	// @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true)
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "This is to  signup  to  the system for new users", content = {
 					@Content(mediaType = "application/json") }),
