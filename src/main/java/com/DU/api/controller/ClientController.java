@@ -277,10 +277,10 @@ public class ClientController {
       client clientSender = clientRepository.findclientByEmail(useremail);
       String reciverEmail = clientReciever.getEmail();
       String nameS = clientSender.getFirstName() + " " + clientSender.getLastName();
-      mailSender.SendSimpleEmail(reciverEmail,
-          "Dear " + nameR + " You have been credited with : RWF" + amount + " from " +
-              nameS,
-          "Money Transfer");
+      // mailSender.SendSimpleEmail(reciverEmail,
+      //     "Dear " + nameR + " You have been credited with : RWF" + amount + " from " +
+      //         nameS,
+      //     "Money Transfer");
 
       currentAmount = clientSender.getBalance();
       if (currentAmount > amount) {
