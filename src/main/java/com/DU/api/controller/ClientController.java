@@ -224,8 +224,8 @@ public class ClientController {
       client clientSender = clientRepository.findclientByEmail(useremail);
       String reciverEmail = clientReciever.getEmail();
       String nameS = clientSender.getFirstName() + " " + clientSender.getLastName();
-      mailSender.SendSimpleEmail(reciverEmail,
-          "Dear " + nameR + " You have been credited with : RWF" + amount + " from " + nameS, "Money Transfer");
+      // mailSender.SendSimpleEmail(reciverEmail,
+      //     "Dear " + nameR + " You have been credited with : RWF" + amount + " from " + nameS, "Money Transfer");
 
       currentAmount = clientSender.getBalance();
       if (currentAmount > amount) {
@@ -234,10 +234,10 @@ public class ClientController {
         String idnumber1 = clientSender.getidnumber();
         clientRepository.setbalanceForClient(updatedAmount, idnumber1);
         // System.out.println(" ##################" + useremail + nameS + nameR);
-        mailSender.SendSimpleEmail(useremail,
-            "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
-                nameR,
-            "Money Transfer");
+        // mailSender.SendSimpleEmail(useremail,
+        //     "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
+        //         nameR,
+        //     "Money Transfer");
 
         return "You current balance is :" + updatedAmount;
       } else {
@@ -277,10 +277,10 @@ public class ClientController {
       client clientSender = clientRepository.findclientByEmail(useremail);
       String reciverEmail = clientReciever.getEmail();
       String nameS = clientSender.getFirstName() + " " + clientSender.getLastName();
-      mailSender.SendSimpleEmail(reciverEmail,
-          "Dear " + nameR + " You have been credited with : RWF" + amount + " from " +
-              nameS,
-          "Money Transfer");
+      // mailSender.SendSimpleEmail(reciverEmail,
+      //     "Dear " + nameR + " You have been credited with : RWF" + amount + " from " +
+      //         nameS,
+      //     "Money Transfer");
 
       currentAmount = clientSender.getBalance();
       if (currentAmount > amount) {
@@ -289,10 +289,10 @@ public class ClientController {
         String idnumber1 = clientSender.getidnumber();
         clientRepository.setbalanceForClient(updatedAmount, idnumber1);
         // System.out.println(" ##################" + useremail + nameS + nameR);
-        mailSender.SendSimpleEmail(useremail,
-            "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
-                nameR,
-            "Money Transfer");
+        // mailSender.SendSimpleEmail(useremail,
+        //     "Dear " + nameS + "You have successfully transfered: RWF" + amount + " to " +
+        //         nameR,
+        //     "Money Transfer");
 
         return "You current balance is :" + updatedAmount;
       } else {
