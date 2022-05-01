@@ -178,10 +178,7 @@ public class StaffController {
       staff.setFirstName(staffDetails.getFirstName());
       staff.setLastName(staffDetails.getLastName());
       staff.setTittle(staffDetails.gettitle());
-      staff.setidnumber(staffDetails.getidnumber());
-      staff.setresidance(staffDetails.getresidance());
-      staff.setidtype(staffDetails.getidtype());
-      staff.setworkingDays(staffDetails.getworkingDays());
+      staff.setdepartmentId(staffDetails.getdepartmentId());
       final staff updatedsStaff = staffRepository.save(staff);
       String activity = "updated staff: " + staffDetails.getEmail();
       logsService.savelog(useremail, activity);

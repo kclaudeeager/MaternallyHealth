@@ -13,8 +13,8 @@ import io.swagger.v3.oas.annotations.Hidden;
 @Hidden
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler", "fieldHandler" })
 @Entity
-@Table(name = "agents")
-public class agents extends AuditModel {
+@Table(name = "Mother")
+public class Mother extends AuditModel {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,64 +23,80 @@ public class agents extends AuditModel {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idnumber", unique = true, nullable = false)
+    @Column(name = "idnumber")
     private String idnumber;
 
-    @Column(name = "capital")
-    private String capital;
+    @Column(name = "email", unique = true, nullable = true)
+    private String email;
 
-    @Column(name = "ID_type", nullable = false)
-    private String idtype;
+    @Column(name = "Age", nullable = false)
+    private String age;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name", nullable = true)
     private String lastName;
-    @Column(name = "phoneNumber", nullable = false)
-    private String phoneNumber;
 
-    @Column(name = "services", nullable = true)
-    private String services;
+    @Column(name = "phone_number", unique = true, nullable = false)
+    private String phoneNumber;
+    @Column(name = "height", unique = true, nullable = false)
+    private Double height;
 
     @Column(name = "residance", nullable = false)
     private String residance;
 
-    public agents() {
+    @Column(name = "weight", nullable = false, columnDefinition = "integer default 0")
+    private Double weight;
+    @Column(name = "status", nullable = false, columnDefinition = "integer default 0")
+    private Integer status;
+
+    public Mother() {
         super();
     }
 
-    public agents(String firstName, String lastName, String phoneNumber, String idtype, String idnumber,
-            String services, String residance, String capital) {
+    public Mother(String firstName, String email, String lastName, String phoneNumber, String age, String idnumber,
+        Double height, String residance, Integer status, Double weight) {
         super();
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.idtype = idtype;
+        this.age = age;
         this.phoneNumber = phoneNumber;
         this.idnumber = idnumber;
-        this.capital = capital;
+        this.height = height;
         this.residance = residance;
-        this.services = services;
+        this.status = status;
+        this.weight = weight;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getcapital() {
-        return capital;
+    public Double getheight() {
+        return height;
     }
 
-    public void setcapital(String capital) {
-        this.capital = capital;
+    public void setocccupation(Double height) {
+        this.height = height;
     }
 
-    public String getservices() {
-        return services;
+    public String getEmail() {
+        return email;
     }
 
-    public void setservices(String services) {
-        this.services = services;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getstatus() {
+        return status;
+    }
+
+    public void setstatus(Integer status) {
+        this.status = status;
+
     }
 
     public String getresidance() {
@@ -127,12 +143,20 @@ public class agents extends AuditModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getidtype() {
-        return idtype;
+    public String getage() {
+        return age;
     }
 
-    public void setidtype(String idtype) {
-        this.idtype = idtype;
+    public void setage(String age) {
+        this.age = age;
+    }
+
+    public Double getweight() {
+        return weight;
+    }
+
+    public void setweight(Double weight) {
+        this.weight = weight;
     }
 
 }

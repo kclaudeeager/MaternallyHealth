@@ -4,7 +4,7 @@ package com.DU.api.service;
 
 import javax.transaction.Transactional;
 
-import com.DU.api.model.client;
+import com.DU.api.model.Mother;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;

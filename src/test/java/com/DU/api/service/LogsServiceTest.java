@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.Date;
 
 import com.DU.api.model.Logs;
-import com.DU.api.model.agents;
-import com.DU.api.model.branch;
-import com.DU.api.model.client;
+import com.DU.api.model.Baby;
+import com.DU.api.model.Hospital;
+import com.DU.api.model.Mother;
 import com.DU.api.repository.LogsRepository;
 
 //import com.DU.api.repository.AgentsRepository;
