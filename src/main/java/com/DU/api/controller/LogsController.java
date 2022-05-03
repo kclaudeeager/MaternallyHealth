@@ -44,9 +44,9 @@ public class LogsController {
     public List<Logs> getAlllogs(HttpServletRequest request) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
-        int i = Integer.parseInt(role);
+       // int i = Integer.parseInt(role);
         String useremail = request.getAttribute("email").toString();
-        if (i == 4) {
+        if (role== "ADMIN"){
 
             String activity = "viewed all logs";
             logsService.savelog(useremail, activity);
@@ -72,8 +72,7 @@ public class LogsController {
         String role = request.getAttribute("role").toString();
         String useremail = request.getAttribute("email").toString();
         // System.out.println("role: -------- " + role);
-        int i = Integer.parseInt(role);
-        if (i == 4) {
+        if (role== "ADMIN") {
             List<Logs> logs = logsRepository.findLogsByEmail(email);
             if (logs == null) {
                 log.info("logs of user: {}", email);

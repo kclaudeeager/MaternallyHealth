@@ -33,8 +33,8 @@ public class User {
 	@Column(name = "password", nullable = false, length = 64)
 	private String password;
 
-	@Column(name = "role", length = 1, columnDefinition = "integer default 0")
-	private int role;
+	@Column(name = "role")
+	private String role;
 
 	@Column(name = "status", nullable = true)
 	private Integer status;
@@ -50,6 +50,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.status = status;
+		// this.role = "NORMAL_USER";
 	}
 
 	public Long getId() {
@@ -100,11 +101,11 @@ public class User {
 		this.status = status;
 	}
 
-	public int getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(int role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 }

@@ -1,9 +1,7 @@
 package com.DU.api;
 
 import com.DU.api.service.AuthFilter;
-import com.DU.api.service.EmailSenderService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -12,33 +10,24 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-//import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-
-//import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-
-import org.springframework.context.annotation.Configuration;
-
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
-import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 @Configuration
-
-@OpenAPIDefinition(info = @Info(title = "DU Financial Chat-bot API", version = "1.0", description = "Leading financial institutions use our chatbots and voice-powered assistants that customers love to use"
+@OpenAPIDefinition(info = @Info(title = "The Power of 1000 days Maternal health", version = "1.0", description = "this is the Maternal health system to support our mothers"
         + "\n"
-        + " We offer premium material from banking industry leaders. Learn how banking professionals are using conversational AI To improve customer experience using AI-enabled services, build robust, multi-domain dialog systems.The future of banking AI assistants", license = @License(name = "Tell:+250788498484 | +250789101080", url = "https://digitalumuganda.com/"), contact = @Contact(url = "https://digitalumuganda.com/", name = "Digital umuganda", email = "info@digitalumuganda.com")))
+        + " We offer premium health facilities . we are proud to see our Mothers Happy !!", license = @License(name = "Tell:+250788483455 | +250726203911", url = "  "), contact = @Contact(url = " ", name = " Maternal Health", email = "janvier.rutagengwa@gmail.com")))
 
 @SpringBootApplication
 
 @EnableJpaAuditing
-public class financialchatbot {
+public class MaternalHealth {
+    
     public static void main(String[] args) {
-        SpringApplication.run(financialchatbot.class, args);
+        SpringApplication.run(MaternalHealth.class, args);
 
     }
 

@@ -57,9 +57,9 @@ public class StaffController {
   public staff createStaff(HttpServletRequest request, @Valid @RequestBody staff staff) {
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
-    int i = Integer.parseInt(role);
+    //int i = Integer.parseInt(role);
     String useremail = request.getAttribute("email").toString();
-    if (i == 4) {
+    if (role== "ADMIN") {
       String activity = "created new staff";
       logsService.savelog(useremail, activity);
       log.info("{} Created new staff ", useremail);
@@ -82,9 +82,9 @@ public class StaffController {
   public List<staff> getAllStaffs(HttpServletRequest request) {
     String role = request.getAttribute("role").toString();
     String email = request.getAttribute("email").toString();
-    // System.out.println("role: -------- " + role);
-    int i = Integer.parseInt(role);
-    if (i == 4) {
+    System.out.println("role: -------- " + role);
+    //int i = Integer.parseInt(role);
+    if (role=="ADMIN") {
 
       String activity = "veiwed all  staffs details";
 
@@ -107,8 +107,8 @@ public class StaffController {
       @PathVariable(value = "email") String email) {
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
-    int i = Integer.parseInt(role);
-    if (i == 4) {
+   // int i = Integer.parseInt(role);
+    if (role== "ADMIN") {
       String useremail = request.getAttribute("email").toString();
       staff staff = staffRepository.findStaffByEmail(email);
       String activity;
@@ -135,8 +135,8 @@ public class StaffController {
   public Map<String, Boolean> deletStafF(HttpServletRequest request, @RequestBody String email) {
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
-    int i = Integer.parseInt(role);
-    if (i == 4) {
+   // int i = Integer.parseInt(role);
+   if (role== "ADMIN") {
       staff staff = staffRepository.findStaffByEmail(email);
       String useremail = request.getAttribute("email").toString();
       if (staff == null) {
@@ -165,8 +165,7 @@ public class StaffController {
       @Valid @RequestBody staff staffDetails) {
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
-    int i = Integer.parseInt(role);
-    if (i == 4) {
+    if (role== "ADMIN") {
 
       staff staff = staffRepository.findStaffByEmail(staffDetails.getEmail());
       String useremail = request.getAttribute("email").toString();
