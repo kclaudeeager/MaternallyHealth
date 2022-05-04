@@ -41,7 +41,7 @@ public class AuthFilter extends GenericFilterBean {
                     httpRequest.setAttribute("userId",
                             Long.parseLong(claims.get("userId").toString()));
                     httpRequest.setAttribute("role",
-                            Integer.parseInt(claims.get("role").toString()));
+                            claims.get("role").toString());
 
                     httpRequest.setAttribute("email", claims.get("email").toString());
 

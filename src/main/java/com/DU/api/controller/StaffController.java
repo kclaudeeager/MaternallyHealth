@@ -59,7 +59,7 @@ public class StaffController {
     // System.out.println("role: -------- " + role);
     //int i = Integer.parseInt(role);
     String useremail = request.getAttribute("email").toString();
-    if (role== "ADMIN") {
+    if (role.equals("ADMIN")) {
       String activity = "created new staff";
       logsService.savelog(useremail, activity);
       log.info("{} Created new staff ", useremail);
@@ -84,7 +84,7 @@ public class StaffController {
     String email = request.getAttribute("email").toString();
     System.out.println("role: -------- " + role);
     //int i = Integer.parseInt(role);
-    if (role=="ADMIN") {
+    if (role.equals("ADMIN")) {
 
       String activity = "veiwed all  staffs details";
 
@@ -108,7 +108,7 @@ public class StaffController {
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
    // int i = Integer.parseInt(role);
-    if (role== "ADMIN") {
+    if (role.equals("ADMIN")) {
       String useremail = request.getAttribute("email").toString();
       staff staff = staffRepository.findStaffByEmail(email);
       String activity;
@@ -136,7 +136,7 @@ public class StaffController {
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
    // int i = Integer.parseInt(role);
-   if (role== "ADMIN") {
+   if (role.equals("ADMIN")) {
       staff staff = staffRepository.findStaffByEmail(email);
       String useremail = request.getAttribute("email").toString();
       if (staff == null) {
@@ -165,7 +165,7 @@ public class StaffController {
       @Valid @RequestBody staff staffDetails) {
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
-    if (role== "ADMIN") {
+    if (role.equals("ADMIN")) {
 
       staff staff = staffRepository.findStaffByEmail(staffDetails.getEmail());
       String useremail = request.getAttribute("email").toString();

@@ -190,7 +190,7 @@ public class UserController {
 		String role = request.getAttribute("role").toString();
 		System.out.println("role: --------  " + role);
 		// int i = Integer.parseInt(role);
-		if (role== "ADMIN") {
+		if (role.equals("ADMIN")) {
 
 			User user = userRepository.findByEmailAddress(email);
 			if (user == null) {
@@ -234,7 +234,7 @@ public class UserController {
 		String role = request.getAttribute("role").toString();
 		System.out.println("role: --------  " + role);
 		//int i = Integer.parseInt(role);
-		if (role== "ADMIN") {
+		if (role.equals("ADMIN")) {
 
 			User user = userRepository.findByEmailAddress(email);
 			if (user == null) {
