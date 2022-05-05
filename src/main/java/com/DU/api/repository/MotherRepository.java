@@ -11,7 +11,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MotherRepository extends JpaRepository<Mother, Long> {
+    
     Mother findById(Integer motherID);
+    
 
 //@Query("SELECT c FROM client c WHERE c.email=?1")
    // Mother findMotherByEmail(String emailAddress);
@@ -19,8 +21,8 @@ public interface MotherRepository extends JpaRepository<Mother, Long> {
     // @Query("SELECT c FROM client c WHERE c.idnumber=?1")
     // Mother findclientByIdnumber(String idnumber);
 
-    // @Query("SELECT c FROM client c WHERE c.phoneNumber =?1")
-    // Mother findclientByPhoneNumber(String phoneNumber);
+    @Query("SELECT m FROM mother m WHERE m.phoneNumber =?1")
+    Mother findMotherByPhoneNumber(String phoneNumber);
 
     // @Transactional
     // @Modifying

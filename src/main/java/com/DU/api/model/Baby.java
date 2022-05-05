@@ -24,16 +24,13 @@ public class Baby extends AuditModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column(name = "motherId", nullable = false)
+    private Long motherId;
 
-
-
-    @Column(name = "MotherID", nullable = false)
-    private Integer motherId;
-
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "firstName", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "lastName", nullable = false)
     private String lastName;
     @Column(name = "weight", nullable = false)
     private Double weight;
@@ -50,7 +47,7 @@ public class Baby extends AuditModel {
         super();
     }
 
-    public Baby(Long id, Integer motherId, String firstName, String lastName, Double weight, Double height, String status, Long hosptital_id) {
+    public Baby(Long id, Long motherId, String firstName, String lastName, Double weight, Double height, String status, Long hosptital_id) {
         this.id = id;
         this.motherId = motherId;
         this.firstName = firstName;
@@ -69,11 +66,11 @@ public class Baby extends AuditModel {
         this.id = id;
     }
 
-    public Integer getMotherId() {
+    public Long getMotherId() {
         return this.motherId;
     }
 
-    public void setMotherId(Integer motherId) {
+    public void setMotherId(Long motherId) {
         this.motherId = motherId;
     }
 

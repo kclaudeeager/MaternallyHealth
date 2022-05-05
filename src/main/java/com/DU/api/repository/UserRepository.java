@@ -5,10 +5,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
+
+import java.util.Optional;
+
 import com.DU.api.model.User;
+import com.DU.api.model.staff;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+    User findById(String userId);
+
     @Query("SELECT u FROM User u WHERE u.email=?1")
     User findByEmailAddress(String emailAddress);
 
