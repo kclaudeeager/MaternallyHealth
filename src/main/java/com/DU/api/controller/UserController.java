@@ -142,6 +142,7 @@ public class UserController {
 	@PostMapping("/signup")
 	public ResponseEntity<Object> signup(@RequestBody User User)
 			throws javax.security.auth.message.AuthException {
+				User.setRole("NOTHING");
 		User UserCreated = userService.registerUser(User);
 
 		Map<String, Object> data = new HashMap<String, Object>();
