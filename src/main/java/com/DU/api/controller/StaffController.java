@@ -132,20 +132,20 @@ public class StaffController {
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
   @DeleteMapping("/staffs")
-  public Map<String, Boolean> deletStafF(HttpServletRequest request, @RequestBody String email) {
+  public Map<String, Boolean> deletStafF(HttpServletRequest request, @RequestBody Map<String,String> params) {
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
    // int i = Integer.parseInt(role);
    if (role.equals("ADMIN")) {
-      staff staff = staffRepository.findStaffByEmail(email);
+      staff staff = staffRepository.findStaffByEmail(params.get("email"));
       String useremail = request.getAttribute("email").toString();
       if (staff == null) {
-        throw new ResourceNotFoundException("staff  not found :: " + email);
+        throw new ResourceNotFoundException("staff  not found :: " + params.get("email"));
       }
       staffRepository.delete(staff);
       Map<String, Boolean> response = new HashMap<>();
       response.put("deleted", Boolean.TRUE);
-      String activity = "deleted staff: " + email;
+      String activity = "deleted staff: " + params.get("email");
       logsService.savelog(useremail, activity);
       return response;
     } else {

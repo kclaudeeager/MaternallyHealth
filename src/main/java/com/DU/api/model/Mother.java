@@ -23,7 +23,7 @@ public class Mother extends AuditModel {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idnumber")
+    @Column(name = "idnumber",unique=true)
     private String idnumber;
 
     @Column(name = "email", unique = true, nullable = true)
@@ -40,7 +40,7 @@ public class Mother extends AuditModel {
 
     @Column(name = "phone_number", unique = true, nullable = false)
     private String phoneNumber;
-    @Column(name = "height", unique = true, nullable = false)
+    @Column(name = "height", nullable = false)
     private Double height;
 
     @Column(name = "residance", nullable = false)

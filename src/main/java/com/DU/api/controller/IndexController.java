@@ -32,7 +32,12 @@ public class IndexController {
         Logger log = LoggerFactory.getLogger(IndexController.class);
         log.debug("main class running");
 
-        return "<body style=text-align:center><h1 >Welcome to banking-chat-bot-api</h1><p style=margin:10px 5px 15px 20px> Leading financial institutions use our chatbots and voice-powered assistants that customers love to use.</br>We offer premium material from banking industry leaders. Learn how banking professionals are using conversational AI </br>To improve customer experience using AI-enabled services, build robust,</br> multi-domain dialog systems.The future of banking AI assistants.<p/></body>";
+        return "<body style=text-align:center><h1 >" + "Welcome to maternalHealth-api"
+                + "</h1><p style=margin:10px 5px 15px 20px>" + " Maternal health information system" +
+                "This is aimed at managing women and baby’s data from conception to an averaged period of 3 years </br> "
+                + "and helping health centers and hospitals to effectively work with mothers in ensuring a better delivery and a healthy baby through providing <br>"
+                + "all necessary care to baby and the mother in what is known as the power of 1000 days."
+                + " <p/></body>";
 
     }
 }
