@@ -25,7 +25,7 @@ import io.swagger.v3.oas.annotations.info.License;
 
 @EnableJpaAuditing
 public class MaternalHealth {
-    
+
     public static void main(String[] args) {
         SpringApplication.run(MaternalHealth.class, args);
 
@@ -54,10 +54,11 @@ public class MaternalHealth {
                 "/api/v1/agents/*",
                 // "/api/v1/agents/location/*",
                 "/api/v1/clients/*",
-               // "/api/v1/branches/",
+                // "/api/v1/branches/",
                 "/api/v1/logs/*",
                 "/api/v1/User/setrole/*",
-                "/api/v1/User/logout");
+                "/api/v1/User/logout",
+                "/api/v1/Baby");
         return registrationBean;
     }
 }
