@@ -106,23 +106,23 @@ public class HospitalController {
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{hospitalName}")
     public Map<String, Boolean> deleteHospital(HttpServletRequest request,
-            @RequestBody Map<String, String> phoneNumMap) {
+    @PathVariable(value = "hospitalName") String hospitalName) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         // int i = Integer.parseInt(role);
         if (role.equals("ADMIN")) {
-            Hospital hospital = hospitalRepository.findHospitalByPhoneNumber(phoneNumMap.get("phone"));
+            Hospital hospital = hospitalRepository.findHospitalByName(hospitalName);
             String useremail = request.getAttribute("email").toString();
             if (hospital == null) {
                 throw new ResourceNotFoundException(
-                        "Hospital with such phone number :: " + phoneNumMap.get("phone") + "  not found ");
+                        "Hospital with such phone number :: " + hospitalName + "  not found ");
             }
             hospitalRepository.delete(hospital);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
-            String activity = "deleted hospital: " + phoneNumMap.get("phone");
+            String activity = "deleted hospital: " + hospitalName;
             logsService.savelog(useremail, activity);
             return response;
         } else {
