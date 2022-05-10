@@ -27,7 +27,6 @@ public class Hospital extends AuditModel {
     @Column(name = "location", nullable = false)
     private String location;
 
-
     @Column(name = "phoneNumber", unique = true, nullable = false)
     private String phoneNumber;
 
@@ -42,9 +41,9 @@ public class Hospital extends AuditModel {
             String staffNumber, String hospitalAdmin, String phoneNumber) {
         super();
         this.location = location;
-       
+
         this.hospitalname = hospitalname;
-    
+
         this.hospitalAdmin = hospitalAdmin;
         this.phoneNumber = phoneNumber;
 
@@ -62,7 +61,6 @@ public class Hospital extends AuditModel {
         return id;
     }
 
-  
     public void sethospitalAdmin(String hospitalAdmin) {
         this.hospitalAdmin = hospitalAdmin;
     }
@@ -73,6 +71,10 @@ public class Hospital extends AuditModel {
 
     public String gethospitalname() {
         return hospitalname;
+    }
+
+    public void sethospitalname(String hospitalname) {
+        this.hospitalname = hospitalname;
     }
 
     public void setId(Long id) {
@@ -86,8 +88,6 @@ public class Hospital extends AuditModel {
     public void setlocation(String location) {
         this.location = location;
     }
-
-  
 
     public void setphoneNumber(String phonenumber) {
         this.phoneNumber = phonenumber;

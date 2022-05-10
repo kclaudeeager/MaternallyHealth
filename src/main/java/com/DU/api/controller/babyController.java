@@ -33,6 +33,7 @@ import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import javassist.NotFoundException;
 
 @RestController
 @RequestMapping("/api/v1/Baby")
@@ -65,6 +66,11 @@ public class babyController {
             String activity = "Register new baby";
             logsService.savelog(useremail, activity);
             log.info("{} Registered new baby ", useremail);
+            int motherId = (int) (baby.getId().longValue());
+            Mother mother = motherRepository.findById(motherId);
+            if (mother == null) {
+                throw new ResourceNotFoundException("Mother not found :: " + baby.getId());
+            }
             return babyRepository.save(baby);
         } else {
             log.warn("{} Tried Create new baby but was not authorised ", useremail);
@@ -106,7 +112,7 @@ public class babyController {
 
     @GetMapping("/babies")
     public List<Baby> getBabiesByMotherPhone(HttpServletRequest request,
-            @Valid @RequestBody Map<String, String> params){
+            @Valid @RequestBody Map<String, String> params) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         // int i = Integer.parseInt(role);
@@ -143,7 +149,7 @@ public class babyController {
 
     @DeleteMapping("/delete")
     public Map<String, Boolean> deleteBaby(HttpServletRequest request,
-    @Valid @RequestBody Map<String,String> params) throws Exception {
+            @Valid @RequestBody Map<String, String> params) throws Exception {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         // int i = Integer.parseInt(role);

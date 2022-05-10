@@ -9,10 +9,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface  HospitalRepository extends JpaRepository<Hospital, Long> {
+public interface HospitalRepository extends JpaRepository<Hospital, Long> {
     Hospital findById(String hosipitalId);
 
-    // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b WHERE b.branchname=?1")
+    @Query("SELECT h FROM Hospital h WHERE h.phoneNumber =?1")
+    Hospital findHospitalByPhoneNumber(String hospitalPhoneNumber);
+     
+    @Query("SELECT h FROM Hospital h WHERE h.hospitalname=?1")
+    Hospital findHospitalByName(String hospitalName);
+    // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b WHERE
+    // b.branchname=?1")
     // List<String> findBranchByName(String branchname);
 
     // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b ")
