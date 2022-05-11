@@ -1,15 +1,11 @@
-import {Fragment} from "react";
-import Layout from "../Layout";
-
-const DashContent = () => {
+export default function WomenList(){
     return(
-        <Fragment>
         <div className="row justify-content-center">
             <div className="col-xl-10 col-xxl-9">
                 <div className="card shadow">
                     <div
                         className="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
-                        <h5 className="display-6 text-nowrap text-capitalize mb-0">All users</h5>
+                        <h5 className="display-6 text-nowrap text-capitalize mb-0">All Mothers</h5>
                         <div className="input-group input-group-sm w-auto"><input
                             className="form-control form-control-sm" type="text"/>
                             <button className="btn btn-outline-primary btn-sm" type="button">
@@ -66,15 +62,5 @@ const DashContent = () => {
                 </div>
             </div>
         </div>
-    </Fragment>)
+    )
 }
-
-
-
-const Users =() =>{
-    return <Layout>
-        <DashContent/>
-    </Layout>
-}
-
-export default Users;

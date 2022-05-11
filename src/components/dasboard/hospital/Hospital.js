@@ -1,6 +1,7 @@
 import React,{Fragment} from "react";
 import Layout from "../Layout";
 import "./style.css"
+import {Link} from "react-router-dom";
 const DashContent = () => {
     return(<Fragment>
         <div className="main_hospital">
@@ -31,7 +32,8 @@ const DashContent = () => {
                                                 <div className={"hidingContentHospitalCard"}>
                                                     <p className={""}>more content </p>
                                                     <button className="btn btn-danger d-flex outline loginBtn"
-                                                            data-bss-hover-animate="rubberBand" type="button">GO in
+                                                            data-bss-hover-animate="rubberBand" type="button">
+                                                        <Link to={"/hospitalDashboard"}>GO in</Link>
                                                     </button>
                                                 </div>
 
