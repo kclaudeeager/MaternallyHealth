@@ -1,4 +1,4 @@
-import Layout from "../../components/dasboard/Dashboard";
+import Dashboard from "../../components/dasboard/Dashboard";
 
 export default {
     exact: true,
@@ -6,5 +6,5 @@ export default {
     protected:false,
     guestOnly: false,
     path:'/dashboard',
-    component:Layout
+    component:Dashboard
 }

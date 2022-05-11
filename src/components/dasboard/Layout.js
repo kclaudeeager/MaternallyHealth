@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./dasboardlayout.css"
+import {Link} from "react-router-dom";
 
 export default function Layout({children}){
     const [toggle, setToggle] = useState("");
@@ -34,10 +35,10 @@ export default function Layout({children}){
                     <div><a onClick={() => {toggling();}} id="header_toggle-2" className="nav_logo header_toggle" href="#"><i
                         className="fa fa-star bx bx-layer nav_logo-icon"></i><span
                         className="nav_logo-name">Sidemenu</span></a>
-                        <div className="nav_list"><a className={"nav_link active"} href="#"><i
+                        <div className="nav_list"><Link  className={"nav_link active"} to={"/dashboard"}><i
                             className="fa fa-star bx bx-grid-alt nav_icon"></i><span
-                            className="nav_name">Main Menu</span></a><a className={"nav_link "} href="#"><i
-                            className="fa fa-star bx bx-user nav_icon"></i><span className="nav_name">Users</span></a><a
+                            className="nav_name">Dashboard</span></Link><Link className={"nav_link "} to={"/dashboard/users"}><i
+                            className="fa fa-star bx bx-user nav_icon"></i><span className="nav_name">Users</span></Link><a
                             className="nav_link" href="#"><i
                             className="fa fa-star bx bx-message-square-detail nav_icon"></i><span
                             className="nav_name">Chat</span></a><a className={"nav_link "} href="#"><i

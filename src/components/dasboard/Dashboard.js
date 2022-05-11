@@ -3,7 +3,7 @@ import Layout from "./Layout";
 
 const DashContent = () => {
     return(<Fragment>
-        <div>hello</div>
+        <div>Dashboard</div>
     </Fragment>)
 }
 
