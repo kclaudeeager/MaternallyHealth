@@ -4,6 +4,7 @@ import signup from "./routes/signup";
 import users from "./routes/users";
 import tips from "./routes/tips";
 import hospital from "./routes/hospital";
+import hospitalDashboard from "./routes/hospitalDashboard";
 
 export default [
     Login,
@@ -11,5 +12,6 @@ export default [
     signup,
     users,
     tips,
-    hospital
+    hospital,
+    hospitalDashboard
 ]
