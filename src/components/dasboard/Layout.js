@@ -7,7 +7,7 @@ export default function Layout({children}){
     const [nav, setNav] = useState("");
     const [bodypd, setbodypd] = useState("");
     const [headerpd, setHeaderpd] = useState("");
-    const [isShowing, setShowing] = useState(false);
+    const [isShowing, setShowing] = useState(true);
     const [activeLink, setActiveLink] = useState(null);
     const toggling = () => {
         setShowing((i) => !i);
@@ -41,9 +41,9 @@ export default function Layout({children}){
                             className="fa fa-star bx bx-user nav_icon"></i><span className="nav_name">Users</span></Link><Link
                             className="nav_link" to="/dashboard/tips"><i
                             className="fa fa-star bx bx-message-square-detail nav_icon"></i><span
-                            className="nav_name">Tips</span></Link><a className={"nav_link "} href="#"><i
+                            className="nav_name">Tips</span></Link><Link className={"nav_link "} to="/dashboard/hospital"><i
                             className="fa fa-star bx bx-bookmark nav_icon"></i><span
-                            className="nav_name">Bookmark</span></a><a className={"nav_link "} href="#"><i
+                            className="nav_name">Hospital</span></Link><a className={"nav_link "} href="#"><i
                             className="fa fa-star bx bx-folder nav_icon"></i><span
                             className="nav_name">Folders</span></a><a className="nav_link" href="#"><i
                             className="fa fa-star bx bx-bar-chart-alt nav_icon"></i><span
