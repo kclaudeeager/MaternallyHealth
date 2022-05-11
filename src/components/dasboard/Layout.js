@@ -38,10 +38,10 @@ export default function Layout({children}){
                         <div className="nav_list"><Link  className={"nav_link active"} to={"/dashboard"}><i
                             className="fa fa-star bx bx-grid-alt nav_icon"></i><span
                             className="nav_name">Dashboard</span></Link><Link className={"nav_link "} to={"/dashboard/users"}><i
-                            className="fa fa-star bx bx-user nav_icon"></i><span className="nav_name">Users</span></Link><a
-                            className="nav_link" href="#"><i
+                            className="fa fa-star bx bx-user nav_icon"></i><span className="nav_name">Users</span></Link><Link
+                            className="nav_link" to="/dashboard/tips"><i
                             className="fa fa-star bx bx-message-square-detail nav_icon"></i><span
-                            className="nav_name">Chat</span></a><a className={"nav_link "} href="#"><i
+                            className="nav_name">Tips</span></Link><a className={"nav_link "} href="#"><i
                             className="fa fa-star bx bx-bookmark nav_icon"></i><span
                             className="nav_name">Bookmark</span></a><a className={"nav_link "} href="#"><i
                             className="fa fa-star bx bx-folder nav_icon"></i><span
