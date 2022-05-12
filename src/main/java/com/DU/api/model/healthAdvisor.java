@@ -23,10 +23,6 @@ public class HealthAdvisor extends AuditModel {
      */
     private static final int _102 = 10;
 
-    /**
-     *
-     */
-    private static final int _10 = 10;
 
     private static final long serialVersionUID = 1L;
 
