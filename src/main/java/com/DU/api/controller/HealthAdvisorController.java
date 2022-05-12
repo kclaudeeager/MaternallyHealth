@@ -33,55 +33,62 @@ import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import javassist.NotFoundException;
 
 @RestController
-@RequestMapping("/api/v1/hospital")
-public class HospitalController {
+@RequestMapping("/api/v1/HealthAdvisor")
+public class HealthAdvisorController {
     @Autowired
     private HospitalRepository hospitalRepository;
     @Autowired
     LogsService logsService;
     @Autowired
-    private UserRepository userRepository;
-    Logger log = LoggerFactory.getLogger(HospitalController.class);
+    private HealthAdvisorRepository healthAdvisorRepository;
+    Logger log = LoggerFactory.getLogger(HealthAdvisorController.class);
     User user;
     Hospital hospital;
 
-    @Operation(summary = "This is to add new hospital to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+    @Operation(summary = "This is to add new Health advisor to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "add new hospital to the  Database", content = {
+            @ApiResponse(responseCode = "200", description = "add new Health advisor to the  Database", content = {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
     @PostMapping("/add")
-    public Hospital createHospital(HttpServletRequest request, @Valid @RequestBody Hospital hospital) {
+    public HealthAdvisor createHealthAdvisor(HttpServletRequest request,
+            @Valid @RequestBody HealthAdvisor healthAdvisor) throws NotFoundException {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         // int i = Integer.parseInt(role);
         String useremail = request.getAttribute("email").toString();
-        if (role.equals("ADMIN")) {
-            String activity = "Register new hospital";
+        if (role.equals("ADMIN") || role.equals("HOSPITAL_ADMIN")) {
+            String activity = "Register new Health advisor";
             logsService.savelog(useremail, activity);
-            log.info("{} Registered new hospital ", useremail);
 
-            return hospitalRepository.save(hospital);
+            Hospital hospital = hospitalRepository.findById(healthAdvisor.getHospital_id());
+            // Integer userId=Integer.parseInt(request.getParameter("userId").toString());
+
+            if (hospital == null)
+                throw new NotFoundException("Hospital not found with id " + healthAdvisor.getHospital_id());
+            log.info("{} Registered new Health advisor ", useremail);
+            return healthAdvisorRepository.save(healthAdvisor);
         } else {
-            log.warn("{} Tried Create new hospital but was not authorised ", useremail);
-            throw new AuthException("admin can register new hospital :: ");
+            log.warn("{} Tried Create new HealthAdvisor but was not authorised ", useremail);
+            throw new AuthException("admins can register new health advisor :: ");
         }
 
     }
 
-    @Operation(summary = "This is to fetch all hospitals from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+    @Operation(summary = "This is to fetch all HealthAdvisor from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "fetch all hospitals from the  Database", content = {
+            @ApiResponse(responseCode = "200", description = "fetch all HealthAdvisor from the  Database", content = {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
     @GetMapping("/all")
-    public List<Hospital> getAllHospitals(HttpServletRequest request) {
+    public List<HealthAdvisor> getAllHealthAdvisors(HttpServletRequest request) {
         String role = request.getAttribute("role").toString();
         String email = request.getAttribute("email").toString();
         System.out.println("role: -------- " + role);
@@ -89,81 +96,90 @@ public class HospitalController {
         // if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN") ||
         // role.equals("RECEPTIONIST")) {
 
-        String activity = "veiwed all  hospitals details";
+        String activity = "veiwed all  HealthAdvisor details";
 
         logsService.savelog(email, activity);
-        return hospitalRepository.findAll();
+        return healthAdvisorRepository.findAll();
         // } else {
         // throw new AuthException("Only nurse, doctor or admin can view mother details
         // data :: ");
         // }
     }
 
-    @Operation(summary = "This is to delte  hospital from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+    @Operation(summary = "This is to delte  HealthAdvisor from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "delete  hospital from the  Database", content = {
+            @ApiResponse(responseCode = "200", description = "delete  HealthAdvisor from the  Database", content = {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-    @DeleteMapping("/delete/{hospitalName}")
-    public Map<String, Boolean> deleteHospital(HttpServletRequest request,
-    @PathVariable(value = "hospitalName") String hospitalName) {
+    @DeleteMapping("/delete/{healthAdvisorPhoneNum}")
+    public Map<String, Boolean> deleteHealthAdvisor(HttpServletRequest request,
+            @PathVariable(value = "healthAdvisorPhoneNum") String healthAdvisorPhoneNum) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         // int i = Integer.parseInt(role);
-        if (role.equals("ADMIN")) {
-            Hospital hospital = hospitalRepository.findHospitalByName(hospitalName);
+        if (role.equals("ADMIN") || role.equals("HOSPITAL_ADMIN")) {
+            HealthAdvisor healthAdvisor = healthAdvisorRepository.findByPhoneNumber(healthAdvisorPhoneNum);
             String useremail = request.getAttribute("email").toString();
-            if (hospital == null) {
+            if (healthAdvisor == null) {
                 throw new ResourceNotFoundException(
-                        "Hospital with such phone number :: " + hospitalName + "  not found ");
+                        "Health Monitorwith such phone number :: " + healthAdvisorPhoneNum + "  not found ");
             }
-            hospitalRepository.delete(hospital);
+            healthAdvisorRepository.delete(healthAdvisor);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
-            String activity = "deleted hospital: " + hospitalName;
+            String activity = "deleted hospital: " + healthAdvisorPhoneNum;
             logsService.savelog(useremail, activity);
             return response;
         } else {
-            throw new AuthException("Only admin and  can delete hospital data :: ");
+            throw new AuthException("Only admins and  can delete healthAdvisorPhoneNum data :: ");
         }
     }
 
-    @Operation(summary = "This is to update hospital to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+    @Operation(summary = "This is to update HealthAdvisor to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Update mother to the  Database", content = {
+            @ApiResponse(responseCode = "200", description = "Update HealthAdvisor to the  Database", content = {
                     @Content(mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-    @PutMapping("/update/{hospitalName}")
-    public ResponseEntity<Hospital> updateHospital(HttpServletRequest request,
-            @PathVariable(value = "hospitalName") String hospitalName,
-            @Valid @RequestBody Hospital hospitalDetails) {
+    @PutMapping("/update/{healthAdvisorPhoneNum}")
+    public ResponseEntity<HealthAdvisor> updatedhealthAdvisor(HttpServletRequest request,
+            @PathVariable(value = "healthAdvisorPhoneNum") String healthAdvisorPhoneNum,
+            @Valid @RequestBody HealthAdvisor healthAdvisorDetails) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
-        if (role.equals("ADMIN")) {
-            Hospital hospital = hospitalRepository.findHospitalByName(hospitalName);
+        if (role.equals("ADMIN") || role.equals("HOSPITAL_ADMIN")) {
+            HealthAdvisor healthAdvisor = healthAdvisorRepository.findByPhoneNumber(healthAdvisorPhoneNum);
             String useremail = request.getAttribute("email").toString();
-            if (hospital == null) {
-                throw new ResourceNotFoundException("hospital  not found :: " + hospitalDetails.getphoneNumbe());
+            if (healthAdvisor == null) {
+                throw new ResourceNotFoundException("HealthAdvisor  not found :: " + healthAdvisorPhoneNum);
             }
-            hospital.setphoneNumber(hospitalDetails.getphoneNumbe() == null ? hospital.getphoneNumbe()
-                    : String.valueOf(hospitalDetails.getphoneNumbe()));
-            hospital.sethospitalAdmin(hospitalDetails.gethospitalAdmin() == null ? hospital.gethospitalAdmin()
-                    : hospitalDetails.gethospitalAdmin());
-            hospital.setlocation(
-                    hospitalDetails.getlocation() == null ? hospital.getlocation() : hospitalDetails.getlocation());
-            hospital.sethospitalname(hospitalDetails.gethospitalname() == null ? hospital.gethospitalname()
-                    : hospitalDetails.gethospitalname());
-
-            final Hospital updatedHospital = hospitalRepository.save(hospital);
-            String activity = "updated hospital: " + hospitalName;
+            healthAdvisor.setPhoneNumber(healthAdvisorDetails.getPhoneNumber() == null ? healthAdvisor.getPhoneNumber()
+                    : healthAdvisorDetails.getPhoneNumber());
+            healthAdvisor.setAge(
+                    healthAdvisorDetails.getAge() == null ? healthAdvisor.getAge() : healthAdvisorDetails.getAge());
+            healthAdvisor.setFirstName(healthAdvisorDetails.getFirstName() == null ? healthAdvisor.getFirstName()
+                    : healthAdvisorDetails.getFirstName());
+            healthAdvisor.setLastName(healthAdvisorDetails.getLastName() == null ? healthAdvisor.getLastName()
+                    : healthAdvisorDetails.getLastName());
+            healthAdvisor.setPhoneNumber(healthAdvisorDetails.getPhoneNumber() == null ? healthAdvisor.getPhoneNumber()
+                    : healthAdvisorDetails.getPhoneNumber());
+            healthAdvisor.setEmail(healthAdvisorDetails.getEmail() == null ? healthAdvisor.getEmail()
+                    : healthAdvisorDetails.getEmail());
+            healthAdvisor.setIdnumber(healthAdvisorDetails.getIdnumber() == null ? healthAdvisor.getIdnumber()
+                    : healthAdvisorDetails.getIdnumber());
+            healthAdvisor.setResidance(healthAdvisorDetails.getResidance() == null ? healthAdvisor.getResidance()
+                    : healthAdvisorDetails.getResidance());
+            healthAdvisor.setHospital_id(healthAdvisorDetails.getHospital_id() == 0 ? healthAdvisor.getHospital_id()
+                    : healthAdvisorDetails.getHospital_id());
+            final HealthAdvisor updatedhealthAdvisor = healthAdvisorRepository.save(healthAdvisor);
+            String activity = "updated healthAdvisor: " + healthAdvisorPhoneNum;
             logsService.savelog(useremail, activity);
-            return ResponseEntity.ok(updatedHospital);
+            return ResponseEntity.ok(updatedhealthAdvisor);
         } else {
-            throw new AuthException("Only admin and  can update hospital data :: ");
+            throw new AuthException("Only admins and  can update hospital data :: ");
         }
     }
 
@@ -174,9 +190,9 @@ public class HospitalController {
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-    @GetMapping("/name")
-    public ResponseEntity<Hospital> getHospitalByHospitalName(HttpServletRequest request,
-            @Valid @RequestBody Map<String, String> nameParameters) {
+    @GetMapping("/phoneNumber")
+    public ResponseEntity<HealthAdvisor> getHealthAdvisorByPhone(HttpServletRequest request,
+            @Valid @RequestBody Map<String, String> phoneNumMap) {
         String role = request.getAttribute("role").toString();
         System.out.println("role found: -------- " + role);
         // int i = Integer.parseInt(role);
@@ -188,15 +204,15 @@ public class HospitalController {
         // Integer userId =
         // Integer.parseInt(request.getAttribute("user_id").toString());
         // User user = userRepository.findByUserId(Integer.parseInt(motherId));
-        Hospital hospital = hospitalRepository.findHospitalByName(nameParameters.get("hospitalName"));
+        HealthAdvisor healthAdvisor = healthAdvisorRepository.findByPhoneNumber(phoneNumMap.get("phone"));
         String activity;
         if (hospital == null) {
-            throw new ResourceNotFoundException("Hospital not found :: " + nameParameters.get("hospitalName"));
+            throw new ResourceNotFoundException("healthAdvisor not found :: " + phoneNumMap.get("phone"));
             // System.out.println(("staff not found :: " + email));
         }
-        activity = "veiwed hospital with name: " + nameParameters.get("hospitalName");
+        activity = "veiwed healthAdvisor with name: " + phoneNumMap.get("phone");
         logsService.savelog(useremail, activity);
-        return ResponseEntity.ok().body(hospital);
+        return ResponseEntity.ok().body(healthAdvisor);
         // } else {
         // throw new AuthException("Only nurse, doctor or admin or mother can view
         // mothers data :: ");

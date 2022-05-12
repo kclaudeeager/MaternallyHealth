@@ -44,7 +44,7 @@ public class MotherController {
     LogsService logsService;
     @Autowired
     private UserRepository userRepository;
-    Logger log = LoggerFactory.getLogger(StaffController.class);
+    Logger log = LoggerFactory.getLogger(MotherController.class);
     User user;
 
     @Operation(summary = "This is to add new mother to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
@@ -64,7 +64,7 @@ public class MotherController {
             String activity = "Register new mother";
             logsService.savelog(useremail, activity);
             log.info("{} Registered new mother ", useremail);
-
+             mother.setRegisterId(Integer.parseInt(request.getAttribute("userId").toString()));
             return motherRepository.save(mother);
         } else {
             log.warn("{} Tried Create new mother but was not authorised ", useremail);

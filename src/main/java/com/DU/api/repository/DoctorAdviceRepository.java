@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DoctorAdviceRepository 
- extends JpaRepository<DOctorAdvise, Long> {
-   
+ extends JpaRepository<DOctorAdvise, Long>  {
+        DOctorAdvise  findByAdviceId(Integer adviceId);
     // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b WHERE b.branchname=?1")
     // List<String> findBranchByName(String branchname);
 

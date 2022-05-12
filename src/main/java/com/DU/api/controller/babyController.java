@@ -46,7 +46,7 @@ public class babyController {
     LogsService logsService;
     @Autowired
     private UserRepository userRepository;
-    Logger log = LoggerFactory.getLogger(StaffController.class);
+    Logger log = LoggerFactory.getLogger(babyController.class);
     User user;
 
     @Operation(summary = "This is to add new baby to the  Database", security = @SecurityRequirement(name = "bearerAuth"))

@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -14,6 +15,7 @@ import com.DU.api.exception.ResourceNotFoundException;
 import com.DU.api.model.staff;
 import com.DU.api.model.User;
 import com.DU.api.service.LogsService;
+import com.DU.api.repository.DepartmentRepository;
 import com.DU.api.repository.StaffRepository;
 
 import org.slf4j.Logger;
@@ -40,7 +42,8 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 public class StaffController {
   @Autowired
   private StaffRepository staffRepository;
-
+@Autowired
+private DepartmentRepository departmentRepository;
   @Autowired
   LogsService logsService;
   Logger log = LoggerFactory.getLogger(StaffController.class);
@@ -61,6 +64,11 @@ public class StaffController {
     String useremail = request.getAttribute("email").toString();
     if (role.equals("ADMIN")) {
       String activity = "created new staff";
+
+      Optional<com.DU.api.model.Department> department=departmentRepository.findById(staff.getdepartmentId());
+      if(department==null) {
+        throw new ResourceNotFoundException("department  not found :: "+staff.getdepartmentId());
+      }
       logsService.savelog(useremail, activity);
       log.info("{} Created new staff ", useremail);
       return staffRepository.save(staff);

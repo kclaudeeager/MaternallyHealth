@@ -23,7 +23,7 @@ public class Mother extends AuditModel {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idnumber",unique=true)
+    @Column(name = "idnumber", unique = true)
     private String idnumber;
 
     @Column(name = "email", unique = true, nullable = true)
@@ -50,13 +50,15 @@ public class Mother extends AuditModel {
     private Double weight;
     @Column(name = "status", nullable = false, columnDefinition = "integer default 0")
     private Integer status;
+    @Column(name = "registerId", nullable = false, columnDefinition = "integer default 0")
+    private Integer registerId;
 
     public Mother() {
         super();
     }
 
     public Mother(String firstName, String email, String lastName, String phoneNumber, String age, String idnumber,
-        Double height, String residance, Integer status, Double weight) {
+            Double height, String residance, Integer status, Double weight, Integer registerId) {
         super();
         this.email = email;
         this.firstName = firstName;
@@ -68,6 +70,7 @@ public class Mother extends AuditModel {
         this.residance = residance;
         this.status = status;
         this.weight = weight;
+        this.registerId = registerId;
     }
 
     public Long getId() {
@@ -157,6 +160,104 @@ public class Mother extends AuditModel {
 
     public void setweight(Double weight) {
         this.weight = weight;
+    }
+
+    /**
+     * @return String return the idnumber
+     */
+    public String getIdnumber() {
+        return idnumber;
+    }
+
+    /**
+     * @param idnumber the idnumber to set
+     */
+    public void setIdnumber(String idnumber) {
+        this.idnumber = idnumber;
+    }
+
+    /**
+     * @return String return the age
+     */
+    public String getAge() {
+        return age;
+    }
+
+    /**
+     * @param age the age to set
+     */
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    /**
+     * @return Double return the height
+     */
+    public Double getHeight() {
+        return height;
+    }
+
+    /**
+     * @param height the height to set
+     */
+    public void setHeight(Double height) {
+        this.height = height;
+    }
+
+    /**
+     * @return String return the residance
+     */
+    public String getResidance() {
+        return residance;
+    }
+
+    /**
+     * @param residance the residance to set
+     */
+    public void setResidance(String residance) {
+        this.residance = residance;
+    }
+
+    /**
+     * @return Double return the weight
+     */
+    public Double getWeight() {
+        return weight;
+    }
+
+    /**
+     * @param weight the weight to set
+     */
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    /**
+     * @return Integer return the status
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    /**
+     * @return Integer return the registerId
+     */
+    public Integer getRegisterId() {
+        return registerId;
+    }
+
+    /**
+     * @param registerId the registerId to set
+     */
+    public void setRegisterId(Integer registerId) {
+        this.registerId = registerId;
     }
 
 }

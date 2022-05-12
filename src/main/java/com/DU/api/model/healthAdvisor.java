@@ -1,4 +1,5 @@
 package com.DU.api.model;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -15,8 +16,17 @@ import io.swagger.v3.oas.annotations.Hidden;
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler", "fieldHandler" })
 @Entity
 @Table(name = "healthAdvisor")
-public class healthAdvisor 
-extends AuditModel {
+public class HealthAdvisor extends AuditModel {
+
+    /**
+     *
+     */
+    private static final int _102 = 10;
+
+    /**
+     *
+     */
+    private static final int _10 = 10;
 
     private static final long serialVersionUID = 1L;
 
@@ -25,7 +35,7 @@ extends AuditModel {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idnumber")
+    @Column(name = "idnumber" , nullable = false, length = 16,unique = true)
     private String idnumber;
 
     @Column(name = "email", unique = true, nullable = true)
@@ -40,18 +50,19 @@ extends AuditModel {
     @Column(name = "last_name", nullable = true)
     private String lastName;
 
-    @Column(name = "phone_number", unique = true, nullable = false)
+    @Column(name = "phone_number", unique = true, nullable = false,length=_102)
     private String phoneNumber;
-    @Column(name = "height", unique = true, nullable = false)
-    private Double height;
-
+  
     @Column(name = "residance", nullable = false)
     private String residance;
-
-    public healthAdvisor() {
+    @Column(name = "hospital_id", nullable = false)
+    private Integer hospital_id;
+     
+    public HealthAdvisor() {
     }
 
-    public healthAdvisor(Long id, String idnumber, String email, String age, String firstName, String lastName, String phoneNumber, Double height, String residance) {
+    public HealthAdvisor(Long id, String idnumber, String email, String age, String firstName, String lastName,
+            String phoneNumber, String residance, Integer hospital_id) {
         this.id = id;
         this.idnumber = idnumber;
         this.email = email;
@@ -59,8 +70,8 @@ extends AuditModel {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.height = height;
         this.residance = residance;
+        this.hospital_id = hospital_id;
     }
 
     public Long getId() {
@@ -119,13 +130,7 @@ extends AuditModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public Double getHeight() {
-        return this.height;
-    }
-
-    public void setHeight(Double height) {
-        this.height = height;
-    }
+   
 
     public String getResidance() {
         return this.residance;
@@ -135,41 +140,26 @@ extends AuditModel {
         this.residance = residance;
     }
 
-    public healthAdvisor id(Long id) {
+    public HealthAdvisor id(Long id) {
         setId(id);
         return this;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof healthAdvisor)) {
-            return false;
-        }
-        healthAdvisor healthAdvisor = (healthAdvisor) o;
-        return Objects.equals(id, healthAdvisor.id) && Objects.equals(idnumber, healthAdvisor.idnumber) && Objects.equals(email, healthAdvisor.email) && Objects.equals(age, healthAdvisor.age) && Objects.equals(firstName, healthAdvisor.firstName) && Objects.equals(lastName, healthAdvisor.lastName) && Objects.equals(phoneNumber, healthAdvisor.phoneNumber) && Objects.equals(height, healthAdvisor.height) && Objects.equals(residance, healthAdvisor.residance);
+    
+
+
+    /**
+     * @return Integer return the hospital_id
+     */
+    public Integer getHospital_id() {
+        return hospital_id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, idnumber, email, age, firstName, lastName, phoneNumber, height, residance);
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", idnumber='" + getIdnumber() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", age='" + getAge() + "'" +
-            ", firstName='" + getFirstName() + "'" +
-            ", lastName='" + getLastName() + "'" +
-            ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", height='" + getHeight() + "'" +
-            ", residance='" + getResidance() + "'" +
-            "}";
+    /**
+     * @param hospital_id the hospital_id to set
+     */
+    public void setHospital_id(Integer hospital_id) {
+        this.hospital_id = hospital_id;
     }
 
 }
-
