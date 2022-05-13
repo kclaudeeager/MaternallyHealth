@@ -44,7 +44,7 @@ public class DepartmentController {
     LogsService logsService;
     @Autowired
     private DepartmentRepository departmentRepository;
-    Logger log = LoggerFactory.getLogger(HealthAdvisorController.class);
+    Logger log = LoggerFactory.getLogger(DepartmentController.class);
     User user;
     Hospital hospital;
 
