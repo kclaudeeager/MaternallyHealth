@@ -24,13 +24,19 @@ public class  DOctorAdvise extends AuditModel {
     
     @Column(name = "advise")
     private String advise;
-
+    @Column(name = "createdBy")
+    private Long createdBy;
+    @Column(name = "motherId")
+    private Long motherId;
+    
     public DOctorAdvise() {
     }
 
-    public DOctorAdvise(Long adviceId, String advise) {
+    public DOctorAdvise(Long adviceId, String advise,Long motherId,Long createdBy) {
         this.adviceId = adviceId;
         this.advise = advise;
+        this.motherId = motherId;
+        this.createdBy = createdBy;
     }
 
     public Long getAdviceId() {
@@ -79,6 +85,35 @@ public class  DOctorAdvise extends AuditModel {
             ", advise='" + getAdvise() + "'" +
             "}";
     }
+
+    /**
+     * @return Long return the createdBy
+     */
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    /**
+     * @param createdBy the createdBy to set
+     */
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    /**
+     * @return Long return the motherId
+     */
+    public Long getMotherId() {
+        return motherId;
+    }
+
+    /**
+     * @param motherId the motherId to set
+     */
+    public void setMotherId(Long motherId) {
+        this.motherId = motherId;
+    }
+
 }
 
 

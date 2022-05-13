@@ -23,30 +23,29 @@ public class Tips extends AuditModel {
     @Column(name = "Tip_id")
     private Long id;
 
-    @Column(name = "activity")
-    private String activity;
+    @Column(name = "tip_name", nullable = false)
+    private String tip_name;
 
-    @Column(name = "Food", nullable = false)
-    private Integer food;
+    @Column(name = "title")
+    private String title;
 
+    @Column(name = "description", nullable = false)
+    private String  description;
 
-    @Column(name = "DoctorAdvise", nullable = false)
-    private Integer DoctorAdvise;
-
-    @Column(name = "Sport", nullable = false)
-    private Integer sport;
+    @Column(name = "createdBy", nullable = false)
+    private Integer createdBy;
 
     public Tips() {
         super();
     }
 
-    public Tips(Long id, String activity, Integer food, Integer DoctorAdvise, Integer sport) {
-        this.id = id;
-        this.activity = activity;
-        this.food = food;
-        this.DoctorAdvise = DoctorAdvise;
-        this.sport = sport;
-    }
+  public Tips(Long id,String tip_name,String tip_description,Integer createdBy,String title) {
+    this.title = title;
+    this.id = id;
+    this.tip_name = tip_name;
+    this.description = tip_description;
+    this.createdBy = createdBy;
+  }
 
     public Long getId() {
         return this.id;
@@ -56,90 +55,62 @@ public class Tips extends AuditModel {
         this.id = id;
     }
 
-    public String getActivity() {
-        return this.activity;
+  
+
+    /**
+     * @return String return the tip_name
+     */
+    public String getTip_name() {
+        return tip_name;
     }
 
-    public void setActivity(String activity) {
-        this.activity = activity;
+    /**
+     * @param tip_name the tip_name to set
+     */
+    public void setTip_name(String tip_name) {
+        this.tip_name = tip_name;
     }
 
-    public Integer getFood() {
-        return this.food;
+    /**
+     * @return String return the title
+     */
+    public String getTitle() {
+        return title;
     }
 
-    public void setFood(Integer food) {
-        this.food = food;
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Integer getDoctorAdvise() {
-        return this.DoctorAdvise;
+    /**
+     * @return String return the description
+     */
+    public String getDescription() {
+        return description;
     }
 
-    public void setDoctorAdvise(Integer DoctorAdvise) {
-        this.DoctorAdvise = DoctorAdvise;
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Integer getSport() {
-        return this.sport;
+    /**
+     * @return Integer return the createdBy
+     */
+    public Integer getCreatedBy() {
+        return createdBy;
     }
 
-    public void setSport(Integer sport) {
-        this.sport = sport;
+    /**
+     * @param createdBy the createdBy to set
+     */
+    public void setCreatedBy(Integer createdBy) {
+        this.createdBy = createdBy;
     }
-
-    public Tips id(Long id) {
-        setId(id);
-        return this;
-    }
-
-    public Tips activity(String activity) {
-        setActivity(activity);
-        return this;
-    }
-
-    public Tips food(Integer food) {
-        setFood(food);
-        return this;
-    }
-
-    public Tips DoctorAdvise(Integer DoctorAdvise) {
-        setDoctorAdvise(DoctorAdvise);
-        return this;
-    }
-
-    public Tips sport(Integer sport) {
-        setSport(sport);
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Tips)) {
-            return false;
-        }
-        Tips tips = (Tips) o;
-        return Objects.equals(id, tips.id) && Objects.equals(activity, tips.activity) && Objects.equals(food, tips.food) && Objects.equals(DoctorAdvise, tips.DoctorAdvise) && Objects.equals(sport, tips.sport);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, activity, food, DoctorAdvise, sport);
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", activity='" + getActivity() + "'" +
-            ", food='" + getFood() + "'" +
-            ", DoctorAdvise='" + getDoctorAdvise() + "'" +
-            ", sport='" + getSport() + "'" +
-            "}";
-    }
-
 
 }
-
