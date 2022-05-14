@@ -48,17 +48,19 @@ public class Mother extends AuditModel {
 
     @Column(name = "weight", nullable = false, columnDefinition = "integer default 0")
     private Double weight;
-    @Column(name = "status", nullable = false, columnDefinition = "integer default 0")
-    private Integer status;
-    @Column(name = "registerId", nullable = false)
+    @Column(name = "status", nullable = false)
+    private String status;
+    @Column(name = "registerId")
     private Long registerId;
-
+    @Column(name = "hospitalId", nullable = false)
+    private Long hospitalId;
+     
     public Mother() {
         super();
     }
 
     public Mother(String firstName, String email, String lastName, String phoneNumber, String age, String idnumber,
-            Double height, String residance, Integer status, Double weight) {
+            Double height, String residance, String status, Double weight,Long hospitalId) {
         super();
         this.email = email;
         this.firstName = firstName;
@@ -70,6 +72,7 @@ public class Mother extends AuditModel {
         this.residance = residance;
         this.status = status;
         this.weight = weight;
+        this.hospitalId= hospitalId;
        
     }
 
@@ -81,10 +84,6 @@ public class Mother extends AuditModel {
         return height;
     }
 
-    public void setocccupation(Double height) {
-        this.height = height;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -93,11 +92,11 @@ public class Mother extends AuditModel {
         this.email = email;
     }
 
-    public Integer getstatus() {
+    public String getstatus() {
         return status;
     }
 
-    public void setstatus(Integer status) {
+    public void setstatus(String status) {
         this.status = status;
 
     }
@@ -235,29 +234,32 @@ public class Mother extends AuditModel {
     /**
      * @return Integer return the status
      */
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
 
-    /**
-     * @return Integer return the registerId
-     */
-    public Long getRegisterId() {
-        return registerId;
-    }
 
     /**
      * @param registerId the registerId to set
      */
     public void setRegisterId(Long registerId) {
         this.registerId = registerId;
+    }
+
+
+    /**
+     * @return Long return the hospitalId
+     */
+    public Long getHospitalId() {
+        return hospitalId;
+    }
+
+    /**
+     * @param hospitalId the hospitalId to set
+     */
+    public void setHospitalId(Long hospitalId) {
+        this.hospitalId = hospitalId;
     }
 
 }

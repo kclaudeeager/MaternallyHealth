@@ -11,6 +11,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.DU.api.constants.Constants;
 import com.DU.api.exception.AuthException;
 import com.DU.api.exception.ResourceNotFoundException;
 import com.DU.api.model.*;
@@ -28,11 +29,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.models.media.MediaType;
 
 @RestController
 @RequestMapping("/api/v1/mothers")
@@ -44,18 +47,18 @@ public class MotherController {
     LogsService logsService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private HospitalRepository hospitalRepository;
     Logger log = LoggerFactory.getLogger(MotherController.class);
     User user;
 
-  
-    @Operation(summary = "This is to add new Mother to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+    @Operation(summary = "This is to add new mother to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "add new mother to the  Database", content = {
             @Content(mediaType = "application/json") }),
         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
-
-    @PostMapping("/add")
+    @PostMapping(value="/add", consumes={"application/json"})
     public Mother createMother(HttpServletRequest request, @Valid @RequestBody Mother mother) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
@@ -64,7 +67,18 @@ public class MotherController {
         if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN")) {
             String activity = "Register new mother";
             logsService.savelog(useremail, activity);
-
+             if(mother.getStatus()!= null || !mother.getStatus().equals("")){
+                 boolean success = false;
+                 for(String status : Constants.STATAS)
+                    {
+                      if(status.equals(mother.getStatus()))
+                        success = true;
+                    }
+                    if(!success)
+                       throw new IllegalStateException("Status must be in these types: " + Constants.STATAS);
+             }
+             if(mother.getStatus().equals(null) || mother.getStatus().equals(""))
+                mother.setstatus(Constants.STATAS[0]);   
             log.info("{} Registered new mother ", useremail);
             mother.setRegisterId(Long.parseLong(request.getAttribute("userId").toString()));
             return motherRepository.save(mother);
@@ -98,6 +112,32 @@ public class MotherController {
             throw new AuthException("Only nurse, doctor or admin  can view mother details data :: ");
         }
     }
+    @Operation(summary = "This is to fetch all mothers by hospitalName from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "fetch all mothers by hospitalName from the  Database", content = {
+                    @Content(mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
+
+    @GetMapping("/all/{hospitalName}")
+    public List<Mother> getAllMothersByHospital(HttpServletRequest request,@PathVariable("hospitalName") String hospitalName) {
+        String role = request.getAttribute("role").toString();
+        String email = request.getAttribute("email").toString();
+        System.out.println("role: -------- " + role);
+        // int i = Integer.parseInt(role);
+        if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN") || role.equals("RECEPTIONIST")) {
+
+            String activity = "veiwed all  mothers details by hospitalName";
+           Hospital hospital= hospitalRepository.findHospitalByName(hospitalName);
+           if(hospital == null)
+              throw new ResourceNotFoundException(String.format("No such hospital found for {name}",hospitalName));
+            
+            logsService.savelog(email, activity);
+            return motherRepository.findAllByHospitallId(hospital.getId());
+        } else {
+            throw new AuthException("Only nurse, doctor or admins  can view mother details data :: ");
+        }
+    }
 
     @Operation(summary = "This is to delte  mother from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
@@ -111,7 +151,7 @@ public class MotherController {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         // int i = Integer.parseInt(role);
-        if (role.equals("ADMIN")) {
+        if (role.equals("ADMIN")||role.equals("DOCTOR") || role.equals("NURSE")) {
             Mother mother = motherRepository.findMotherByPhoneNumber(phoneNumMap.get("phone"));
             String useremail = request.getAttribute("email").toString();
             if (mother == null) {
@@ -136,30 +176,58 @@ public class MotherController {
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-    @PutMapping("/update")
-    public ResponseEntity<Mother> updateMother(HttpServletRequest request,
+    @PutMapping("/update/{phoneNum}")
+    public ResponseEntity<Mother> updateMother(HttpServletRequest request,@PathVariable("phoneNum") String phoneNum,
             @Valid @RequestBody Mother motherDetails) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
-        if (role.equals("ADMIN")) {
-            Mother mother = motherRepository.findMotherByPhoneNumber(motherDetails.getPhoneNumber());
+        if (role.equals("ADMIN")||role.equals("DOCTOR") || role.equals("NURSE")) {
+            Mother mother = motherRepository.findMotherByPhoneNumber(phoneNum);
             String useremail = request.getAttribute("email").toString();
             if (mother == null) {
-                throw new ResourceNotFoundException("mother  not found :: " + motherDetails.getPhoneNumber());
+                throw new ResourceNotFoundException("mother  not found :: " +phoneNum);
             }
             mother.setEmail(motherDetails.getEmail());
-            mother.setPhoneNumber(motherDetails.getPhoneNumber());
-            mother.setFirstName(motherDetails.getFirstName());
-            mother.setLastName(motherDetails.getLastName());
+            mother.setPhoneNumber(motherDetails.getPhoneNumber()== null ? mother.getPhoneNumber():motherDetails.getPhoneNumber());
+            mother.setFirstName(motherDetails.getFirstName()== null ? mother.getFirstName():motherDetails.getFirstName());
+            mother.setLastName(motherDetails.getLastName()== null ? mother.getLastName():motherDetails.getLastName());
+            mother.setstatus(motherDetails.getStatus()== null ? mother.getStatus():motherDetails.getStatus());
+            mother.setresidance(motherDetails.getResidance()== null ? mother.getResidance():motherDetails.getResidance());
             final Mother updatedMother = motherRepository.save(mother);
-            String activity = "updated mother: " + motherDetails.getPhoneNumber();
+            String activity = "updated mother: " +phoneNum;
             logsService.savelog(useremail, activity);
             return ResponseEntity.ok(updatedMother);
         } else {
             throw new AuthException("Only admin and  can update mother data :: ");
         }
     }
+    @Operation(summary = "This is to update mother status to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Update mother status to the  Database", content = {
+                    @Content(mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
+    @PutMapping("/updateStatus/{phoneNumber}")
+    public ResponseEntity<Mother> updateMotherStatus(HttpServletRequest request,@PathVariable("phoneNumber") String phoneNumber,
+            @Valid @RequestBody Map<String, String>  statusParams) {
+        String role = request.getAttribute("role").toString();
+        // System.out.println("role: -------- " + role);
+        if (role.equals("ADMIN")||role.equals("DOCTOR") || role.equals("NURSE")) {
+            Mother mother = motherRepository.findMotherByPhoneNumber(phoneNumber);
+            String useremail = request.getAttribute("email").toString();
+            if (mother == null) {
+                throw new ResourceNotFoundException("mother  not found :: " +phoneNumber);
+            }
+            mother.setstatus(statusParams.get("status"));
+            final Mother updatedMother = motherRepository.save(mother);
+            String activity = "updated mother: " + phoneNumber;
+            logsService.savelog(useremail, activity);
+            return ResponseEntity.ok(updatedMother);
+        } else {
+            throw new AuthException("Only admin and  can update mother data :: ");
+        }
+    }
     @Operation(summary = "This is to fetch mother by phone number from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "fetch mother by phone from the  Database", content = {

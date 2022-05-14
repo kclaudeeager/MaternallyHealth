@@ -1,5 +1,7 @@
 package com.DU.api.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import com.DU.api.model.Mother;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Repository;
 public interface MotherRepository extends JpaRepository<Mother, Long> {
 
     Mother findById(Integer motherID);
+    @Query("SELECT m FROM Mother m WHERE m.hospitalId =?1")
+    List<Mother> findAllByHospitallId(Long hospitalId);
 
     // @Query("SELECT c FROM client c WHERE c.email=?1")
     // Mother findMotherByEmail(String emailAddress);
@@ -23,10 +27,10 @@ public interface MotherRepository extends JpaRepository<Mother, Long> {
     @Query("SELECT m FROM Mother m WHERE m.phoneNumber =?1")
     Mother findMotherByPhoneNumber(String phoneNumber);
 
-    // @Transactional
-    // @Modifying
-    // @Query("update client c set c.balance =?1 where c.idnumber =?2")
-    // void setbalanceForClient(Integer amount, String idnumber);
+    @Transactional
+    @Modifying
+    @Query("update Mother m set m.status =?1 where m.phoneNumber =?2")
+    void updateMotherStatus(String status, String phoneNumber);
 
     // @Transactional
     // @Modifying
