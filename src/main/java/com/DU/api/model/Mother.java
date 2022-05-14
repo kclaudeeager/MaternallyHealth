@@ -50,15 +50,15 @@ public class Mother extends AuditModel {
     private Double weight;
     @Column(name = "status", nullable = false, columnDefinition = "integer default 0")
     private Integer status;
-    @Column(name = "registerId", nullable = false, columnDefinition = "integer default 0")
-    private Integer registerId;
+    @Column(name = "registerId", nullable = false)
+    private Long registerId;
 
     public Mother() {
         super();
     }
 
     public Mother(String firstName, String email, String lastName, String phoneNumber, String age, String idnumber,
-            Double height, String residance, Integer status, Double weight, Integer registerId) {
+            Double height, String residance, Integer status, Double weight) {
         super();
         this.email = email;
         this.firstName = firstName;
@@ -70,7 +70,7 @@ public class Mother extends AuditModel {
         this.residance = residance;
         this.status = status;
         this.weight = weight;
-        this.registerId = registerId;
+       
     }
 
     public Long getId() {
@@ -249,14 +249,14 @@ public class Mother extends AuditModel {
     /**
      * @return Integer return the registerId
      */
-    public Integer getRegisterId() {
+    public Long getRegisterId() {
         return registerId;
     }
 
     /**
      * @param registerId the registerId to set
      */
-    public void setRegisterId(Integer registerId) {
+    public void setRegisterId(Long registerId) {
         this.registerId = registerId;
     }
 

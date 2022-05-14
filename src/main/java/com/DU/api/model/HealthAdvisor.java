@@ -52,13 +52,13 @@ public class HealthAdvisor extends AuditModel {
     @Column(name = "residance", nullable = false)
     private String residance;
     @Column(name = "hospital_id", nullable = false)
-    private Integer hospital_id;
+    private Long hospital_id;
      
     public HealthAdvisor() {
     }
 
     public HealthAdvisor(Long id, String idnumber, String email, String age, String firstName, String lastName,
-            String phoneNumber, String residance, Integer hospital_id) {
+            String phoneNumber, String residance, Long hospital_id) {
         this.id = id;
         this.idnumber = idnumber;
         this.email = email;
@@ -147,14 +147,14 @@ public class HealthAdvisor extends AuditModel {
     /**
      * @return Integer return the hospital_id
      */
-    public Integer getHospital_id() {
+    public Long getHospital_id() {
         return hospital_id;
     }
 
     /**
      * @param hospital_id the hospital_id to set
      */
-    public void setHospital_id(Integer hospital_id) {
+    public void setHospital_id(Long hospital_id) {
         this.hospital_id = hospital_id;
     }
 

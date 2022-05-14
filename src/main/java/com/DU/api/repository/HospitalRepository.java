@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HospitalRepository extends JpaRepository<Hospital, Long> {
-    Hospital findById(Integer hosipitalId);
+    
+    @Query("SELECT h FROM Hospital h WHERE h.id =?1")
+     Hospital findByHospitalId(Long hosipitalId);
 
     @Query("SELECT h FROM Hospital h WHERE h.phoneNumber =?1")
     Hospital findHospitalByPhoneNumber(String hospitalPhoneNumber);

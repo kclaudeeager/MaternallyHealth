@@ -29,7 +29,9 @@ public class Department extends AuditModel{
       this.department_name =department_name;
       this.hospital_id =hospital_id;
     }
-
+public Department(){
+    
+}
     /**
      * @return Long return the id
      */

@@ -47,12 +47,13 @@ public class MotherController {
     Logger log = LoggerFactory.getLogger(MotherController.class);
     User user;
 
-    @Operation(summary = "This is to add new mother to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+  
+    @Operation(summary = "This is to add new Mother to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "add new mother to the  Database", content = {
-                    @Content(mediaType = "application/json") }),
-            @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
-            @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
+        @ApiResponse(responseCode = "200", description = "add new mother to the  Database", content = {
+            @Content(mediaType = "application/json") }),
+        @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
+        @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
     @PostMapping("/add")
     public Mother createMother(HttpServletRequest request, @Valid @RequestBody Mother mother) {
@@ -63,8 +64,9 @@ public class MotherController {
         if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN")) {
             String activity = "Register new mother";
             logsService.savelog(useremail, activity);
+
             log.info("{} Registered new mother ", useremail);
-             mother.setRegisterId(Integer.parseInt(request.getAttribute("userId").toString()));
+            mother.setRegisterId(Long.parseLong(request.getAttribute("userId").toString()));
             return motherRepository.save(mother);
         } else {
             log.warn("{} Tried Create new mother but was not authorised ", useremail);
@@ -175,7 +177,8 @@ public class MotherController {
                 || role.equals("MOTHER")) {
             String useremail = request.getAttribute("email").toString();
             // staff staff = staffRepository.findStaffByEmail(email);
-            //Integer userId = Integer.parseInt(request.getAttribute("user_id").toString());
+            // Integer userId =
+            // Integer.parseInt(request.getAttribute("user_id").toString());
             // User user = userRepository.findByUserId(Integer.parseInt(motherId));
             Mother mother = motherRepository.findMotherByPhoneNumber(phoneNumParameters.get("phone"));
             String activity;

@@ -65,8 +65,8 @@ public class DepartmentController {
             String activity = "Register new Health advisor";
             logsService.savelog(useremail, activity);
             log.info("{} Registered new Health advisor ", useremail);
-             Hospital hospital=hospitalRepository.findById((int)(department.getHospital_id()).longValue());
-             Integer userId=Integer.parseInt(request.getParameter("userId").toString());
+             Hospital hospital=hospitalRepository.findByHospitalId(department.getHospital_id());
+             //Integer userId=Integer.parseInt(request.getParameter("userId").toString());
              
              if(hospital==null)
                 throw new ResourceNotFoundException("Hospital not found with id " + department.getHospital_id());

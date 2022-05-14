@@ -65,8 +65,8 @@ public class HealthAdvisorController {
         if (role.equals("ADMIN") || role.equals("HOSPITAL_ADMIN")) {
             String activity = "Register new Health advisor";
             logsService.savelog(useremail, activity);
-
-            Hospital hospital = hospitalRepository.findById(healthAdvisor.getHospital_id());
+            System.out.println("Healthadvisor hospital id is long:"+healthAdvisor.getHospital_id());
+            Hospital hospital = hospitalRepository.findByHospitalId((healthAdvisor.getHospital_id()));
             // Integer userId=Integer.parseInt(request.getParameter("userId").toString());
 
             if (hospital == null)
@@ -172,7 +172,7 @@ public class HealthAdvisorController {
                     : healthAdvisorDetails.getIdnumber());
             healthAdvisor.setResidance(healthAdvisorDetails.getResidance() == null ? healthAdvisor.getResidance()
                     : healthAdvisorDetails.getResidance());
-            healthAdvisor.setHospital_id(healthAdvisorDetails.getHospital_id() == 0 ? healthAdvisor.getHospital_id()
+            healthAdvisor.setHospital_id(healthAdvisorDetails.getHospital_id() == null ? healthAdvisor.getHospital_id()
                     : healthAdvisorDetails.getHospital_id());
             final HealthAdvisor updatedhealthAdvisor = healthAdvisorRepository.save(healthAdvisor);
             String activity = "updated healthAdvisor: " + healthAdvisorPhoneNum;
