@@ -34,7 +34,7 @@ public class HealthAdvisor extends AuditModel {
     @Column(name = "idnumber" , nullable = false, length = 16,unique = true)
     private String idnumber;
 
-    @Column(name = "email", unique = true, nullable = true)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @Column(name = "Age", nullable = false)

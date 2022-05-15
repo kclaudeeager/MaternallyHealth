@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 public interface TipsRepository extends JpaRepository<Tips,Long> {
     @Query("SELECT t FROM Tips t WHERE t.tip_name =?1")
     List<Tips> getTipsByName(String tipName);
+    @Query("SELECT t FROM Tips t WHERE t.id =?1")
+    Tips findByTipId(Long tipId);
   
 
 }
