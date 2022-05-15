@@ -15,6 +15,8 @@ import org.springframework.stereotype.Repository;
 public interface MotherRepository extends JpaRepository<Mother, Long> {
 
     Mother findById(Integer motherID);
+    @Query("SELECT m FROM Mother m WHERE m.id =?1")
+    Mother findByMotherId(Long motherID);
     @Query("SELECT m FROM Mother m WHERE m.hospitalId =?1")
     List<Mother> findAllByHospitallId(Long hospitalId);
 

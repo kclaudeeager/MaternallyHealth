@@ -11,9 +11,8 @@ import org.springframework.stereotype.Repository;
 public interface DoctorAdviceRepository 
  extends JpaRepository<DOctorAdvise, Long>  {
         DOctorAdvise  findByAdviceId(Integer adviceId);
-    // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b WHERE b.branchname=?1")
-    // List<String> findBranchByName(String branchname);
-
+    @Query("SELECT d FROM DOctorAdvise d WHERE d.motherId =?1")
+    List<DOctorAdvise> findAllByMotherId(Long motherId); //(Long hospitalId);
     // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b ")
     // List<Object> findAllBranch();
 

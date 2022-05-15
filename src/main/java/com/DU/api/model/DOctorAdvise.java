@@ -24,70 +24,59 @@ public class  DOctorAdvise extends AuditModel {
     
     @Column(name = "advise")
     private String advise;
-    @Column(name = "createdBy")
+    @Column(name = "createdBy", nullable = false)
     private String createdBy;
     @Column(name = "motherId")
-    private String motherId;
+    private Long motherId;
+    @Column(name = "hospitalId")
+    private Long hospitalId;
     
     public DOctorAdvise() {
     }
 
-    public DOctorAdvise(Long adviceId, String advise,String motherId,String createdBy) {
+    public DOctorAdvise(Long adviceId, String advise,Long motherId,String createdBy,Long hospitalId) {
         this.adviceId = adviceId;
         this.advise = advise;
         this.motherId = motherId;
         this.createdBy = createdBy;
+        this.hospitalId=hospitalId;
     }
 
+
+  
+
+
+
+    /**
+     * @return Long return the adviceId
+     */
     public Long getAdviceId() {
-        return this.adviceId;
+        return adviceId;
     }
 
+    /**
+     * @param adviceId the adviceId to set
+     */
     public void setAdviceId(Long adviceId) {
         this.adviceId = adviceId;
     }
 
+    /**
+     * @return String return the advise
+     */
     public String getAdvise() {
-        return this.advise;
+        return advise;
     }
 
+    /**
+     * @param advise the advise to set
+     */
     public void setAdvise(String advise) {
         this.advise = advise;
     }
 
-    public DOctorAdvise adviceId(Long adviceId) {
-        setAdviceId(adviceId);
-        return this;
-    }
-
-   
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof DOctorAdvise)) {
-            return false;
-        }
-        DOctorAdvise dOctorAdvise = (DOctorAdvise) o;
-        return Objects.equals(adviceId, dOctorAdvise.adviceId) && Objects.equals(advise, dOctorAdvise.advise);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(adviceId, advise);
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " adviceId='" + getAdviceId() + "'" +
-            ", advise='" + getAdvise() + "'" +
-            "}";
-    }
-
     /**
-     * @return Long return the createdBy
+     * @return String return the createdBy
      */
     public String getCreatedBy() {
         return createdBy;
@@ -101,17 +90,31 @@ public class  DOctorAdvise extends AuditModel {
     }
 
     /**
-     * @return Long return the motherId
+     * @return String return the motherId
      */
-    public String getMotherId() {
+    public Long getMotherId() {
         return motherId;
     }
 
     /**
      * @param motherId the motherId to set
      */
-    public void setMotherId(String motherId) {
+    public void setMotherId(Long motherId) {
         this.motherId = motherId;
+    }
+
+    /**
+     * @return Long return the hospitalId
+     */
+    public Long getHospitalId() {
+        return hospitalId;
+    }
+
+    /**
+     * @param hospitalId the hospitalId to set
+     */
+    public void setHospitalId(Long hospitalId) {
+        this.hospitalId = hospitalId;
     }
 
 }

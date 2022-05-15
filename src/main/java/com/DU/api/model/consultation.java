@@ -21,51 +21,124 @@ public class consultation extends AuditModel {
     @Column(name = "Consultation_ID")
     private Long id;
 
-    @Column(name = "ConsultationType")
+    @Column(name = "ConsultationType" , nullable = false)
     private String ConsultationType;
+    
+    @Column(name = "description" , nullable = false)
+    private String description;
 
     @Column(name = "staffId", nullable = false)
     private Integer staffId;
 
+    @Column(name = "patient_id", nullable = false)
+    private Integer patientId;
+
+    @Column(name = "hospitalId", nullable = false)
+    private Long hospitalId;
 
     public consultation() {
         super();
     }
 
-    public consultation(Integer staffId, String ConsultationType) {
+    public consultation(Integer staffId, String ConsultationType, String departmentId,Integer patientId,Long hospitalId) {
         super();
         this.staffId = staffId;
        
         this.ConsultationType = ConsultationType;
-    
+        this.description= description;
+        this.patientId = patientId;
+        this.hospitalId = hospitalId;
      
 
     }
 
-    public consultation(String ConsultationType) {
-        super();
-        this.ConsultationType = ConsultationType;
 
-    }
 
+
+
+
+    /**
+     * @return Long return the id
+     */
     public Long getId() {
         return id;
     }
 
-    public String getConsultationType() {
-        return ConsultationType;
-    }
-
+    /**
+     * @param id the id to set
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getstaffId() {
+    /**
+     * @return String return the ConsultationType
+     */
+    public String getConsultationType() {
+        return ConsultationType;
+    }
+
+    /**
+     * @param ConsultationType the ConsultationType to set
+     */
+    public void setConsultationType(String ConsultationType) {
+        this.ConsultationType = ConsultationType;
+    }
+
+    /**
+     * @return String return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return Integer return the staffId
+     */
+    public Integer getStaffId() {
         return staffId;
     }
 
-    public void setstaffId(Integer staffId) {
+    /**
+     * @param staffId the staffId to set
+     */
+    public void setStaffId(Integer staffId) {
         this.staffId = staffId;
+    }
+
+    /**
+     * @return Integer return the patientId
+     */
+    public Integer getPatientId() {
+        return patientId;
+    }
+
+    /**
+     * @param patientId the patientId to set
+     */
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
+
+    /**
+     * @return Long return the hospitalId
+     */
+    public Long getHospitalId() {
+        return hospitalId;
+    }
+
+    /**
+     * @param hospitalId the hospitalId to set
+     */
+    public void setHospitalId(Long hospitalId) {
+        this.hospitalId = hospitalId;
     }
 
 }

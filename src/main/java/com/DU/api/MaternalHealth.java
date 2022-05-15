@@ -62,7 +62,8 @@ public class MaternalHealth {
                 "/api/v1/mothers/*",
                 "/api/v1/hospital/*",
                 "/api/v1/HealthAdvisor/*",
-                "/api/v1/department/*");
+                "/api/v1/department/*",
+                "/api/v1/DoctorAdvise/*");
         return registrationBean;
     }
 }

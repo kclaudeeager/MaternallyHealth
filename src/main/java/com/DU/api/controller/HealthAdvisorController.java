@@ -179,7 +179,7 @@ public class HealthAdvisorController {
             logsService.savelog(useremail, activity);
             return ResponseEntity.ok(updatedhealthAdvisor);
         } else {
-            throw new AuthException("Only admins and  can update hospital data :: ");
+            throw new AuthException("Only admins and  can update healthAdvisor data :: ");
         }
     }
 

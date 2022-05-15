@@ -26,7 +26,7 @@ public class Tips extends AuditModel {
     @Column(name = "tip_name", nullable = false)
     private String tip_name;
 
-    @Column(name = "title")
+    @Column(name = "title" , nullable = false, unique = true)
     private String title;
 
     @Column(name = "description", nullable = false)
