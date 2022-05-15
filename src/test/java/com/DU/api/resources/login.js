@@ -16,7 +16,7 @@ function loginUser(){
       redirect: 'follow'
     };
     
-    fetch("http://localhost:8080/api/v1/User/login", requestOptions)
+    fetch("https://maternally-health-backend.herokuapp.com/api/v1/User/login", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result.toString()))
       .catch(error => console.log('error', error));
