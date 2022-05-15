@@ -56,6 +56,7 @@ public class UserService {
         String email = user.getEmail();
         String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(10));
         user.setPassword(hashedPassword);
+        user.setstatus(0);
         if (email != null)
             email = email.toLowerCase();
         if (!pattern.matcher(email).matches())
