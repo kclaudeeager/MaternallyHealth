@@ -3,6 +3,7 @@ package com.DU.api.controller;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +59,7 @@ public class MotherController {
             @Content(mediaType = "application/json") }),
         @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
         @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
-    @PostMapping(value="/add", consumes={"application/json"})
+    @PostMapping("/add")
     public Mother createMother(HttpServletRequest request, @Valid @RequestBody Mother mother) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
@@ -67,18 +68,29 @@ public class MotherController {
         if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN")) {
             String activity = "Register new mother";
             logsService.savelog(useremail, activity);
-             if(mother.getStatus()!= null || !mother.getStatus().equals("")){
-                 boolean success = false;
-                 for(String status : Constants.STATAS)
-                    {
-                      if(status.equals(mother.getStatus()))
-                        success = true;
-                    }
-                    if(!success)
-                       throw new IllegalStateException("Status must be in these types: " + Constants.STATAS);
-             }
-             if(mother.getStatus().equals(null) || mother.getStatus().equals(""))
-                mother.setstatus(Constants.STATAS[0]);   
+            
+                System.out.println("Status: " + mother.getStatus());
+             if(mother.getStatus()==null || mother.getStatus()=="")
+                mother.setStatus(Constants.STATAS[0]);  
+                
+            else{
+                boolean success = false;
+                for(String status : Constants.STATAS)
+                   {
+                     if(status.equals(mother.getStatus()))
+                       success = true;
+                   }
+                   if(!success)
+                      throw new IllegalStateException("Status must be in these types: " + Arrays.toString(Constants.STATAS));
+            
+            }
+            Hospital hospital= hospitalRepository.findByHospitalId(mother.getHospitalId());
+          
+            if(hospital==null){
+                throw new ResourceNotFoundException("no such hospital found for  id" + mother.getHospitalId());
+            }
+            else
+            System.out.println("Hospital: "+hospital.toString());
             log.info("{} Registered new mother ", useremail);
             mother.setRegisterId(Long.parseLong(request.getAttribute("userId").toString()));
             return motherRepository.save(mother);
@@ -191,8 +203,8 @@ public class MotherController {
             mother.setPhoneNumber(motherDetails.getPhoneNumber()== null ? mother.getPhoneNumber():motherDetails.getPhoneNumber());
             mother.setFirstName(motherDetails.getFirstName()== null ? mother.getFirstName():motherDetails.getFirstName());
             mother.setLastName(motherDetails.getLastName()== null ? mother.getLastName():motherDetails.getLastName());
-            mother.setstatus(motherDetails.getStatus()== null ? mother.getStatus():motherDetails.getStatus());
-            mother.setresidance(motherDetails.getResidance()== null ? mother.getResidance():motherDetails.getResidance());
+            mother.setStatus(motherDetails.getStatus()== null ? mother.getStatus():motherDetails.getStatus());
+            mother.setResidance(motherDetails.getResidance()== null ? mother.getResidance():motherDetails.getResidance());
             final Mother updatedMother = motherRepository.save(mother);
             String activity = "updated mother: " +phoneNum;
             logsService.savelog(useremail, activity);
@@ -219,7 +231,7 @@ public class MotherController {
             if (mother == null) {
                 throw new ResourceNotFoundException("mother  not found :: " +phoneNumber);
             }
-            mother.setstatus(statusParams.get("status"));
+            mother.setStatus(statusParams.get("status"));
             final Mother updatedMother = motherRepository.save(mother);
             String activity = "updated mother: " + phoneNumber;
             logsService.savelog(useremail, activity);

@@ -36,13 +36,14 @@ public class staff extends AuditModel {
 
     @Column(name = "DepartmentId", nullable = false)
     private Long departmentId;
- 
+    @Column(name = "hospitalId", nullable = false)
+    private Long hospitalId;
     public staff() {
         super();
     }
 
     public staff(String email, String firstName, String lastName, String phoneNumber, String idtype, String idnumber,
-            String title, Long departmentId, String workingDays) {
+            String title, Long departmentId, Long hospitalId) {
         super();
         this.email = email;
         this.firstName = firstName;
@@ -50,6 +51,7 @@ public class staff extends AuditModel {
         this.phoneNumber = phoneNumber;
         this.title = title;
         this.departmentId = departmentId;
+        this.hospitalId = hospitalId;
     }
 
     public Long getId() {
@@ -111,6 +113,12 @@ public class staff extends AuditModel {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+    public void setHospitalId(Long hospitalId) {
+        this.hospitalId =hospitalId;
+    }
+    public Long getHospitalId() {
+        return hospitalId;
     }
 
 }

@@ -13,9 +13,12 @@ import javax.validation.Valid;
 import com.DU.api.exception.AuthException;
 import com.DU.api.exception.ResourceNotFoundException;
 import com.DU.api.model.staff;
+import com.DU.api.model.Department;
+import com.DU.api.model.Hospital;
 import com.DU.api.model.User;
 import com.DU.api.service.LogsService;
 import com.DU.api.repository.DepartmentRepository;
+import com.DU.api.repository.HospitalRepository;
 import com.DU.api.repository.StaffRepository;
 
 import org.slf4j.Logger;
@@ -44,6 +47,8 @@ public class StaffController {
   private StaffRepository staffRepository;
 @Autowired
 private DepartmentRepository departmentRepository;
+@Autowired
+private HospitalRepository hospitalRepository;
   @Autowired
   LogsService logsService;
   Logger log = LoggerFactory.getLogger(StaffController.class);
@@ -62,19 +67,23 @@ private DepartmentRepository departmentRepository;
     // System.out.println("role: -------- " + role);
     //int i = Integer.parseInt(role);
     String useremail = request.getAttribute("email").toString();
-    if (role.equals("ADMIN")) {
+    if (role.equals("ADMIN")|| role.equals("HOSPITAL_ADMIN")) {
       String activity = "created new staff";
 
-      Optional<com.DU.api.model.Department> department=departmentRepository.findById(staff.getdepartmentId());
+      Department department=departmentRepository.findByDepartmentId(staff.getdepartmentId());
       if(department==null) {
         throw new ResourceNotFoundException("department  not found :: "+staff.getdepartmentId());
+      }
+      Hospital hospital= hospitalRepository.findByHospitalId(staff.getHospitalId());
+      if(hospital==null){
+        throw new ResourceNotFoundException(" hospital  not found for such hospital id:: "+staff.getHospitalId());
       }
       logsService.savelog(useremail, activity);
       log.info("{} Created new staff ", useremail);
       return staffRepository.save(staff);
     } else {
       log.warn("{} Tried Create new staff but was not authorised ", useremail);
-      throw new AuthException("Only admin can create a new staff :: ");
+      throw new AuthException("Only admins can create a new staff :: ");
     }
 
   }
@@ -92,14 +101,14 @@ private DepartmentRepository departmentRepository;
     String email = request.getAttribute("email").toString();
     System.out.println("role: -------- " + role);
     //int i = Integer.parseInt(role);
-    if (role.equals("ADMIN")) {
+    if (role.equals("ADMIN") || role.equals("HOSPITAL_ADMIN")) {
 
       String activity = "veiwed all  staffs details";
 
       logsService.savelog(email, activity);
       return staffRepository.findAll();
     } else {
-      throw new AuthException("Only admin and  can view staff data :: ");
+      throw new AuthException("Only admins and  can view staff data :: ");
     }
   }
 

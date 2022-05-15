@@ -40,7 +40,7 @@ public class User {
 	private Integer status;
 
 	public User() {
-
+       
 	}
 
 	public User(String firstName, String lastName, String email, String password, Integer status) {

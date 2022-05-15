@@ -76,89 +76,21 @@ public class Mother extends AuditModel {
        
     }
 
+  
+
+
+    /**
+     * @return Long return the id
+     */
     public Long getId() {
         return id;
     }
 
-    public Double getheight() {
-        return height;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getstatus() {
-        return status;
-    }
-
-    public void setstatus(String status) {
-        this.status = status;
-
-    }
-
-    public String getresidance() {
-        return residance;
-    }
-
-    public void setresidance(String residance) {
-        this.residance = residance;
-    }
-
-    public void setidnumber(String idnumber) {
-        this.idnumber = idnumber;
-    }
-
-    public String getidnumber() {
-        return idnumber;
-    }
-
+    /**
+     * @param id the id to set
+     */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getage() {
-        return age;
-    }
-
-    public void setage(String age) {
-        this.age = age;
-    }
-
-    public Double getweight() {
-        return weight;
-    }
-
-    public void setweight(Double weight) {
-        this.weight = weight;
     }
 
     /**
@@ -176,6 +108,20 @@ public class Mother extends AuditModel {
     }
 
     /**
+     * @return String return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
      * @return String return the age
      */
     public String getAge() {
@@ -187,6 +133,48 @@ public class Mother extends AuditModel {
      */
     public void setAge(String age) {
         this.age = age;
+    }
+
+    /**
+     * @return String return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return String return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * @return String return the phoneNumber
+     */
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * @param phoneNumber the phoneNumber to set
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     /**
@@ -232,13 +220,25 @@ public class Mother extends AuditModel {
     }
 
     /**
-     * @return Integer return the status
+     * @return String return the status
      */
     public String getStatus() {
         return status;
     }
 
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
+    /**
+     * @return Long return the registerId
+     */
+    public Long getRegisterId() {
+        return registerId;
+    }
 
     /**
      * @param registerId the registerId to set
@@ -246,7 +246,6 @@ public class Mother extends AuditModel {
     public void setRegisterId(Long registerId) {
         this.registerId = registerId;
     }
-
 
     /**
      * @return Long return the hospitalId

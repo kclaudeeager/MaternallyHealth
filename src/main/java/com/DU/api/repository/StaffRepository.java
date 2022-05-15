@@ -11,4 +11,5 @@ public interface StaffRepository extends JpaRepository<staff, Long> {
 
     @Query("SELECT s FROM staff s WHERE s.email=?1")
     staff findStaffByEmail(String emailAddress);
+  
 }

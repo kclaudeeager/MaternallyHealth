@@ -1,6 +1,8 @@
 package com.DU.api.controller;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -186,7 +188,7 @@ public class UserController {
 	@PutMapping("/setrole/{email}")
 	public ResponseEntity<User> updateuser(HttpServletRequest request,
 			@PathVariable(value = "email") String email,
-			@Valid @RequestBody User userDetails) {
+			@Valid @RequestBody Map<String, String> roleParameters){
 
 		String role = request.getAttribute("role").toString();
 		System.out.println("role: --------  " + role);
@@ -198,12 +200,20 @@ public class UserController {
 				throw new ResourceNotFoundException("User not found :: " + email);
 			}
 
-			user.setFirstName(userDetails.getFirstName() != null ? userDetails.getFirstName() : user.getFirstName());
-			user.setLastName(userDetails.getLastName() != null ? userDetails.getLastName() : user.getLastName());
-			user.setEmail(userDetails.getEmail() != null ? userDetails.getEmail() : user.getEmail());
-			user.setPassword(userDetails.getPassword() != null ? userDetails.getPassword() : user.getPassword());
-			user.setRole(userDetails.getRole());
-			user.setstatus(userDetails.getstatus() != null ? userDetails.getstatus() : user.getstatus());
+            if(roleParameters.get("role")!= null){
+				boolean check= false;
+				for(String userRole : Constants.ROLES){
+					  
+                       if(userRole.equals(roleParameters.get("role")))
+					   check= true;
+					   System.out.println("is check tre? "+check);
+					   System.out.println("role: --------"+userRole);
+				}
+				if(!check)
+				  throw new IllegalStateException("the role should be in " + Arrays.toString(Constants.ROLES));
+			}
+			user.setRole(roleParameters.get("role")==null? user.getRole() : roleParameters.get("role"));
+		
 			final User updatedUser = userRepository.save(user);
 			String activity = "Updated " + email + "'s role";
 			String useremail = request.getAttribute("email").toString();
