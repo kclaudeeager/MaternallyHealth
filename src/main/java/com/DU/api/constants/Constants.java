@@ -8,4 +8,6 @@ public class Constants {
 	public static final String[] ROLES={"NONE","ADMIN","HOSPITAL_ADMIN","DOCTOR","NURSE","RECEPTIONIST","HEALTH_ADVISOR","MOTHER"};
 	public static final String[] TIP_NAMES={"DIET","SPORT","ADVISE","MEDICAL"};
 	public static final String[] PATIENT_TYPES={"MOTHER","BABY"};
+
+    public static final String[] RENDEZ_VOUS_FEEDBACK = {"YES","NO"};
 }

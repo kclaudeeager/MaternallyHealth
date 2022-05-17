@@ -1,5 +1,7 @@
 package com.DU.api.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import com.DU.api.model.Mother;
@@ -12,29 +14,14 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface Rendez_Vous_Repository extends JpaRepository<Rendez_vous, Long> {
-    Mother findById(Integer motherID);
+    @Query("SELECT r FROM Rendez_vous r WHERE r.id=?1")
+    Rendez_vous findRendezvousById(Long id);
+    @Query("SELECT r FROM Rendez_vous r WHERE r.mother_id=?1")
+    List<Rendez_vous> findAllByMotherId(Long mother_id);
+    @Query("SELECT r FROM Rendez_vous r WHERE r.hospitalId=?1")
+    List<Rendez_vous> findAllByHospitallId(Long hospitalId);
+    @Query("SELECT r FROM Rendez_vous r WHERE r.feedback=?1")
+    List<Rendez_vous> findAllByFeedback(String feedback);
 
-//@Query("SELECT c FROM client c WHERE c.email=?1")
-   // Mother findMotherByEmail(String emailAddress);
 
-    // @Query("SELECT c FROM client c WHERE c.idnumber=?1")
-    // Mother findclientByIdnumber(String idnumber);
-
-    // @Query("SELECT c FROM client c WHERE c.phoneNumber =?1")
-    // Mother findclientByPhoneNumber(String phoneNumber);
-
-    // @Transactional
-    // @Modifying
-    // @Query("update client c set c.balance =?1 where c.idnumber =?2")
-    // void setbalanceForClient(Integer amount, String idnumber);
-
-    // @Transactional
-    // @Modifying
-    // @Query("update client c set c.balance = ?1 where c.accountnumber = ?2")
-    // void setbalanceForClientByAccount(Integer amount, String accountnumber);
-
-    // @Transactional
-    // @Modifying
-    // @Query("update client c set c.balance =?1 where c.phoneNumber =?2")
-    // void setbalanceForClientByPhonenumber(Integer amount, String phonenumber)
 }

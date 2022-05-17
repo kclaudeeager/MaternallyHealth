@@ -18,6 +18,7 @@ import com.DU.api.exception.ResourceNotFoundException;
 import com.DU.api.model.*;
 import com.DU.api.repository.*;
 import com.DU.api.service.LogsService;
+import com.DU.api.service.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +53,8 @@ public class MotherController {
     private HospitalRepository hospitalRepository;
     Logger log = LoggerFactory.getLogger(MotherController.class);
     User user;
-
+    @Autowired
+    UserService userService;
     @Operation(summary = "This is to add new mother to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "add new mother to the  Database", content = {
@@ -93,6 +95,14 @@ public class MotherController {
             System.out.println("Hospital: "+hospital.toString());
             log.info("{} Registered new mother ", useremail);
             mother.setRegisterId(Long.parseLong(request.getAttribute("userId").toString()));
+            User user=new User(mother.getFirstName(), mother.getLastName(), mother.getEmail(), mother.getPhoneNumber(),0);
+            user.setRole("MOTHER");
+             try {
+                userService.registerUser(user);
+            } catch (javax.security.auth.message.AuthException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             return motherRepository.save(mother);
         } else {
             log.warn("{} Tried Create new mother but was not authorised ", useremail);

@@ -33,6 +33,8 @@ public interface MotherRepository extends JpaRepository<Mother, Long> {
     @Modifying
     @Query("update Mother m set m.status =?1 where m.phoneNumber =?2")
     void updateMotherStatus(String status, String phoneNumber);
+    @Query("SELECT m FROM Mother m WHERE m.email =?1")
+    Mother findbyMotherEmailAddress(String email);
 
     // @Transactional
     // @Modifying
