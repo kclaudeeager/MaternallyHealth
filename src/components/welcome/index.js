@@ -56,7 +56,7 @@ export default function HomePage(){
                         <div className="row align-items-center">
                             <div className="col-xl-4 col-lg-3">
                                 <div className="logo">
-                                    <a href="index.html">
+                                    <a href="/">
                                         <img loading="lazy" className="img-fluid" src="images/logo.png" alt="logo"/>
                                     </a>
                                 </div>
@@ -84,7 +84,7 @@ export default function HomePage(){
                                         </li>
                                     </ul>
                                     <div className="link-btn text-center text-lg-right">
-                                        <a href="contact.html" className="btn-style-one">Appoinment</a>
+                                        <a href="/" className="btn-style-one">Appoinment</a>
                                     </div>
                                 </div>
                             </div>
@@ -101,69 +101,17 @@ export default function HomePage(){
 
                         <div className="collapse navbar-collapse" id="navbarLinks">
                             <ul className="navbar-nav">
-                                <li className="nav-item active">
-                                    <a className="nav-link" href="index.html">Home</a>
-                                </li>
-                                <li className="nav-item @@about">
-                                    <a className="nav-link" href="about.html">About</a>
-                                </li>
-                                <li className="nav-item @@service">
-                                    <a className="nav-link" href="service.html">Service</a>
-                                </li>
-                                <li className="nav-item @@gallery">
-                                    <a className="nav-link" href="gallery.html">Gallery</a>
-                                </li>
-                                <li className="nav-item @@team">
-                                    <a className="nav-link" href="team.html">Team</a>
-                                </li>
                                 <li className="nav-item @@appointment">
-                                    <a className="nav-link" href="appointment.html">Appointment</a>
-                                </li>
-                                <li className="nav-item dropdown @@blogs">
-                                    <a className="nav-link dropdown-toggle" href="#!" id="navbarDropdown" role="button"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blogs</a>
-
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item @@blog" href="blog.html">Blog</a></li>
-                                        <li><a className="dropdown-item @@blogDetails" href="blog-details.html">Blog
-                                            Details</a></li>
-                                        <li className="dropdown dropdown-submenu dropright">
-                                            <a className="dropdown-item dropdown-toggle" href="#!" id="navbarDropdown"
-                                               role="button" data-toggle="dropdown" aria-haspopup="true"
-                                               aria-expanded="false">Sub Menu</a>
-
-                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><a className="dropdown-item" href="index.html">Submenu 01</a></li>
-                                                <li><a className="dropdown-item" href="index.html">Submenu 02</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                    <a className="nav-link" href="">Login</a>
                                 </li>
                                 <li className="nav-item @@contact">
-                                    <a className="nav-link" href="contact.html">Contact</a>
+                                    <a className="nav-link" href="">Sign Up</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
                 <div className="hero-slider">
-                    <div className={"slider-item slide1 "+classes.slide1A}>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="content style text-center">
-                                        <h2 className="text-white text-bold mb-2" data-animation-in="slideInLeft">Our
-                                            Best Surgeons</h2>
-                                        <p className="tag-text mb-4" data-animation-in="slideInRight">Lorem ipsum dolor
-                                            sit amet consectetur adipisicing elit. Vel sunt animi sequi ratione quod at
-                                            earum. <br/> Quis quos officiis numquam!</p>
-                                        <a href="about.html" className="btn btn-main btn-white"
-                                           data-animation-in="slideInLeft" data-duration-in="1.2">explore</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div className={"slider-item "+classes.slideItem1} >
                         <div className="container">
                             <div className="row">
@@ -174,50 +122,34 @@ export default function HomePage(){
                                         <p className="tag-text mb-4" data-animation-in="slideInRight"
                                            data-duration-in="0.6">Lorem ipsum dolor sit amet consectetur adipisicing
                                             elit. </p>
-                                        <a href="about.html" className="btn btn-main btn-white"
+                                        <a href="" className="btn btn-main btn-white"
                                            data-animation-in="slideInRight" data-duration-in="1.2">about us</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className={"slider-item "+classes.slideItem2} >
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="content text-center style">
-                                        <h2 className="text-white text-bold mb-2" data-animation-in="slideInRight">Best
-                                            Medical Services</h2>
-                                        <p className="tag-text mb-4" data-animation-in="slideInLeft">Lorem ipsum dolor
-                                            sit amet consectetur adipisicing elit. Beatae deserunt, <br/>eius pariatur
-                                                minus itaque nostrum.</p>
-                                        <a href="about.html" className="btn btn-main btn-white"
-                                           data-animation-in="slideInRight" data-duration-in="1.2">shop now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
                 <section className="cta">
                     <div className="container">
                         <div className="cta-block row no-gutters">
-                            <div className="col-lg-4 col-md-6 emmergency item">
+                            <div className="col-lg-4 col-md-4 emmergency item">
                                 <i className="fa fa-phone"></i>
                                 <h2>Emegency Cases</h2>
                                 <a href="tel:1-800-700-6200">1-800-700-6200</a>
                                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
                             </div>
-                            <div className="col-lg-4 col-md-6 top-doctor item">
+                            <div className="col-lg-4 col-md-4 top-doctor item">
                                 <i className="fa fa-stethoscope"></i>
                                 <h2>24 Hour Service</h2>
                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore dignissimos
                                     officia dicta suscipit
                                     vel eum</p>
-                                <a href="service.html" className="btn btn-main">Read more</a>
+                                <a href="" className="btn btn-main">Read more</a>
                             </div>
-                            <div className="col-lg-4 col-md-12 working-time item">
+                            <div className="col-lg-4 col-md-4 working-time item">
                                 <i className="fa fa-hourglass-o"></i>
                                 <h2>Working Hours</h2>
                                 <ul className="w-hours">
@@ -246,7 +178,7 @@ export default function HomePage(){
                                             <div className="item">
                                                 <div className="icon-box">
                                                     <figure>
-                                                        <a href="services.html"><img loading="lazy"
+                                                        <a href=""><img loading="lazy"
                                                                                      src="images/resource/1.png"
                                                                                      alt="features image" /></a>
                                                     </figure>
@@ -263,7 +195,7 @@ export default function HomePage(){
                                             <div className="item">
                                                 <div className="icon-box">
                                                     <figure>
-                                                        <a href="services.html">
+                                                        <a href="">
                                                             <img loading="lazy" src="images/resource/2.png"
                                                                  alt="features image" />
                                                         </a>
@@ -281,7 +213,7 @@ export default function HomePage(){
                                             <div className="item">
                                                 <div className="icon-box">
                                                     <figure>
-                                                        <a href="services.html">
+                                                        <a href="">
                                                             <img loading="lazy" src="images/resource/3.png"
                                                                  alt="features image" />
                                                         </a>
@@ -299,7 +231,7 @@ export default function HomePage(){
                                             <div className="item">
                                                 <div className="icon-box">
                                                     <figure>
-                                                        <a href="services.html">
+                                                        <a href="">
                                                             <img loading="lazy" src="images/resource/4.png"
                                                                  alt="features image"/>
                                                         </a>
@@ -331,25 +263,6 @@ export default function HomePage(){
                                                 <a className="nav-link active" id="dormitory-tab" data-toggle="tab"
                                                    href="#dormitory" role="tab" aria-controls="dormitory"
                                                    aria-selected="true">dormitory</a>
-                                            </li>
-                                            <li className="nav-item" role="presentation">
-                                                <a className="nav-link" id="orthopedic-tab" data-toggle="tab"
-                                                   href="#orthopedic" role="tab" aria-controls="orthopedic"
-                                                   aria-selected="false">orthopedic</a>
-                                            </li>
-                                            <li className="nav-item" role="presentation">
-                                                <a className="nav-link" id="sonogram-tab" data-toggle="tab"
-                                                   href="#sonogram" role="tab" aria-controls="sonogram"
-                                                   aria-selected="false">sonogram</a>
-                                            </li>
-                                            <li className="nav-item" role="presentation">
-                                                <a className="nav-link" id="x-ray-tab" data-toggle="tab" href="#x-ray"
-                                                   role="tab" aria-controls="x-ray" aria-selected="false">x-ray</a>
-                                            </li>
-                                            <li className="nav-item" role="presentation">
-                                                <a className="nav-link" id="diagnostic-tab" data-toggle="tab"
-                                                   href="#diagnostic" role="tab" aria-controls="diagnostic"
-                                                   aria-selected="false">diagnostic</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -393,187 +306,7 @@ export default function HomePage(){
                                                                 involves
                                                             </li>
                                                         </ul>
-                                                        <a href="services.html" className="btn btn-style-one">Read
-                                                            more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="service-box tab-pane fade" id="orthopedic">
-                                            <div className="row">
-                                                <div className="col-lg-6">
-                                                    <img loading="lazy" className="img-fluid"
-                                                         src="images/services/service-two.jpg" alt="service-image"/>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <div className="contents">
-                                                        <div className="section-title">
-                                                            <h3>orthopedic</h3>
-                                                        </div>
-                                                        <div className="text">
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added.
-                                                                then a dental prosthetic is added.then a dental pros-
-                                                                thetic is added.</p>
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added.
-                                                                then a dental prosthetic is added.then a dental pros-
-                                                                thetic is added.</p>
-                                                        </div>
-                                                        <ul className="content-list">
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Whitening is among
-                                                                the most popular dental
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                        </ul>
-                                                        <a href="services.html" className="btn btn-style-one">Read
-                                                            more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="service-box tab-pane fade" id="sonogram">
-                                            <div className="row">
-                                                <div className="col-lg-6">
-                                                    <img loading="lazy" className="img-fluid"
-                                                         src="images/services/service-three.jpg" alt="service-image"/>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <div className="contents">
-                                                        <div className="section-title">
-                                                            <h3>sonogram</h3>
-                                                        </div>
-                                                        <div className="text">
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added.
-                                                                then a dental prosthetic is added.then a dental pros-
-                                                                thetic is added.</p>
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added.
-                                                                then a dental prosthetic is added.then a dental pros-
-                                                                thetic is added.</p>
-                                                        </div>
-                                                        <ul className="content-list">
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Whitening is among
-                                                                the most popular dental
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                        </ul>
-                                                        <a href="services.html" className="btn btn-style-one">Read
-                                                            more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="service-box tab-pane fade" id="x-ray">
-                                            <div className="row">
-                                                <div className="col-lg-6">
-                                                    <img loading="lazy" className="img-fluid"
-                                                         src="images/services/service-four.jpg" alt="service-image"/>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <div className="contents">
-                                                        <div className="section-title">
-                                                            <h3>x-ray</h3>
-                                                        </div>
-                                                        <div className="text">
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added.
-                                                                then a dental prosthetic is added.then a dental pros-
-                                                                thetic is added.</p>
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added.
-                                                                then a dental prosthetic is added.then a dental pros-
-                                                                thetic is added.</p>
-                                                        </div>
-                                                        <ul className="content-list">
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Whitening is among
-                                                                the most popular dental
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                        </ul>
-                                                        <a href="services.html" className="btn btn-style-one">Read
-                                                            more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="service-box tab-pane fade" id="diagnostic">
-                                            <div className="row">
-                                                <div className="col-lg-6">
-                                                    <img loading="lazy" className="img-fluid"
-                                                         src="images/services/service-five.jpg" alt="service-image"/>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <div className="contents">
-                                                        <div className="section-title">
-                                                            <h3>diagnostic</h3>
-                                                        </div>
-                                                        <div className="text">
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added.
-                                                                then a dental prosthetic is added.then a dental pros-
-                                                                thetic is added.</p>
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added.
-                                                                then a dental prosthetic is added.then a dental pros-
-                                                                thetic is added.</p>
-                                                        </div>
-                                                        <ul className="content-list">
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Whitening is among
-                                                                the most popular dental
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                        </ul>
-                                                        <a href="services.html" className="btn btn-style-one">Read
+                                                        <a href="" className="btn btn-style-one">Read
                                                             more</a>
                                                     </div>
                                                 </div>
@@ -602,105 +335,15 @@ export default function HomePage(){
                                     <div className="item">
                                         <div className="inner-box">
                                             <div className="img_holder">
-                                                <a href="service.html">
+                                                <a href="">
                                                     <img loading="lazy" src="images/gallery/1.jpg" alt="images"
                                                          className="img-fluid"/>
                                                 </a>
                                             </div>
                                             <div className="image-content text-center">
                                                 <span>Better Service At Low Cost</span>
-                                                <a href="service.html">
+                                                <a href="">
                                                     <h6>Dormitory</h6>
-                                                </a>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-                                                    vero.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <div className="inner-box">
-                                            <div className="img_holder">
-                                                <a href="service.html">
-                                                    <img loading="lazy" src="images/gallery/2.jpg" alt="images"
-                                                         className="img-fluid"/>
-                                                </a>
-                                            </div>
-                                            <div className="image-content text-center">
-                                                <span>Better Service At Low Cost</span>
-                                                <a href="service.html">
-                                                    <h6>Germs Protection</h6>
-                                                </a>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-                                                    vero.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <div className="inner-box">
-                                            <div className="img_holder">
-                                                <a href="service.html">
-                                                    <img loading="lazy" src="images/gallery/3.jpg" alt="images"
-                                                         className="img-fluid"/>
-                                                </a>
-                                            </div>
-                                            <div className="image-content text-center">
-                                                <span>Better Service At Low Cost</span>
-                                                <a href="service.html">
-                                                    <h6>Psycology</h6>
-                                                </a>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-                                                    vero.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <div className="inner-box">
-                                            <div className="img_holder">
-                                                <a href="service.html">
-                                                    <img loading="lazy" src="images/gallery/1.jpg" alt="images"
-                                                         className="img-fluid"/>
-                                                </a>
-                                            </div>
-                                            <div className="image-content text-center">
-                                                <span>Better Service At Low Cost</span>
-                                                <a href="service.html">
-                                                    <h6>Dormitory</h6>
-                                                </a>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-                                                    vero.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <div className="inner-box">
-                                            <div className="img_holder">
-                                                <a href="service.html">
-                                                    <img loading="lazy" src="images/gallery/2.jpg" alt="images"
-                                                         className="img-fluid"/>
-                                                </a>
-                                            </div>
-                                            <div className="image-content text-center">
-                                                <span>Better Service At Low Cost</span>
-                                                <a href="service.html">
-                                                    <h6>Germs Protection</h6>
-                                                </a>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-                                                    vero.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <div className="inner-box">
-                                            <div className="img_holder">
-                                                <a href="service.html">
-                                                    <img loading="lazy" src="images/gallery/3.jpg" alt="images"
-                                                         className="img-fluid"/>
-                                                </a>
-                                            </div>
-                                            <div className="image-content text-center">
-                                                <span>Better Service At Low Cost</span>
-                                                <a href="service.html">
-                                                    <h6>Psycology</h6>
                                                 </a>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
                                                     vero.</p>
@@ -715,15 +358,15 @@ export default function HomePage(){
                 <section className="team-section section">
                     <div className="container">
                         <div className="section-title text-center">
-                            <h3>Our Expert
-                                <span>Doctors</span>
+                            <h3>Some Hospitals
+                                <span>works with us</span>
                             </h3>
                             <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
                                 illo, rerum
                                 <br/>natus nobis deleniti doloremque minima odit voluptatibus ipsam animi?</p>
                         </div>
                         <div className="row justify-content-center">
-                            <div className="col-lg-4 col-md-6">
+                            <div className="col-lg-4 col-md-4">
                                 <div className="team-member">
                                     <img loading="lazy" src="images/team/doctor-2.jpg" alt="doctor"
                                          className="img-fluid"/>
@@ -731,11 +374,11 @@ export default function HomePage(){
                                             <h4>Dr. Robert Barrethion</h4>
                                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos,
                                                 aspernatur.</p>
-                                            <a href="appointment.html" className="btn btn-main">Book Appointment</a>
+                                            <a href="" className="btn btn-main">Book Appointment</a>
                                         </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-6">
+                            <div className="col-lg-4 col-md-4">
                                 <div className="team-member">
                                     <img loading="lazy" src="images/team/doctor-lab-3.jpg" alt="doctor"
                                          className="img-fluid"/>
@@ -743,11 +386,11 @@ export default function HomePage(){
                                             <h4>Dr. Marry Lou</h4>
                                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos,
                                                 aspernatur.</p>
-                                            <a href="appointment.html" className="btn btn-main">Book Appointment</a>
+                                            <a href="" className="btn btn-main">Book Appointment</a>
                                         </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-6">
+                            <div className="col-lg-4 col-md-4">
                                 <div className="team-member">
                                     <img loading="lazy" src="images/team/event-2.jpg" alt="doctor"
                                          className="img-fluid"/>
@@ -755,7 +398,7 @@ export default function HomePage(){
                                             <h4>Dr. Sansa Stark</h4>
                                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos,
                                                 aspernatur.</p>
-                                            <a href="appointment.html" className="btn btn-main">Book Appointment</a>
+                                            <a href="" className="btn btn-main">Book Appointment</a>
                                         </div>
                                 </div>
                             </div>
@@ -776,84 +419,6 @@ export default function HomePage(){
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="testimonial-carousel">
-                                    <div className="slide-item">
-                                        <div className="inner-box text-center">
-                                            <div className="image-box">
-                                                <figure>
-                                                    <img loading="lazy" src="images/testimonials/1.png" alt=""/>
-                                                </figure>
-                                            </div>
-                                            <h6>Adam Rose</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
-                                        </div>
-                                    </div>
-                                    <div className="slide-item">
-                                        <div className="inner-box text-center">
-                                            <div className="image-box">
-                                                <figure>
-                                                    <img loading="lazy" src="images/testimonials/2.png" alt=""/>
-                                                </figure>
-                                            </div>
-                                            <h6>David Warner</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
-                                        </div>
-                                    </div>
-                                    <div className="slide-item">
-                                        <div className="inner-box text-center">
-                                            <div className="image-box">
-                                                <figure>
-                                                    <img loading="lazy" src="images/testimonials/3.png" alt=""/>
-                                                </figure>
-                                            </div>
-                                            <h6>Amy Adams</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
-                                        </div>
-                                    </div>
-                                    <div className="slide-item">
-                                        <div className="inner-box text-center">
-                                            <div className="image-box">
-                                                <figure>
-                                                    <img loading="lazy" src="images/testimonials/1.png" alt=""/>
-                                                </figure>
-                                            </div>
-                                            <h6>Adam Rose</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
-                                        </div>
-                                    </div>
-                                    <div className="slide-item">
-                                        <div className="inner-box text-center">
-                                            <div className="image-box">
-                                                <figure>
-                                                    <img loading="lazy" src="images/testimonials/2.png" alt=""/>
-                                                </figure>
-                                            </div>
-                                            <h6>David Warner</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
-                                        </div>
-                                    </div>
-                                    <div className="slide-item">
-                                        <div className="inner-box text-center">
-                                            <div className="image-box">
-                                                <figure>
-                                                    <img loading="lazy" src="images/testimonials/3.png" alt=""/>
-                                                </figure>
-                                            </div>
-                                            <h6>Amy Adams</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
-                                        </div>
-                                    </div>
                                     <div className="slide-item">
                                         <div className="inner-box text-center">
                                             <div className="image-box">
@@ -1072,7 +637,7 @@ export default function HomePage(){
                                     <div className="about-widget">
                                         <div className="footer-logo">
                                             <figure>
-                                                <a href="index.html">
+                                                <a href="/">
                                                     <img loading="lazy" className="img-fluid" src="images/logo-2.png"
                                                          alt="medic"/>
                                                 </a>
@@ -1116,27 +681,27 @@ export default function HomePage(){
                                     <h2>Services</h2>
                                     <ul className="menu-link">
                                         <li>
-                                            <a href="service.html">
+                                            <a href="">
                                                 <i className="fa fa-angle-right" aria-hidden="true"></i>Orthopadic
                                                 Liabilities</a>
                                         </li>
                                         <li>
-                                            <a href="service.html">
+                                            <a href="">
                                                 <i className="fa fa-angle-right" aria-hidden="true"></i>Dental
                                                 Clinic</a>
                                         </li>
                                         <li>
-                                            <a href="service.html">
+                                            <a href="">
                                                 <i className="fa fa-angle-right" aria-hidden="true"></i>Dormamu
                                                 Clinic</a>
                                         </li>
                                         <li>
-                                            <a href="service.html">
+                                            <a href="">
                                                 <i className="fa fa-angle-right" aria-hidden="true"></i>Psycological
                                                 Clinic</a>
                                         </li>
                                         <li>
-                                            <a href="service.html">
+                                            <a href="">
                                                 <i className="fa fa-angle-right" aria-hidden="true"></i>Gynaecological
                                                 Clinic</a>
                                         </li>
@@ -1149,13 +714,13 @@ export default function HomePage(){
                                             <li className="item">
                                                 <div className="media">
                                                     <div className="media-left mr-3">
-                                                        <a href="blog-details.html">
+                                                        <a href="/">
                                                             <img loading="lazy" src="images/blog/post-thumb-small.jpg"
                                                                  alt="post-thumb"/>
                                                         </a>
                                                     </div>
                                                     <div className="media-body">
-                                                        <h5><a href="blog-details.html">A lesson adip isicing</a></h5>
+                                                        <h5><a href="/">A lesson adip isicing</a></h5>
                                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                                             Aperiam, dolorem.</p>
                                                     </div>
@@ -1164,13 +729,13 @@ export default function HomePage(){
                                             <li className="item">
                                                 <div className="media">
                                                     <div className="media-left mr-3">
-                                                        <a href="blog-details.html">
+                                                        <a href="/">
                                                             <img loading="lazy" src="images/blog/post-thumb-small.jpg"
                                                                  alt="post-thumb"/>
                                                         </a>
                                                     </div>
                                                     <div className="media-body">
-                                                        <h5><a href="blog-details.html">How to make an event</a></h5>
+                                                        <h5><a href="/">How to make an event</a></h5>
                                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                                             Aperiam, dolorem.</p>
                                                     </div>
@@ -1190,13 +755,13 @@ export default function HomePage(){
                             </div>
                             <ul className="footer-bottom-link">
                                 <li>
-                                    <a href="index.html">Home</a>
+                                    <a href="/">Home</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">About</a>
+                                    <a href="">About</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="/">Contact</a>
                                 </li>
                             </ul>
                         </div>
