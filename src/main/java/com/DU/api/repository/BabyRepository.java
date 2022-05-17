@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BabyRepository extends JpaRepository<Baby, Long> {
     Baby findById(String babyId);
+    @Query("SELECT b FROM Baby b WHERE b.id=?1")
+    Baby findBabyById(Long babyId);
     @Query("SELECT b FROM Baby b WHERE b.motherId=?1")
     List<Baby> getBabiesByMotherId(long motherId);
     // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b WHERE

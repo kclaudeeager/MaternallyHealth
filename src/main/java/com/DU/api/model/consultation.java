@@ -21,41 +21,39 @@ public class consultation extends AuditModel {
     @Column(name = "Consultation_ID")
     private Long id;
 
-    @Column(name = "ConsultationType" , nullable = false)
+    @Column(name = "ConsultationType")
     private String ConsultationType;
-    
-    @Column(name = "description" , nullable = false)
+
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "staffId", nullable = false)
-    private Integer staffId;
+    @Column(name = "consulterId", nullable = false)
+    private Integer consulterId;
 
     @Column(name = "patient_id", nullable = false)
     private Integer patientId;
 
     @Column(name = "hospitalId", nullable = false)
     private Long hospitalId;
+    @Column(name = "patientType", nullable = false)
+    private String patientType;
 
     public consultation() {
         super();
     }
 
-    public consultation(Integer staffId, String ConsultationType, String departmentId,Integer patientId,Long hospitalId) {
+    public consultation(Integer consulterId, String ConsultationType, String departmentId, Integer patientId,
+            Long hospitalId, String patientType) {
         super();
-        this.staffId = staffId;
-       
+        this.consulterId = consulterId;
+
         this.ConsultationType = ConsultationType;
-        this.description= description;
+        this.description = description;
         this.patientId = patientId;
         this.hospitalId = hospitalId;
-     
+        this.patientType = patientType;
 
     }
-
-
-
-
-
 
     /**
      * @return Long return the id
@@ -102,15 +100,15 @@ public class consultation extends AuditModel {
     /**
      * @return Integer return the staffId
      */
-    public Integer getStaffId() {
-        return staffId;
+    public Integer getConsulterId() {
+        return consulterId;
     }
 
     /**
      * @param staffId the staffId to set
      */
-    public void setStaffId(Integer staffId) {
-        this.staffId = staffId;
+    public void setConsulterId(Integer consulterId) {
+        this.consulterId = consulterId;
     }
 
     /**
@@ -141,7 +139,18 @@ public class consultation extends AuditModel {
         this.hospitalId = hospitalId;
     }
 
+    /**
+     * @return String return the patientType
+     */
+    public String getPatientType() {
+        return patientType;
+    }
+
+    /**
+     * @param patientType the patientType to set
+     */
+    public void setPatientType(String patientType) {
+        this.patientType = patientType;
+    }
+
 }
-
-    
-
