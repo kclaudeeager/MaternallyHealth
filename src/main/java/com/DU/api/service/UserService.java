@@ -64,7 +64,7 @@ public class UserService {
         long count = userRepository.getCountByEmail(email);
         if (count > 0)
             throw new AuthException("Email already in use");
-        user.setRole("ADMIN");
+        user.setRole("NONE");
         return userRepository.save(user);
     }
 
