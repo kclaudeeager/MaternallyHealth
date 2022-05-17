@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Button, Modal} from "react-bootstrap";
+import {Button, Form, Modal} from "react-bootstrap";
 
 export default function AddNewMother(){
 
@@ -13,17 +13,80 @@ export default function AddNewMother(){
         <div>
             <Modal show={show} onHide={handleClose} className={"w-100"}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>add new Mother</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    body
+                    <Form>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>First Name</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="text" placeholder="enter FistName" />
+                            </div>
+
+                        </Form.Group>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>Last Name</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="text" placeholder="enter LastName" />
+                            </div>
+
+                        </Form.Group>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>Residance</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="text" placeholder="enter Residance" />
+                            </div>
+
+                        </Form.Group>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>Email address</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="email" placeholder="Enter email" />
+                                <Form.Text className="text-muted">
+                                    We'll never share your email with anyone else.
+                                </Form.Text>
+                            </div>
+
+                        </Form.Group>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>height</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="number" placeholder="enter height" />
+                                <Form.Text className="text-muted">
+                                    how large is the mother.
+                                </Form.Text>
+                            </div>
+
+                        </Form.Group>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>Age</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="number" placeholder="enter age" />
+                            </div>
+
+                        </Form.Group>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>Weight</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="number" placeholder="enter Weight" />
+                            </div>
+
+                        </Form.Group>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>Id</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="number" placeholder="enter age" />
+                            </div>
+
+                        </Form.Group>
+                    </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                        Add
                     </Button>
                 </Modal.Footer>
             </Modal>
