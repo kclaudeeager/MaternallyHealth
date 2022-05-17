@@ -11,12 +11,16 @@ export default function AddNewMother(){
 
     return(
         <div>
-            <Modal show={show} onHide={handleClose} className={"w-100"}>
+            <Modal show={show} onHide={handleClose}
+                   backdrop="static"
+                   keyboard={false}
+                   fullscreen={true}
+                   className={"w-100"}>
                 <Modal.Header closeButton>
                     <Modal.Title>add new Mother</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <Form>
+                <Modal.Body className={"w-100"}>
+                    <Form className={"w-50"}>
                         <Form.Group className="mb-3 row" controlId="formBasicEmail">
                             <Form.Label className={"col-12 col-md-4"}>First Name</Form.Label>
                             <div className={"col-12 col-md-8"}>
@@ -35,6 +39,13 @@ export default function AddNewMother(){
                             <Form.Label className={"col-12 col-md-4"}>Residance</Form.Label>
                             <div className={"col-12 col-md-8"}>
                                 <Form.Control type="text" placeholder="enter Residance" />
+                            </div>
+
+                        </Form.Group>
+                        <Form.Group className="mb-3 row" controlId="formBasicEmail">
+                            <Form.Label className={"col-12 col-md-4"}>Tel Phone</Form.Label>
+                            <div className={"col-12 col-md-8"}>
+                                <Form.Control type="tel" placeholder="enter phone number" />
                             </div>
 
                         </Form.Group>

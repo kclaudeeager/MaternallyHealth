@@ -5,6 +5,7 @@ import users from "./routes/users";
 import tips from "./routes/tips";
 import hospital from "./routes/hospital";
 import hospitalDashboard from "./routes/hospitalDashboard";
+import singleMother from "./routes/singleMother";
 
 export default [
     Login,
@@ -13,5 +14,6 @@ export default [
     users,
     tips,
     hospital,
-    hospitalDashboard
+    hospitalDashboard,
+    singleMother
 ]

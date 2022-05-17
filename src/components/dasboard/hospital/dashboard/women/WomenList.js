@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 export default function WomenList(){
     return(
         <div className="row justify-content-center">
@@ -23,7 +25,7 @@ export default function WomenList(){
                                 <tr>
                                     <th>Name</th>
                                     <th>E-mail</th>
-                                    <th>Role</th>
+                                    <th>status</th>
                                     <th className="text-center">Actions</th>
                                 </tr>
                                 </thead>
@@ -33,13 +35,16 @@ export default function WomenList(){
                                     <td className="text-truncate tdTag1">email.prijmeni@sssssssssssssssgmail.com</td>
                                     <td>Superior</td>
                                     <td className="text-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                             fill="currentColor" viewBox="0 0 16 16"
-                                             className="bi bi-eye-fill fs-5 text-primary">
-                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
-                                            <path
-                                                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
-                                        </svg>
+                                        <Link to={"/mothers/mamaEric"}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                 fill="currentColor" viewBox="0 0 16 16"
+                                                 className="bi bi-eye-fill fs-5 text-primary">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                                                <path
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
+                                            </svg>
+                                        </Link>
+
                                     </td>
                                 </tr>
                                 </tbody>
