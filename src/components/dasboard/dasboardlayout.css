@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 
-body {
+.mainDashboard {
   position: relative;
   margin: var(--header-height) 0 0 0;
   padding: 0 1rem;
@@ -146,7 +146,7 @@ a {
 }
 
 @media screen and (min-width: 768px) {
-  body {
+  .mainDashboard {
     margin: calc(var(--header-height) + 1rem) 0 0 0;
     padding-left: calc(var(--nav-width) + 2rem);
   }

@@ -1,0 +1,12 @@
+.slide1A{
+    background-image:url(../../../public/images/slider/slider-bg-1.jpg)
+}
+.slideItem1{
+    background-image:url(../../../public/images/slider/slider-bg-2.jpg);
+}
+.slideItem2{
+    background-image:url(../../../public/images/slider/slider-bg-3.jpg)
+}
+.testimonialSection{
+    background: url(../../../public/images/testimonials/1.jpg);
+}

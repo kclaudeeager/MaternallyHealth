@@ -24,7 +24,7 @@ export default function Layout({children}){
         }
     }
 
-    return (<div id="sidemenu">
+    return (<div id="sidemenu" className={"mainDashboard"}>
             <header id="header" className={"header "+headerpd}>
                 <div id="header_toggle-1" className={"header_toggle "+toggle}><i onClick={() => {toggling();}}
                     className="fa fa-star bx bx-menu" id="header-toggle"></i></div>
