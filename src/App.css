@@ -40,3 +40,12 @@
   max-width: 200px;
 }
 
+.btnAddNewMother{
+  background: #FFB7B7;color: #000000;font-size: 19px;border-style: none;margin-top: 25px;
+}
+.registerMotherText{
+  font-size: 19px;font-family: Mulish, sans-serif;color: #9FA2B4;filter: hue-rotate(0deg) invert(0%);
+}
+.cardRegisterMother{
+  border-radius: 5px;background: #F7F8FC;border: 1px solid #DFE0EB;height: 124.797px;
+}
