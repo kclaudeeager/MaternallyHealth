@@ -101,6 +101,10 @@ export default function SingleWomen(){
                         <div className={"col"}>
                             <button className={"btn btn-light"} onClick={() => {setShow("children")}}>show children</button>
                         </div>
+                        <div className={"col"}>
+                            <button className={"btn btn-light"} onClick={() => {setShow("consultant")}}>show consultant</button>
+                        </div>
+
                     </div>
                     <hr/>
                     <div className={"row"}>
@@ -183,6 +187,7 @@ export default function SingleWomen(){
                                     </div>
                                 </div>
                             </div>:<div></div>}
+                            {show==="consultant"?<div>consultant</div>:<div></div>}
                         </div>
                     </div>
                 </div>
