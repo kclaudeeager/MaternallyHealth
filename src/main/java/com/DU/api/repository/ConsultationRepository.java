@@ -16,6 +16,9 @@ public interface ConsultationRepository  extends JpaRepository<consultation, Lon
    List<consultation> findBypatientType(String patientType);
    @Query("SELECT c FROM consultation c WHERE c.patientId=?1")
    List<consultation> findBypatientId(Integer patientId);
+   @Query("SELECT c FROM consultation c WHERE c.consulterId=?1")
+   List<consultation> findByConsulterId(Integer consulterId);
+   
     // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b WHERE b.branchname=?1")
     // List<String> findBranchByName(String branchname);
 

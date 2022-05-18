@@ -269,7 +269,7 @@ public class ConsultationController {
         }
     }
     @GetMapping("/patient/{patientId}")
-    public List<consultation> getCounsultationsById(HttpServletRequest request,
+    public List<consultation> getCounsultationsPatientId(HttpServletRequest request,
             @PathVariable("patientId") Integer patientId ) {
         String role = request.getAttribute("role").toString();
         System.out.println("role found: -------- " + role);
@@ -297,6 +297,41 @@ public class ConsultationController {
             List<consultation> consultations = new ArrayList();
             // System.out.println("mother id "+mother.getId());
              consultations.addAll(consultationRepository.findBypatientId(patientId));
+            // System.out.println("Adivises: " + doctorAdvises);
+            return consultations;
+        } else {
+            throw new AuthException("Only nurse, doctor or admin or mother can view consultation data :: ");
+        }
+    }
+    @GetMapping("/consulter/{consulterID}")
+    public List<consultation> getCounsultationsByConsulterId(HttpServletRequest request,
+            @PathVariable("consulterID") Integer consulterID ) {
+        String role = request.getAttribute("role").toString();
+        System.out.println("role found: -------- " + role);
+        // int i = Integer.parseInt(role);
+       // consultation consultation = consultationRepository.findByConsultionId(Long.parseLong(consultationId));
+        String useremail = request.getAttribute("email").toString();
+        String activity;
+        // if (consultation == null) {
+        //     throw new ResourceNotFoundException("consultation with such id not found :: " + consultationId);
+        //     // System.out.println(("staff not found :: " + email));
+        // }
+        // System.out.println("<<<<<<<>>>>>>"+mother.getPhoneNumber());
+        if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN") ||
+                role.equals("RECEPTIONIST")
+                || role.equals("HOSPITAL_ADMIN")|| role.equals("MOTHER")) {
+
+            // staff staff = staffRepository.findStaffByEmail(email);
+            // Integer userId =
+            // Integer.parseInt(request.getAttribute("user_id").toString());
+            // User user = userRepository.findByUserId(Integer.parseInt(motherId));
+
+            activity = "veiwed  consultation with consulter id: " + consulterID;
+
+            logsService.savelog(useremail, activity);
+            List<consultation> consultations = new ArrayList();
+            // System.out.println("mother id "+mother.getId());
+             consultations.addAll(consultationRepository.findByConsulterId(consulterID));
             // System.out.println("Adivises: " + doctorAdvises);
             return consultations;
         } else {

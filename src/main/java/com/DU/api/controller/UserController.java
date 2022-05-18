@@ -84,6 +84,7 @@ public class UserController {
 		// data.put("User", user);
 		// System.out.print(user);
 		data.putAll(generateJWTToken(user));
+		data.put("User",user);
 		// String tok = token;
 		String activity = "login";
 		logsService.savelogs(user, activity);
