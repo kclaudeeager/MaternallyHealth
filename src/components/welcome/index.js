@@ -1,8 +1,10 @@
 import classes from "./Css.module.css";
 import "./style.css"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import logo2 from "../assets/img/logo2.svg"
 
 export default function HomePage(){
+    const [showAboutUsReadMore, setShowAboutUsReadMore] = useState(false)
     useEffect(() => {
 
     },[])
@@ -57,7 +59,7 @@ export default function HomePage(){
                             <div className="col-xl-4 col-lg-3">
                                 <div className="logo">
                                     <a href="/">
-                                        <img loading="lazy" className="img-fluid" src="images/logo.png" alt="logo"/>
+                                        <img loading="lazy" className="img-fluid" src={logo2} alt="logo"/>
                                     </a>
                                 </div>
                             </div>
@@ -71,7 +73,7 @@ export default function HomePage(){
                                             <strong>Email</strong>
                                             <br/>
                                                 <a href="mailto:info@medic.com">
-                                                    <span>info@medic.com</span>
+                                                    <span>infoH@gmail.com</span>
                                                 </a>
                                         </li>
                                         <li className="item text-left">
@@ -80,7 +82,7 @@ export default function HomePage(){
                                             </div>
                                             <strong>Call Now</strong>
                                             <br/>
-                                                <span>+ (88017) - 123 - 4567</span>
+                                                <span>+ (250) - 784 - 4567</span>
                                         </li>
                                     </ul>
                                     <div className="link-btn text-center text-lg-right">
@@ -120,9 +122,8 @@ export default function HomePage(){
                                         <h2 className="text-white" data-animation-in="slideInRight">We Care About Your
                                             Health</h2>
                                         <p className="tag-text mb-4" data-animation-in="slideInRight"
-                                           data-duration-in="0.6">Lorem ipsum dolor sit amet consectetur adipisicing
-                                            elit. </p>
-                                        <a href="" className="btn btn-main btn-white"
+                                           data-duration-in="0.6">don't hustate to approach us . </p>
+                                        <a href="#aboutUs" className="btn btn-main btn-white"
                                            data-animation-in="slideInRight" data-duration-in="1.2">about us</a>
                                     </div>
                                 </div>
@@ -262,7 +263,7 @@ export default function HomePage(){
                                             <li className="nav-item" role="presentation">
                                                 <a className="nav-link active" id="dormitory-tab" data-toggle="tab"
                                                    href="#dormitory" role="tab" aria-controls="dormitory"
-                                                   aria-selected="true">dormitory</a>
+                                                   aria-selected="true">about us</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -274,40 +275,47 @@ export default function HomePage(){
                                                          src="images/services/service-one.jpg" alt="service-image"/>
                                                 </div>
                                                 <div className="col-lg-6">
-                                                    <div className="contents">
+                                                    <div id={"aboutUs"} className="contents">
                                                         <div className="section-title">
-                                                            <h3>dormitory</h3>
+                                                            <h3>About us</h3>
                                                         </div>
                                                         <div className="text">
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added. then a
-                                                                dental prosthetic is added.then a dental pros- thetic is
-                                                                added.</p>
-                                                            <p>The implant fixture is first placed, so that it ilikely
-                                                                to osseointegrate,
-                                                                then a dental prosthetic is added. then a dental
-                                                                prosthetic is added.then a dental pros- thetic is
-                                                                added.</p>
+                                                            <p>this is the collection of hospitals in Rwanda that are specialized in maternally .</p>
+                                                            <p>we are here to help mothers to take care of children in first 1000 days.</p>
                                                         </div>
-                                                        <ul className="content-list">
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Whitening is among
-                                                                the most popular dental
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                            <li>
-                                                                <i className="far fa-dot-circle"></i>Teeth cleaning is
-                                                                part of oral hygiene and
-                                                                involves
-                                                            </li>
-                                                        </ul>
-                                                        <a href="" className="btn btn-style-one">Read
-                                                            more</a>
+                                                        {
+                                                            showAboutUsReadMore?(<ul className={"content-list far color84"}>
+                                                                <li>
+                                                                    <i className="fa-dot-circle"></i>we are work with experienced hospitals
+                                                                </li>
+                                                                <li>
+                                                                    <i className="fa-dot-circle"></i>
+                                                                    here as you need us
+                                                                </li>
+                                                                <li>
+                                                                    <i className="fa-dot-circle"></i>
+                                                                    we know what wrong with your child
+                                                                </li>
+                                                            </ul>):(<ul className={"content-list far"}>
+                                                                <li>
+                                                                    <i className="fa-dot-circle"></i>we are work with experienced hospitals
+                                                                </li>
+                                                                <li>
+                                                                    <i className="fa-dot-circle"></i>
+                                                                    here as you need us
+                                                                </li>
+                                                                <li>
+                                                                    <i className="fa-dot-circle"></i>
+                                                                    we know what wrong with your child
+                                                                </li>
+                                                            </ul>)
+                                                        }
+
+                                                        {
+                                                            showAboutUsReadMore?"":(<button type={"button"} onClick={() => {setShowAboutUsReadMore(true)}} className="btn btn-style-one">Read
+                                                                more</button>)
+                                                        }
+
                                                     </div>
                                                 </div>
                                             </div>

@@ -207,6 +207,12 @@ li {
 .logo {
   display: inline-block;
 }
+.mainLogo {
+  max-width: 70px;
+}
+.mainLogo img{
+  max-width: 100%;
+}
 
 .single-page-header {
   /*background-image: url("../assets/images/about/about-header.jpg");*/
@@ -224,6 +230,9 @@ li {
   right: 0;
   left: 0;
   bottom: 0;
+}
+.color84{
+  color: #848484;
 }
 
 .header-top {
@@ -3161,8 +3170,7 @@ button:focus {
 
   .main-header .logo {
     position: absolute !important;
-    top: -5px;
-    left: 30%;
+
   }
 
   .search_option {
