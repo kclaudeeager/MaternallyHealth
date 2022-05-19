@@ -53,6 +53,8 @@ private HospitalRepository hospitalRepository;
   LogsService logsService;
   Logger log = LoggerFactory.getLogger(StaffController.class);
   User user;
+  @Autowired
+  
 
   @Operation(summary = "This is to add new staff to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
   @ApiResponses(value = {
@@ -140,6 +142,58 @@ private HospitalRepository hospitalRepository;
       throw new AuthException("Only admin and  can view staff data :: ");
     }
   }
+  @Operation(summary = "This is to fetch all staffs within a hospital to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "fetch all staffs from a single hospital from the  Database", content = {
+          @Content(mediaType = "application/json") }),
+      @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
+      @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
+
+  @GetMapping("/staffs/{hospitalId}")
+  public List<staff> getAllStaffsFromHospital(HttpServletRequest request,@PathVariable(value="hospitalId") Long hospitalId) {
+    String role = request.getAttribute("role").toString();
+    String email = request.getAttribute("email").toString();
+    System.out.println("role: -------- " + role);
+    //int i = Integer.parseInt(role);
+    if (role.equals("ADMIN")||role.equals("HOSPITAL_ADMIN")){
+     Hospital hospital= hospitalRepository.findByHospitalId(hospitalId);
+     if(hospital == null)
+     throw new ResourceNotFoundException("Hospital not found with id:: " +hospitalId);
+      String activity = "veiwed all  staffs from hospital "+hospitalId+" details";
+
+      logsService.savelog(email, activity);
+      return staffRepository.findStaffsByHospitalId(hospitalId);
+    } else {
+      throw new AuthException("Only admins and  can view staff data :: ");
+    }
+  }
+  @Operation(summary = "This is to fetch all staffs within a department to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "fetch all staffs from a single department from the  Database", content = {
+          @Content(mediaType = "application/json") }),
+      @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
+      @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
+
+  @GetMapping("/staffs/{departmentId}")
+  public List<staff> getAllStaffsFromDepartment(HttpServletRequest request,@PathVariable(value="departmentId") Long departmentId) {
+    String role = request.getAttribute("role").toString();
+    String email = request.getAttribute("email").toString();
+    System.out.println("role: -------- " + role);
+    //int i = Integer.parseInt(role);
+    if (role.equals("ADMIN")||role.equals("HOSPITAL_ADMIN")){
+     Department department = departmentRepository.findByDepartmentId((departmentId));
+     if(department == null)
+     throw new ResourceNotFoundException("Department not found with id:: " +departmentId);
+      String activity = "veiwed all  staffs from department "+departmentId+" details";
+
+      logsService.savelog(email, activity);
+      return staffRepository.findStaffsByDepartmentId(departmentId);
+    } else {
+      throw new AuthException("Only admins and  can view staff data :: ");
+    }
+  }
+
+
 
   @Operation(summary = "This is to delete  staff from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
   @ApiResponses(value = {
