@@ -1,13 +1,15 @@
 import {Link, useParams} from "react-router-dom";
-import {Button} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {Fragment, useState} from "react";
 import Advices from "./Advices";
 import Children from "./Children";
 import Consultants from "./Consultants";
+import AddBaby from "./AddBaby";
 
 export default function SingleWomen(){
     let params = useParams();
-    const [show,setShow] = useState("advices")
+    const [showingContent,setShowingContent] = useState("advices")
+    const [isEditOn, setEditOn] = useState(false)
     return(
         <div>
 
@@ -24,7 +26,7 @@ export default function SingleWomen(){
                                                 <h4>aline View</h4>
                                                 <p className="text-secondary mb-1"> live in kigali</p>
                                                 <p className="text-muted font-size-sm">nyamirambo</p>
-                                                <button className="btn btn-primary">Add child</button>
+                                                <AddBaby/>
                                                 <button className="btn btn-outline-primary">Delete</button>
                                             </div>
                                     </div>
@@ -43,13 +45,23 @@ export default function SingleWomen(){
                         </div>
                         <div className="col-md-8">
                             <div className="card mb-3">
-                                <div className="card-body">
+                                <Form className="card-body">
                                     <div className="row">
                                         <div className="col-sm-3">
-                                            <h6 className="mb-0">Full Name</h6>
+                                            <h6 className="mb-0">First Name</h6>
                                         </div>
                                         <div className="col-sm-9 text-secondary">
-                                            aline
+                                            {isEditOn?(<Form.Control type="text" placeholder="Enter Fist name" />):"aline"}
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Last Name</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                            {isEditOn?(<Form.Control type="text" placeholder="Enter Last name" />):"Amore"}
+
                                         </div>
                                     </div>
                                     <hr />
@@ -58,7 +70,8 @@ export default function SingleWomen(){
                                                 <h6 className="mb-0">Email</h6>
                                             </div>
                                             <div className="col-sm-9 text-secondary">
-                                                eric@gmail.com
+                                                {isEditOn?(<Form.Control type="email" placeholder="Enter email" />):"eric@gmail.com"}
+
                                             </div>
                                         </div>
                                         <hr />
@@ -67,28 +80,85 @@ export default function SingleWomen(){
                                                     <h6 className="mb-0">Phone</h6>
                                                 </div>
                                                 <div className="col-sm-9 text-secondary">
-                                                    07865555555
+                                                    {isEditOn?(<Form.Control type="tel" placeholder="Enter phone" />):"07865555555"}
+
                                                 </div>
                                             </div>
                                             <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Age</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                            {isEditOn?(<Form.Control type="number" placeholder="Enter Age" />):"12"}
 
-                                                <hr />
-                                                    <div className="row">
-                                                        <div className="col-sm-3">
-                                                            <h6 className="mb-0">Address</h6>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Weight</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                            {isEditOn?(
+                                                    <div className={"row"}>
+                                                        <div className={"col-8"}>
+                                                            <Form.Control type="number" placeholder="Enter Weight" />
                                                         </div>
-                                                        <div className="col-sm-9 text-secondary">
-                                                            kigali, nyamirambo
-                                                        </div>
+                                                        <div className={"col"}><Form.Control type="text" placeholder="Enter unit" /></div>
                                                     </div>
+                                                ):"3"}
+
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Id</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                            {isEditOn?(<Form.Control type="text" placeholder="Enter Id" />):"1199943232323456"}
+
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Residence</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                            {isEditOn?(<Form.Control type="text" placeholder="Enter Residence" />):"kigali"}
+
+                                        </div>
+                                    </div>
+                                                <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Status</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                            {isEditOn?(<Form.Control type="text" placeholder="Enter status" />):"good"}
+
+                                        </div>
+                                    </div>
                                                     <hr/>
-                                                        <div className="row">
-                                                            <div className="col-sm-12">
-                                                                <Button className="btn btn-info "
-                                                                   href="">Edit</Button>
-                                                            </div>
-                                                        </div>
-                                </div>
+                                    {isEditOn?(<div className="row">
+                                        <div className="col-sm-6">
+                                            <Button onClick={() => {setEditOn(false)}} className="btn btn-info "
+                                                     >Cancel</Button>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <Button onClick={() => {setEditOn(false)}} className="btn btn-info "
+                                                     >Save</Button>
+                                        </div>
+                                    </div>):(<div className="row">
+                                        <div className="col-sm-12">
+                                            <Button onClick={() => {setEditOn(true)}} className="btn btn-info "
+                                                     >Edit</Button>
+                                        </div>
+                                    </div>)}
+
+                                </Form>
                             </div>
 
 
@@ -99,26 +169,26 @@ export default function SingleWomen(){
                 <div>
                     <div className={"row"}>
                         <div className={"col"}>
-                            <button className={"btn btn-light"} onClick={() => {setShow("advices")}}>show advices</button>
+                            <button className={"btn btn-light"} onClick={() => {setShowingContent("advices")}}>show advices</button>
                         </div>
                         <div className={"col"}>
-                            <button className={"btn btn-light"} onClick={() => {setShow("children")}}>show children</button>
+                            <button className={"btn btn-light"} onClick={() => {setShowingContent("children")}}>show children</button>
                         </div>
                         <div className={"col"}>
-                            <button className={"btn btn-light"} onClick={() => {setShow("consultant")}}>show consultant</button>
+                            <button className={"btn btn-light"} onClick={() => {setShowingContent("consultant")}}>show consultant</button>
                         </div>
 
                     </div>
                     <hr/>
                     <div className={"row"}>
                         <div className={"col"}>
-                            {show==="advices"?<Fragment>
+                            {showingContent==="advices"?<Fragment>
                                 <Advices/>
                             </Fragment>:<div></div>}
-                            {show==="children"?<div>
+                            {showingContent==="children"?<div>
                                 <Children/>
                             </div>:<div></div>}
-                            {show==="consultant"?<Fragment><Consultants/></Fragment>:<div></div>}
+                            {showingContent==="consultant"?<Fragment><Consultants/></Fragment>:<div></div>}
                         </div>
                     </div>
                 </div>
