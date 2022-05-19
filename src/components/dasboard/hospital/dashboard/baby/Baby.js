@@ -1,11 +1,12 @@
 import {Fragment, useState} from "react";
 import {Button, Form} from "react-bootstrap";
+import Consultants from "../consultant/Consultants";
 
 export default function BabyTab(){
     const [isEditOn, setEditOn] = useState(false)
     return(
         <Fragment>
-            <div>
+            <div className={"mb-5 pt-5"}>
                 <div className="container">
                     <div className="main-body">
                         <div className="row gutters-sm">
@@ -131,6 +132,10 @@ export default function BabyTab(){
                         </div>
                     </div>
                 </div>
+
+                        <div>
+                            <Consultants/>
+                        </div>
                     </div>
                 </div>
 
