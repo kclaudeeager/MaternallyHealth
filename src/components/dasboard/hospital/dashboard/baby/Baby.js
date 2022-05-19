@@ -1,7 +1,8 @@
-import {Fragment} from "react";
-import {Button} from "react-bootstrap";
+import {Fragment, useState} from "react";
+import {Button, Form} from "react-bootstrap";
 
 export default function BabyTab(){
+    const [isEditOn, setEditOn] = useState(false)
     return(
         <Fragment>
             <div>
@@ -36,33 +37,36 @@ export default function BabyTab(){
                             </div>
                             <div className="col-md-8">
                                 <div className="card mb-3">
-                                    <div className="card-body">
-                                        <div className="row">
-                                            <div className="col-sm-3">
-                                                <h6 className="mb-0">First Name</h6>
-                                            </div>
-                                            <div className="col-sm-9 text-secondary">
-                                                aline
-                                            </div>
-                                        </div>
-                                        <hr />
+                                    <Form className="">
+
                                         <div className="card-body">
+                                            <div className="row">
+                                                <div className="col-sm-3">
+                                                    <h6 className="mb-0">First Name</h6>
+                                                </div>
+                                                <div className="col-sm-9 text-secondary">
+                                                    {isEditOn?(<Form.Control type="text" placeholder="Enter FirstName" />):("aline")}
+
+                                                </div>
+                                            </div>
+                                            <hr />
                                             <div className="row">
                                                 <div className="col-sm-3">
                                                     <h6 className="mb-0">Last Name</h6>
                                                 </div>
                                                 <div className="col-sm-9 text-secondary">
-                                                    ruhumuriza
+                                                    {isEditOn?(<Form.Control type="text" placeholder="Enter second Name" />):("ruhumuriza")}
+
                                                 </div>
                                             </div>
                                             <hr />
-                                            <div className="card-body">
+                                            <div className="">
                                                 <div className="row">
                                                     <div className="col-sm-3">
                                                         <h6 className="mb-0">born date</h6>
                                                     </div>
                                                     <div className="col-sm-9 text-secondary">
-                                                        23/12/2023
+                                                        {isEditOn?(<Form.Control type="date" name="dob" placeholder="Date of Birth" />):("23/12/2023")}
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -71,7 +75,7 @@ export default function BabyTab(){
                                                 <h6 className="mb-0">Height</h6>
                                             </div>
                                             <div className="col-sm-9 text-secondary">
-                                                0.3 m
+                                                {isEditOn?(<Form.Control type="number" placeholder="Enter height" />):("0.3 m")}
                                             </div>
                                         </div>
                                         <hr />
@@ -80,7 +84,7 @@ export default function BabyTab(){
                                                 <h6 className="mb-0">weight</h6>
                                             </div>
                                             <div className="col-sm-9 text-secondary">
-                                                3 kg
+                                                {isEditOn?(<Form.Control type="number" placeholder="Enter Weight" />):("3 kg")}
                                             </div>
                                         </div>
                                         <hr />
@@ -91,22 +95,39 @@ export default function BabyTab(){
                                                 <h6 className="mb-0">status</h6>
                                             </div>
                                             <div className="col-sm-9 text-secondary">
-                                                good
+                                                {isEditOn?(<Form.Control type="text" placeholder="Enter status" />):("good")}
+
                                             </div>
                                         </div>
                                         <hr/>
-                                        <div className="row">
-                                            <div className="col-sm-12">
-                                                <Button className="btn btn-info "
-                                                        href="">Edit</Button>
-                                            </div>
-                                        </div>
+                                                {isEditOn?(<div className="row">
+                                                    <div className="col-sm-6">
+                                                        <Button onClick={() => {
+                                                            setEditOn(false)
+                                                        }} className="btn btn-info "
+                                                        >Cancel</Button>
+                                                    </div>
+                                                    <div className="col-sm-6">
+                                                        <Button onClick={() => {
+                                                            setEditOn(false)
+                                                        }} className="btn btn-info "
+                                                        >Save</Button>
+                                                    </div>
+                                                </div>):(<div className="row">
+                                                    <div className="col-sm-12">
+                                                        <Button onClick={() => {
+                                                            setEditOn(true)
+                                                        }} className="btn btn-info "
+                                                        >Edit</Button>
+                                                    </div>
+                                                </div>)}
+
                                     </div>
                                 </div>
 
 
 
-                            </div>
+                            </Form>
                         </div>
                     </div>
                 </div>
