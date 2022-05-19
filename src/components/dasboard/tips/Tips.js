@@ -2,6 +2,7 @@ import {Fragment, useEffect} from "react";
 import Layout from "../Layout";
 import './tip.css'
 import {Accordion} from "react-bootstrap";
+import NewTip from "./NewTip";
 
 const DashContent = () => {
     return(<Fragment>
@@ -11,9 +12,7 @@ const DashContent = () => {
                     <h1 className="text-center headerOfTip">Tips</h1>
                 </div>
                 <div className="col d-flex justify-content-lg-center align-items-lg-center">
-                    <button className="btn btn-danger d-flex outline loginBtn" data-bss-hover-animate="rubberBand"
-                            type="button">Add new Tip
-                    </button>
+                    <NewTip/>
                 </div>
             </div>
             <div className="container">
