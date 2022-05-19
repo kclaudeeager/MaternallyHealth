@@ -53,7 +53,8 @@ private HospitalRepository hospitalRepository;
   LogsService logsService;
   Logger log = LoggerFactory.getLogger(StaffController.class);
   User user;
-  @Autowired
+
+
   
 
   @Operation(summary = "This is to add new staff to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
