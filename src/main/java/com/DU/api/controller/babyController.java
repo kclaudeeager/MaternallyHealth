@@ -66,8 +66,8 @@ public class babyController {
             String activity = "Register new baby";
             logsService.savelog(useremail, activity);
             log.info("{} Registered new baby ", useremail);
-            int motherId = (int) (baby.getId().longValue());
-            Mother mother = motherRepository.findById(motherId);
+            // int motherId = (int) (baby.getMotherId().longValue());
+            Mother mother = motherRepository.findByMotherId(baby.getMotherId());
             if (mother == null) {
                 throw new ResourceNotFoundException("Mother not found :: " + baby.getId());
             }

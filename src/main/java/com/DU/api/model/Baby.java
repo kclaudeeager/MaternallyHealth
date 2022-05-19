@@ -19,7 +19,6 @@ import io.swagger.v3.oas.annotations.Hidden;
 public class Baby extends AuditModel {
 
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -58,104 +57,119 @@ public class Baby extends AuditModel {
         this.hosptital_id = hosptital_id;
     }
 
+    
+
+
+    /**
+     * @return Long return the id
+     */
     public Long getId() {
-        return this.id;
+        return id;
     }
 
+    /**
+     * @param id the id to set
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * @return Long return the motherId
+     */
     public Long getMotherId() {
-        return this.motherId;
+        return motherId;
     }
 
+    /**
+     * @param motherId the motherId to set
+     */
     public void setMotherId(Long motherId) {
         this.motherId = motherId;
     }
 
+    /**
+     * @return String return the firstName
+     */
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
+    /**
+     * @param firstName the firstName to set
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * @return String return the lastName
+     */
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
+    /**
+     * @param lastName the lastName to set
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * @return Double return the weight
+     */
     public Double getWeight() {
-        return this.weight;
+        return weight;
     }
 
+    /**
+     * @param weight the weight to set
+     */
     public void setWeight(Double weight) {
         this.weight = weight;
     }
 
+    /**
+     * @return Double return the height
+     */
     public Double getHeight() {
-        return this.height;
+        return height;
     }
 
+    /**
+     * @param height the height to set
+     */
     public void setHeight(Double height) {
         this.height = height;
     }
 
+    /**
+     * @return String return the status
+     */
     public String getStatus() {
-        return this.status;
+        return status;
     }
 
+    /**
+     * @param status the status to set
+     */
     public void setStatus(String status) {
         this.status = status;
     }
 
+    /**
+     * @return Long return the hosptital_id
+     */
     public Long getHosptital_id() {
-        return this.hosptital_id;
+        return hosptital_id;
     }
 
+    /**
+     * @param hosptital_id the hosptital_id to set
+     */
     public void setHosptital_id(Long hosptital_id) {
         this.hosptital_id = hosptital_id;
     }
-
-    public Baby id(Long id) {
-        setId(id);
-        return this;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Baby)) {
-            return false;
-        }
-        Baby baby = (Baby) o;
-        return Objects.equals(id, baby.id) && Objects.equals(motherId, baby.motherId) && Objects.equals(firstName, baby.firstName) && Objects.equals(lastName, baby.lastName) && Objects.equals(weight, baby.weight) && Objects.equals(height, baby.height) && Objects.equals(status, baby.status) && Objects.equals(hosptital_id, baby.hosptital_id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, motherId, firstName, lastName, weight, height, status, hosptital_id);
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", motherId='" + getMotherId() + "'" +
-            ", firstName='" + getFirstName() + "'" +
-            ", lastName='" + getLastName() + "'" +
-            ", weight='" + getWeight() + "'" +
-            ", height='" + getHeight() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", hosptital_id='" + getHosptital_id() + "'" +
-            "}";
-    }
-
-    
 
 }
