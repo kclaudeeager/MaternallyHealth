@@ -43,9 +43,9 @@ export default function Layout({children}){
                             className="fa fa-star bx bx-message-square-detail nav_icon"></i><span
                             className="nav_name">Tips</span></Link><Link className={"nav_link "} to="/dashboard/hospital"><i
                             className="fa fa-star bx bx-bookmark nav_icon"></i><span
-                            className="nav_name">Hospital</span></Link><a className={"nav_link "} href="#"><i
+                            className="nav_name">Hospital</span></Link><Link className={"nav_link "} to="/consultant"><i
                             className="fa fa-star bx bx-folder nav_icon"></i><span
-                            className="nav_name">Folders</span></a><a className="nav_link" href="#"><i
+                            className="nav_name">Consultation</span></Link><a className="nav_link" href="#"><i
                             className="fa fa-star bx bx-bar-chart-alt nav_icon"></i><span
                             className="nav_name">Stats</span></a></div>
                         <a className="nav_link signout" href="#"><i

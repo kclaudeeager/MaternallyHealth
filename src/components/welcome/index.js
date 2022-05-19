@@ -1,7 +1,8 @@
 import classes from "./Css.module.css";
 import "./style.css"
 import {useEffect, useState} from "react";
-import logo2 from "../assets/img/logo2.svg"
+import logo2 from "../assets/img/logo2.png"
+import {Link} from "react-router-dom";
 
 export default function HomePage(){
     const [showAboutUsReadMore, setShowAboutUsReadMore] = useState(false)
@@ -104,10 +105,10 @@ export default function HomePage(){
                         <div className="collapse navbar-collapse" id="navbarLinks">
                             <ul className="navbar-nav">
                                 <li className="nav-item @@appointment">
-                                    <a className="nav-link" href="">Login</a>
+                                    <Link className="nav-link" to={"/login"}>Login</Link>
                                 </li>
                                 <li className="nav-item @@contact">
-                                    <a className="nav-link" href="">Sign Up</a>
+                                    <Link className="nav-link" to="/signup">Sign Up</Link>
                                 </li>
                             </ul>
                         </div>

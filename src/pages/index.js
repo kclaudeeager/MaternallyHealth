@@ -7,6 +7,7 @@ import hospital from "./routes/hospital";
 import hospitalDashboard from "./routes/hospitalDashboard";
 import singleMother from "./routes/singleMother";
 import home from "./routes/home";
+import consultation from "./routes/consultation";
 
 export default [
     Login,
@@ -17,5 +18,6 @@ export default [
     hospital,
     hospitalDashboard,
     singleMother,
-    home
+    home,
+    consultation
 ]
