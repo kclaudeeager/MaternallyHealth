@@ -20,6 +20,7 @@ import com.DU.api.service.LogsService;
 import com.DU.api.repository.DepartmentRepository;
 import com.DU.api.repository.HospitalRepository;
 import com.DU.api.repository.StaffRepository;
+import com.DU.api.repository.UserRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +54,8 @@ private HospitalRepository hospitalRepository;
   LogsService logsService;
   Logger log = LoggerFactory.getLogger(StaffController.class);
   User user;
-
+@Autowired
+UserRepository userRepository;
 
   
 
@@ -80,6 +82,10 @@ private HospitalRepository hospitalRepository;
       Hospital hospital= hospitalRepository.findByHospitalId(staff.getHospitalId());
       if(hospital==null){
         throw new ResourceNotFoundException(" hospital  not found for such hospital id:: "+staff.getHospitalId());
+      }
+      User user= userRepository.findByEmailAddress(useremail);
+      if(user == null){
+        throw new ResourceNotFoundException("User not found: User should have been registered with that email address: "+useremail);
       }
       logsService.savelog(useremail, activity);
       log.info("{} Created new staff ", useremail);
