@@ -34,11 +34,17 @@ public class MaternalHealth {
     @Configuration
     public class CorsConfig implements WebMvcConfigurer {
 
+        // @Override
+        // public void addCorsMappings(CorsRegistry registry) {
+
+        //     registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
+           
+        // }
+        
         @Override
         public void addCorsMappings(CorsRegistry registry) {
-
-            registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
-
+            registry.addMapping("/**")
+                    .allowedMethods("*");
         }
 
     }
