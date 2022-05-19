@@ -150,7 +150,7 @@ private HospitalRepository hospitalRepository;
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-  @GetMapping("/staffs/{hospitalId}")
+  @GetMapping("/staffs/hospital/{hospitalId}")
   public List<staff> getAllStaffsFromHospital(HttpServletRequest request,@PathVariable(value="hospitalId") Long hospitalId) {
     String role = request.getAttribute("role").toString();
     String email = request.getAttribute("email").toString();
@@ -175,7 +175,7 @@ private HospitalRepository hospitalRepository;
       @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
       @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-  @GetMapping("/staffs/{departmentId}")
+  @GetMapping("/staffs/department{departmentId}")
   public List<staff> getAllStaffsFromDepartment(HttpServletRequest request,@PathVariable(value="departmentId") Long departmentId) {
     String role = request.getAttribute("role").toString();
     String email = request.getAttribute("email").toString();
