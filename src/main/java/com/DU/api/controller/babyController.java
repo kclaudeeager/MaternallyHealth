@@ -120,7 +120,8 @@ public class babyController {
                 || role.equals("MOTHER")) {
             String useremail = request.getAttribute("email").toString();
             // staff staff = staffRepository.findStaffByEmail(email);
-            Integer userId = Integer.parseInt(request.getAttribute("user_id").toString());
+            // Integer userId =
+            // Integer.parseInt(request.getAttribute("user_id").toString());
             // User user = userRepository.findByUserId(Integer.parseInt(motherId));
             Mother mother = motherRepository.findByMotherId(motherId);
             String activity;
@@ -157,7 +158,8 @@ public class babyController {
                 || role.equals("HOSPITAL_ADMIN")) {
             String useremail = request.getAttribute("email").toString();
             // staff staff = staffRepository.findStaffByEmail(email);
-            Integer userId = Integer.parseInt(request.getAttribute("user_id").toString());
+            // Integer userId =
+            // Integer.parseInt(request.getAttribute("user_id").toString());
             // User user = userRepository.findByUserId(Integer.parseInt(motherId));
             // Hos mother = motherRepository.findByMotherId(motherId);
             String activity;
