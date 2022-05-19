@@ -17,8 +17,6 @@ export default function SingleStaff(){
                                                  className="rounded-circle" width="150" />
                                             <div className="mt-3">
                                                 <h4>viviane</h4>
-                                                <p className="text-secondary mb-1"> live in kigali</p>
-                                                <p className="text-muted font-size-sm">nyamirambo</p>
                                                 <button className="btn btn-outline-primary">Delete</button>
                                             </div>
                                         </div>
