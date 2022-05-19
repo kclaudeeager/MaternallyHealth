@@ -3,8 +3,8 @@ import Layout from "../../Layout";
 import "./style.css";
 import motherTakeCare from '../../../assets/img/motherTakeCareOfchild.jpg'
 import customerService from '../../../assets/img/customerService.jpg'
-import StaffList from "./StaffList";
 import Women from "./women/Women";
+import Staff from "./staff/Staff";
 const DashContent = ({setActiveContent}) => {
     return(<Fragment>
         <div className="container">
@@ -46,7 +46,7 @@ const Dashboard =() =>{
         {
             activeContent===possibleContent.STAFF?(
                 <Fragment>
-                    <StaffList/>
+                    <Staff/>
                 </Fragment>
             ):(<Fragment></Fragment>)
         }

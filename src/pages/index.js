@@ -9,6 +9,7 @@ import singleMother from "./routes/singleMother";
 import home from "./routes/home";
 import consultation from "./routes/consultation";
 import baby from "./routes/baby";
+import staff from "./routes/staff";
 
 export default [
     Login,
@@ -21,5 +22,6 @@ export default [
     singleMother,
     home,
     consultation,
-    baby
+    baby,
+    staff
 ]
