@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import {Button, Form} from "react-bootstrap";
 import {Fragment, useState} from "react";
-import Advices from "./Advices";
+import Advices from "./advice/Advices";
 import Children from "./Children";
 import Consultants from "./Consultants";
 import AddBaby from "./AddBaby";
