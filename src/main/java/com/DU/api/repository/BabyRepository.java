@@ -15,6 +15,8 @@ public interface BabyRepository extends JpaRepository<Baby, Long> {
     Baby findBabyById(Long babyId);
     @Query("SELECT b FROM Baby b WHERE b.motherId=?1")
     List<Baby> getBabiesByMotherId(long motherId);
+    @Query("SELECT b FROM Baby b WHERE b.hosptital_id=?1")
+    List<Baby> getBabyByHospitalsId(long hosptital_id);
     // @Query("SELECT b.branchname,b.phoneNumber,b.address FROM branch b WHERE
     // b.branchname=?1")
     // List<String> findBranchByName(String branchname);
