@@ -1,10 +1,10 @@
-import SingleWomen from "../../components/dasboard/hospital/dashboard/women/singleWomen/SingleWomen";
+import Mother from "../../components/dasboard/hospital/dashboard/women/singleWomen";
 
 export default {
     exact: true,
-    name:'Tips',
+    name:'mother',
     protected:false,
     guestOnly: false,
     path:'/mothers/:motherId',
-    component:SingleWomen
+    component:Mother
 }
