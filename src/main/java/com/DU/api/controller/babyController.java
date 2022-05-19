@@ -110,9 +110,9 @@ public class babyController {
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-    @GetMapping("/babies/{motherId}")
+    @GetMapping("/mother/{motherId}")
     public List<Baby> getBabiesByMotherId(HttpServletRequest request,
-            @PathVariable(value="motherId") Long motherId) {
+            @PathVariable(value = "motherId") Long motherId) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         // int i = Integer.parseInt(role);
@@ -125,12 +125,12 @@ public class babyController {
             Mother mother = motherRepository.findByMotherId(motherId);
             String activity;
             // if (mother == null) {
-            //     throw new ResourceNotFoundException("Mother not found :: " + motherId);
-            //     // System.out.println(("staff not found :: " + email));
+            // throw new ResourceNotFoundException("Mother not found :: " + motherId);
+            // // System.out.println(("staff not found :: " + email));
             // }
             List<Baby> babies = babyRepository.getBabiesByMotherId(motherId);
             // if (babies == null) {
-            //     throw new ResourceNotFoundException("babies not found :: " + mother);
+            // throw new ResourceNotFoundException("babies not found :: " + mother);
             // }
             activity = "veiwed babies of mother id: " + mother;
             logsService.savelog(useremail, activity);
@@ -139,6 +139,7 @@ public class babyController {
             throw new AuthException("Only nurse, doctor or admin or mother  can view babies data :: ");
         }
     }
+
     @Operation(summary = "This is to fetch all babies by mother id from the  Database", security = @SecurityRequirement(name = "bearerAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "fetch babies by mother  from the  Database", content = {
@@ -146,14 +147,14 @@ public class babyController {
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-    @GetMapping("/babies/{hospitalId}")
+    @GetMapping("/hospital/{hospitalId}")
     public List<Baby> getBabiesByHospitalId(HttpServletRequest request,
-            @PathVariable(value="hospitalId") Long hospitalId) {
+            @PathVariable(value = "hospitalId") Long hospitalId) {
         String role = request.getAttribute("role").toString();
         // System.out.println("role: -------- " + role);
         // int i = Integer.parseInt(role);
-        if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN") || role.equals("RECEPTIONIST")|| role.equals("HOSPITAL_ADMIN")
-                ) {
+        if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN") || role.equals("RECEPTIONIST")
+                || role.equals("HOSPITAL_ADMIN")) {
             String useremail = request.getAttribute("email").toString();
             // staff staff = staffRepository.findStaffByEmail(email);
             Integer userId = Integer.parseInt(request.getAttribute("user_id").toString());
@@ -161,12 +162,12 @@ public class babyController {
             // Hos mother = motherRepository.findByMotherId(motherId);
             String activity;
             // if (mother == null) {
-            //     throw new ResourceNotFoundException("Mother not found :: " + motherId);
-            //     // System.out.println(("staff not found :: " + email));
+            // throw new ResourceNotFoundException("Mother not found :: " + motherId);
+            // // System.out.println(("staff not found :: " + email));
             // }
             List<Baby> babies = babyRepository.getBabyByHospitalsId(hospitalId);
             // if (babies == null) {
-            //     throw new ResourceNotFoundException("babies not found :: " + mother);
+            // throw new ResourceNotFoundException("babies not found :: " + mother);
             // }
             activity = "veiwed babies of hospitalId : " + hospitalId;
             logsService.savelog(useremail, activity);
