@@ -37,14 +37,15 @@ public class MaternalHealth {
         // @Override
         // public void addCorsMappings(CorsRegistry registry) {
 
-        //     registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
-           
+        // registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST",
+        // "PUT", "DELETE", "HEAD");
+
         // }
-        
+
         @Override
         public void addCorsMappings(CorsRegistry registry) {
-            registry.addMapping("/**")
-                    .allowedMethods("*");
+            registry.addMapping("/*")
+                    .allowedOrigins("*");
         }
 
     }
