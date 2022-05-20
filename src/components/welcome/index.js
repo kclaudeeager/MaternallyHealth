@@ -140,24 +140,20 @@ export default function HomePage(){
                             <div className="col-lg-4 col-md-4 emmergency item">
                                 <i className="fa fa-phone"></i>
                                 <h2>Emegency Cases</h2>
-                                <a href="tel:1-800-700-6200">1-800-700-6200</a>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                                <a href="tel:078-339-8889">078-339-8889</a>
+                                <p>every second, every pulse. we are ready</p>
                             </div>
                             <div className="col-lg-4 col-md-4 top-doctor item">
                                 <i className="fa fa-stethoscope"></i>
                                 <h2>24 Hour Service</h2>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore dignissimos
-                                    officia dicta suscipit
-                                    vel eum</p>
-                                <a href="" className="btn btn-main">Read more</a>
+                                <p>we provide our services whole day</p>
                             </div>
                             <div className="col-lg-4 col-md-4 working-time item">
                                 <i className="fa fa-hourglass-o"></i>
                                 <h2>Working Hours</h2>
                                 <ul className="w-hours">
-                                    <li>Mon - Fri - <span>8:00 - 17:00</span></li>
-                                    <li>Mon - Fri - <span>8:00 - 17:00</span></li>
-                                    <li>Mon - Fri - <span>8:00 - 17:00</span></li>
+                                    <li>Mon - SUN - <span>00:00 - 23:59</span></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -169,9 +165,8 @@ export default function HomePage(){
                             <div className="col-lg-12">
                                 <div className="image-content">
                                     <div className="section-title text-center">
-                                        <h3>Best Features <span>of Our Hospital</span></h3>
-                                        <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Ipsam magni in at debitis <br/> nam error officia vero tempora alias? Sunt?
+                                        <h3>Best Features <span>of Our Hospitals</span></h3>
+                                        <p className="mb-0"> hospitals we works with are the best in Rwanda <br/> we are around you!
                                         </p>
                                     </div>
 
@@ -186,11 +181,7 @@ export default function HomePage(){
                                                     </figure>
                                                 </div>
                                                 <h3 className="mb-2">Orthopedics</h3>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                                                    ducimus veniam illo quibusdam pariatur
-                                                    ex sunt, est aspernatur
-                                                    at debitis eius vitae vel nostrum dolorem labore autem corrupti odit
-                                                    mollitia?</p>
+                                                <p>we use Orthopedics to treat you well </p>
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
@@ -203,12 +194,8 @@ export default function HomePage(){
                                                         </a>
                                                     </figure>
                                                 </div>
-                                                <h3 className="mb-2">Diaginostic</h3>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                                                    ducimus veniam illo quibusdam pariatur
-                                                    ex sunt, est aspernatur
-                                                    at debitis eius vitae vel nostrum dolorem labore autem corrupti odit
-                                                    mollitia?</p>
+                                                <h3 className="mb-2">Diagnostic</h3>
+                                                <p>we use diagnostic to find what wrong in your body</p>
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
@@ -222,11 +209,7 @@ export default function HomePage(){
                                                     </figure>
                                                 </div>
                                                 <h3 className="mb-2">Psycology</h3>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                                                    ducimus veniam illo quibusdam pariatur
-                                                    ex sunt, est aspernatur
-                                                    at debitis eius vitae vel nostrum dolorem labore autem corrupti odit
-                                                    mollitia?</p>
+                                                <p>we use psycology to understand you.</p>
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
@@ -240,11 +223,7 @@ export default function HomePage(){
                                                     </figure>
                                                 </div>
                                                 <h3 className="mb-2">General Treatment</h3>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                                                    ducimus veniam illo quibusdam pariatur
-                                                    ex sunt, est aspernatur
-                                                    at debitis eius vitae vel nostrum dolorem labore autem corrupti odit
-                                                    mollitia?</p>
+                                                <p>don't hustate to come to us even if it is not big dear.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -333,9 +312,10 @@ export default function HomePage(){
                             <h3>Provided
                                 <span>Services</span>
                             </h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet. qui
-                                suscipit atque <br/>
-                                    fugiat officia corporis rerum eaque neque totam animi, sapiente culpa. Architecto!
+                            <p>
+                                The pain itself, the pain is to be implemented in the main adipisic process. A lot of pain is very important. who receives and
+                                 <br/>
+                                let him shun the duties of the body and these things, and not the whole fault of the mind, the wise man!
                             </p>
                         </div>
                         <div className="row">
@@ -350,12 +330,13 @@ export default function HomePage(){
                                                 </a>
                                             </div>
                                             <div className="image-content text-center">
-                                                <span>Better Service At Low Cost</span>
+                                                <span>Better Service At No Cost</span>
                                                 <a href="">
                                                     <h6>Dormitory</h6>
                                                 </a>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-                                                    vero.</p>
+                                                <p>
+                                                    The pain itself is important to the main adipisicing elite. She receives,
+                                                    indeed.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -370,44 +351,46 @@ export default function HomePage(){
                             <h3>Some Hospitals
                                 <span>works with us</span>
                             </h3>
-                            <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-                                illo, rerum
-                                <br/>natus nobis deleniti doloremque minima odit voluptatibus ipsam animi?</p>
+                            <p className="mb-0">
+                                The pain itself is important to the main adipisicing elite. Pleasure
+                                that, of things
+                                <br/>
+                                he was born to soothe us, and the least pain hates the very pleasures of the mind
+                                ?</p>
                         </div>
                         <div className="row justify-content-center">
                             <div className="col-lg-4 col-md-4">
                                 <div className="team-member">
-                                    <img loading="lazy" src="images/team/doctor-2.jpg" alt="doctor"
+                                    <img loading="lazy" src="https://www.enabel.be/sites/default/files/NDH.jpg" alt="doctor"
                                          className="img-fluid"/>
                                         <div className="contents text-center">
-                                            <h4>Dr. Robert Barrethion</h4>
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos,
-                                                aspernatur.</p>
-                                            <a href="" className="btn btn-main">Book Appointment</a>
+                                            <h4>Nyarugenge district hospital</h4>
+                                            <p>Nyarugenge District Hospital is a modern 300-beds hospital that was launched by the Ministry of Health with the support of the Belgian Kingdom through Ubuzima Burambye Program and Nyarugenge District.</p>
+                                            <a href={"https://www.nyarugengehospital.gov.rw/home"} className="btn btn-main">visit</a>
+
+
                                         </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-4">
                                 <div className="team-member">
-                                    <img loading="lazy" src="images/team/doctor-lab-3.jpg" alt="doctor"
+                                    <img loading="lazy" src="https://rwandamilitaryhospital.rw/fileadmin/_processed_/c/6/csm_about23_6dbdb4afe1.png" alt="doctor"
                                          className="img-fluid"/>
                                         <div className="contents text-center">
-                                            <h4>Dr. Marry Lou</h4>
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos,
-                                                aspernatur.</p>
-                                            <a href="" className="btn btn-main">Book Appointment</a>
+                                            <h4>Rwanda military hospital</h4>
+                                            <p>The Government of Rwanda, through the Ministries of Health and Defense, is committed to offering quality health care services to the military and the general population through strengthening and refocusing RMH in terms of the infrastructure, human resources capacity building, equipment and management systems .</p>
+                                            <a href={"https://rwandamilitaryhospital.rw/index.php?id=23"} className="btn btn-main">visit</a>
                                         </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-4">
                                 <div className="team-member">
-                                    <img loading="lazy" src="images/team/event-2.jpg" alt="doctor"
+                                    <img loading="lazy" src="https://pbs.twimg.com/media/D3Dr76MX0AA7AmW?format=jpg&name=4096x4096" alt="doctor"
                                          className="img-fluid"/>
                                         <div className="contents text-center">
-                                            <h4>Dr. Sansa Stark</h4>
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos,
-                                                aspernatur.</p>
-                                            <a href="" className="btn btn-main">Book Appointment</a>
+                                            <h4>King Faisal Hospital Rwanda</h4>
+                                            <p>King Faisal Hospital provides expert care, whether you need help managing a chronic disease like high blood pressure or life saving treatment in an emergency.</p>
+                                            <a href="https://kfh.rw/" className="btn btn-main">visit</a>
                                         </div>
                                 </div>
                             </div>
@@ -432,39 +415,33 @@ export default function HomePage(){
                                         <div className="inner-box text-center">
                                             <div className="image-box">
                                                 <figure>
-                                                    <img loading="lazy" src="images/testimonials/1.png" alt=""/>
+                                                    <img loading="lazy" src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" alt=""/>
                                                 </figure>
                                             </div>
-                                            <h6>Adam Rose</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
+                                            <h6>Ndahiro Rose</h6>
+                                            <p className="mb-0">life become easy in time for giving birth because of advices they gives me</p>
                                         </div>
                                     </div>
                                     <div className="slide-item">
                                         <div className="inner-box text-center">
                                             <div className="image-box">
                                                 <figure>
-                                                    <img loading="lazy" src="images/testimonials/2.png" alt=""/>
+                                                    <img loading="lazy" src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" alt=""/>
                                                 </figure>
                                             </div>
-                                            <h6>David Warner</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
+                                            <h6>Aline NKURIKIYEYESU</h6>
+                                            <p className="mb-0">I was lost</p>
                                         </div>
                                     </div>
                                     <div className="slide-item">
                                         <div className="inner-box text-center">
                                             <div className="image-box">
                                                 <figure>
-                                                    <img loading="lazy" src="images/testimonials/3.png" alt=""/>
+                                                    <img loading="lazy" src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE=" alt=""/>
                                                 </figure>
                                             </div>
-                                            <h6>Amy Adams</h6>
-                                            <p className="mb-0">Neque porro quisquam est, qui dolorem ipsum quia
-                                                consectetur, dolor sit amet, consectetur, numquam Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Molestias, at?</p>
+                                            <h6>keza mia</h6>
+                                            <p className="mb-0">life become easy in time for giving birth because of advices they gives me</p>
                                         </div>
                                     </div>
                                 </div>

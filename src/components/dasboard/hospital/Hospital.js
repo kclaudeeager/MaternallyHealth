@@ -35,6 +35,11 @@ const DashContent = () => {
                                                             data-bss-hover-animate="rubberBand" type="button">
                                                         <Link to={"/hospitalDashboard"}>GO in</Link>
                                                     </button>
+
+                                                    <button className="btn btn-danger d-flex outline loginBtn mt-5"
+                                                            data-bss-hover-animate="rubberBand" type="button">
+                                                        Delete
+                                                    </button>
                                                 </div>
 
                                             </div>
