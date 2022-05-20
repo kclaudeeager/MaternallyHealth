@@ -46,7 +46,7 @@ public class MaternalHealth {
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
                     .allowedMethods("*")
-                    .allowedOrigins("http://localhost:3000");
+                    .allowedOrigins("http://localhost:3000", "https://maternallyhealth.herokuapp.com/");
         }
 
     }
