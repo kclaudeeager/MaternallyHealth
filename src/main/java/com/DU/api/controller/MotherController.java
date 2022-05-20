@@ -257,26 +257,23 @@ public class MotherController {
             @ApiResponse(responseCode = "404", description = "NOt Available", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbidden, Authorization token must be provided", content = @Content) })
 
-    @GetMapping("/phone")
-    public ResponseEntity<Mother> getMotherByMotherPhone(HttpServletRequest request,
-            @Valid @RequestBody Map<String, String> phoneNumParameters) {
+    @GetMapping("/phone/{phoneNumber}")
+    public ResponseEntity<Mother> getMotherByMotherPhone(HttpServletRequest request, @PathVariable("phoneNumber") String phoneNumber) {
         String role = request.getAttribute("role").toString();
         System.out.println("role found: -------- " + role);
         // int i = Integer.parseInt(role);
+        String useremail = request.getAttribute("email").toString();
+        Mother mother = motherRepository.findMotherByPhoneNumber(phoneNumber);
+        if (mother == null) {
+            throw new ResourceNotFoundException("Mother not found :: " + phoneNumber);
+            // System.out.println(("staff not found :: " + email));
+        }
         if (role.equals("DOCTOR") || role.equals("NURSE") || role.equals("ADMIN") || role.equals("RECEPTIONIST")
-                || role.equals("MOTHER")) {
-            String useremail = request.getAttribute("email").toString();
-            // staff staff = staffRepository.findStaffByEmail(email);
-            // Integer userId =
-            // Integer.parseInt(request.getAttribute("user_id").toString());
-            // User user = userRepository.findByUserId(Integer.parseInt(motherId));
-            Mother mother = motherRepository.findMotherByPhoneNumber(phoneNumParameters.get("phone"));
+                ||useremail.equals(mother.getEmail())) {
+            
             String activity;
-            if (mother == null) {
-                throw new ResourceNotFoundException("Mother not found :: " + phoneNumParameters.get("phone"));
-                // System.out.println(("staff not found :: " + email));
-            }
-            activity = "veiwed mother of mother with phone: " + phoneNumParameters.get("phone");
+        
+            activity = "veiwed mother of mother with phone: " + phoneNumber;
             logsService.savelog(useremail, activity);
             return ResponseEntity.ok().body(mother);
         } else {
