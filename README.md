@@ -1,4 +1,4 @@
-# Financial chat-bot-api
+# MaternallyHealth-api
 ### Allowed methods: "GET", "POST", "PUT", "DELETE", "HEAD"
 Branches relation: https://banking-chat-bot-api.herokuapp.com/api/v1/branches
 Staffs relation: https://banking-chat-bot-api.herokuapp.com/api/v1/staffs
