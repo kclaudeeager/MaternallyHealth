@@ -31,18 +31,31 @@ public class MaternalHealth {
 
     }
 
-    @Configuration
-    public class CorsConfig implements WebMvcConfigurer {
+ @EnableWebSecurity
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-        @Override
-        public void addCorsMappings(CorsRegistry registry) {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-            registry.addMapping("/**").allowedOrigins("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
-                    .allowCredentials(true);
-
-        }
-
+        http.cors();
     }
+
+}
+
+@Configuration
+public class WebConfiguration implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry
+            .addMapping("/**")
+            .allowedMethods("*")
+            .allowedHeaders("*")
+            .allowedOrigins("*")
+            .allowCredentials(true);
+    }
+
+}
 
     @Bean
     public FilterRegistrationBean<AuthFilter> filterRegistrationBean() {
