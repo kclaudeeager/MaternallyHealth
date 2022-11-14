@@ -1,12 +1,9 @@
-# Financial chat-bot-api
+# MaternallyHealth-api
 ### Allowed methods: "GET", "POST", "PUT", "DELETE", "HEAD"
-Branches relation: https://banking-chat-bot-api.herokuapp.com/api/v1/branches
-Staffs relation: https://banking-chat-bot-api.herokuapp.com/api/v1/staffs
-users relation: https://banking-chat-bot-api.herokuapp.com/api/v1/users
-Bank Agents relation: https://banking-chat-bot-api.herokuapp.com/api/v1/
 
-roleId                      owner
-0                           client
-1                           agents
-3                           staff
-4                           admin
+## backend api:
+
+`https://maternally-health-backend.herokuapp.com/api/v1/`
+## get full docummentation her:
+
+`https://www.postman.com/restless-meteor-245583/workspace/maternally-health-api/documentation/20518002-9fbdd2d4-8ff6-4d24-8426-4f0456897b9e?entity=&branch=&version=`
