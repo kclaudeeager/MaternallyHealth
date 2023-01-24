@@ -1,5 +1,5 @@
 const settings = {
-    backendURLLocal: "http://localhost:2023",
+    backendURLLocal: "http://localhost:8080",
     backendURLRemote:"https://maternally-health-backend.herokuapp.com"
 }
 const status = {
