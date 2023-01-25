@@ -1,0 +1,23 @@
+name: Publish Docker Image
+
+on:
+  push:
+    branches:
+      - check_docker
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build and Push Docker Image
+      run: |
+        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        docker build -t kclaude/maternallybackend_app:latest .
+        docker push kclaude/maternallybackend_app:latest
+    env:
+      DOCKER_USERNAME: kclaude
+      DOCKER_PASSWORD: Kwizeraeager@14
