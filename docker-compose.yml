@@ -10,4 +10,3 @@ services:
       - SPRING_DATASOURCE_PASSWORD=WkG0jbD171u9JsvVar23ngMOI0S5n0Ha
     command: java -jar maternally.jar
     restart: always
-  
