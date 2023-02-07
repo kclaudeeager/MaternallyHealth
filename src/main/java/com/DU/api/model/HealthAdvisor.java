@@ -17,7 +17,6 @@ import io.swagger.v3.oas.annotations.Hidden;
 @Entity
 @Table(name = "healthAdvisor")
 public class HealthAdvisor extends AuditModel {
-
     /**
      *
      */

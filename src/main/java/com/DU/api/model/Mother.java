@@ -54,7 +54,7 @@ public class Mother extends AuditModel {
     private Long registerId;
     @Column(name = "hospitalId", nullable = false)
     private Long hospitalId;
-     
+    
     public Mother() {
         super();
     }

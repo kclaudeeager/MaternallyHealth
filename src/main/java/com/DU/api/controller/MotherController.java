@@ -67,9 +67,10 @@ public class MotherController {
             logsService.savelog(useremail, activity);
             
                 System.out.println("Status: " + mother.getStatus());
-             if(mother.getStatus()==null || mother.getStatus()=="")
+             if(mother.getStatus()==null || mother.getStatus()==""){
                 mother.setStatus(Constants.STATAS[0]);  
-                
+             }
+          
             else{
                 boolean success = false;
                 for(String status : Constants.STATAS)
@@ -81,6 +82,7 @@ public class MotherController {
                       throw new IllegalStateException("Status must be in these types: " + Arrays.toString(Constants.STATAS));
             
             }
+            //System.out.println("Mother status: "+mother.getStatus());
             Hospital hospital= hospitalRepository.findByHospitalId(mother.getHospitalId());
           
             if(hospital==null){
