@@ -83,7 +83,8 @@ UserRepository userRepository;
       if(hospital==null){
         throw new ResourceNotFoundException(" hospital  not found for such hospital id:: "+staff.getHospitalId());
       }
-      User user= userRepository.findByEmailAddress(useremail);
+      String staffEmail=staff.getEmail();
+      User user= userRepository.findByEmailAddress(staffEmail);
       if(user == null){
         throw new ResourceNotFoundException("User not found: User should have been registered with that email address: "+useremail);
       }
