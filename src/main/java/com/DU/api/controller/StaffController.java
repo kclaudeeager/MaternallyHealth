@@ -134,7 +134,7 @@ UserRepository userRepository;
     String role = request.getAttribute("role").toString();
     // System.out.println("role: -------- " + role);
    // int i = Integer.parseInt(role);
-    if (role.equals("ADMIN")) {
+    // if (role.equals("ADMIN")) {
       String useremail = request.getAttribute("email").toString();
       staff staff = staffRepository.findStaffByEmail(email);
       String activity;
@@ -145,9 +145,9 @@ UserRepository userRepository;
       activity = "veiwed staff: " + email;
       logsService.savelog(useremail, activity);
       return ResponseEntity.ok().body(staff);
-    } else {
-      throw new AuthException("Only admin and  can view staff data :: ");
-    }
+    // } else {
+    //   throw new AuthException("Only admin and  can view staff data :: ");
+    // }
   }
   @Operation(summary = "This is to fetch all staffs within a hospital to the  Database", security = @SecurityRequirement(name = "bearerAuth"))
   @ApiResponses(value = {
